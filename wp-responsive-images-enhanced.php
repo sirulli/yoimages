@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: WP Responsive Images Enhanced
- * Plugin URI: http://fagia.martjanplanet.com/wp-responsive-images-enhanced
+ * Plugin URI: https://github.com/fagia/wp-responsive-images-enhanced
  * Description: Adds support for showing and managing responsive images.
  * Version: 0.0.1
  * Author: Matteo Cajani
@@ -38,3 +38,4 @@ require_once (WPRIE_PATH . 'inc/utils.php');
 require_once (WPRIE_PATH . 'inc/extend-admin-media.php');
 
 ?>
+
