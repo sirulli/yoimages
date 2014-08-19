@@ -37,6 +37,3 @@ define ( 'WPRIE_EDIT_IMAGE_ACTION', 'wprie-edit-thumbnails' );
 
 require_once (WPRIE_PATH . 'inc/utils.php');
 require_once (WPRIE_PATH . 'inc/extend-admin-media.php');
-
-?>
-

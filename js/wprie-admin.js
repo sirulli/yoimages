@@ -7,8 +7,21 @@ jQuery(document).ready(function($) {
 				'post' : wprie_post_id
 			};
 			$.post(ajaxurl, data, function(response) {
-				$('#media-head-' + wprie_post_id).after(response);
+				$('.wp_attachment_details.edit-form-section').after(response);
 			});
 		}
 	}
+
+	if (typeof wprie_cropper_aspect_ratio !== 'undefined') {
+		$("#wprie-cropper").cropper({
+			aspectRatio : wprie_cropper_aspect_ratio,
+			minWidth : wprie_cropper_min_width,
+			minHeight : wprie_cropper_min_height,
+			modal: true,
+			done : function(data) {
+				// Crop image with the data
+			}
+		});
+	}
+
 });

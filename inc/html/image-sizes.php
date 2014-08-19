@@ -26,4 +26,3 @@ foreach ( $sizes as $size_key => $size_value ) {
 	</div>
 	<?php
 }
-?>

@@ -1,8 +1,8 @@
 <?php
-function wprie_get_edit_image_url( $id, $size ) {
-	return admin_url( 'admin.php?page=' . WPRIE_EDIT_IMAGE_ACTION . '&post=' . $id . '&size=' . $size );
+function wprie_get_edit_image_url($id, $size) {
+	return admin_url ( 'admin.php?page=' . WPRIE_EDIT_IMAGE_ACTION . '&post=' . $id . '&size=' . $size );
 }
-function wprie_get_image_sizes() {
+function wprie_get_image_sizes( $size = '' ) {
 	global $_wp_additional_image_sizes;
 	$sizes = array ();
 	$get_intermediate_image_sizes = get_intermediate_image_sizes ();
@@ -23,6 +23,12 @@ function wprie_get_image_sizes() {
 			);
 		}
 	}
+	if ($size) {
+		if (isset ( $sizes [$size] )) {
+			return $sizes [$size];
+		} else {
+			return false;
+		}
+	}
 	return $sizes;
 }
-?>
