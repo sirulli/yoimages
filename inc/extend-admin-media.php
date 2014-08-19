@@ -11,6 +11,21 @@ function wprie_get_images() {
 	die();
 }
 
+function wprie_edit_thumbnails_page() {
+	global $wprie_image_id;
+	global $wprie_image_size;
+	$wprie_image_id = $_GET ['post'];
+	$wprie_image_size = $_GET ['size'];
+	if (current_user_can ( 'edit_post', $wprie_image_id )) {
+		include (WPRIE_PATH . 'inc/html/edit-image-size.php');
+	} else {
+		die ();
+	}
+}
+function wprie_register_edit_thumbnails_page() {
+	add_submenu_page ( null, 'Edit Thumbnails Page', 'Edit Thumbnails Page', 'manage_options', WPRIE_EDIT_IMAGE_ACTION, 'wprie_edit_thumbnails_page' );
+}
+
 if ( is_admin () ) {
 	wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'jquery' ), false, true );
 	add_action( 'wp_ajax_wprie_get_images', 'wprie_get_images' );
@@ -22,6 +37,7 @@ if ( is_admin () ) {
 		</script>
 		<?php
 	}
+	add_action ( 'admin_menu', 'wprie_register_edit_thumbnails_page' );
 }
 
 ?>

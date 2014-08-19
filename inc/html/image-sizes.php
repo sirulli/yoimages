@@ -15,6 +15,7 @@ foreach ( $sizes as $size_key => $size_value ) {
 				<li>height: <?php echo $size_value['height']; ?></li>
 				<li>crop: <?php echo $size_value['crop'] ? 'true' : 'false'; ?></li>
 			</ul>
+			<a href="<?php echo wprie_get_edit_image_url( $wprie_image_id, $size_key ); ?>">edit</a>
 		</p>
 	</div>
 	<?php
