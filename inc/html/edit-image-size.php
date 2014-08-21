@@ -15,7 +15,7 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 		<input type="button" value="Save" class="button button-primary" onclick="javascript:wprieCropImage();" />
 	</div>
 	<div style="max-width: <?php echo $full_image_attributes[1]; ?>px;max-height: <?php echo $full_image_attributes[2]; ?>px;">
-		<img id="wprie-cropper" src="<?php echo $full_image_attributes[0]; ?>" style="max-width: 100%;" />
+		<img id="wprie-cropper" src="<?php echo $full_image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
 	</div>
 </div>
 <?php

@@ -7,8 +7,9 @@ foreach ( $sizes as $size_key => $size_value ) {
 		<?php echo $size_key; ?>
 		</h3>
 		<?php
-		echo wp_get_attachment_image ( $wprie_image_id, $size_key );
+		$image_attributes = wp_get_attachment_image_src( $wprie_image_id, $size_key );
 		?>
+		<img src="<?php echo $image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
 		<p>
 			<ul>
 				<li>width: <?php echo $size_value['width']; ?></li>
