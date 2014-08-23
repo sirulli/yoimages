@@ -1,3 +1,7 @@
 #wprie-cropper-wrapper {
 	margin: 20px 20px 30px 0;
 }
+
+#wprie-cropper-wrapper .wprie-buttons {
+	margin-bottom: 20px;
+}
