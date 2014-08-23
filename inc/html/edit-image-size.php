@@ -4,6 +4,7 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 ?>
 <div id="wprie-cropper-wrapper">
 	<script>
+	var wprie_back_url = '<?php echo admin_url ( 'post.php?post=' . $wprie_image_id . '&action=edit' ); ?>';
 	var wprie_image_id = <?php echo $wprie_image_id; ?>;
 	var wprie_image_size = '<?php echo $wprie_image_size; ?>';
 	var wprie_cropper_min_width = <?php echo $cropped_image_sizes['width']; ?>;
@@ -11,7 +12,7 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 	var wprie_cropper_aspect_ratio = <?php echo $cropped_image_sizes['width']; ?> / <?php echo $cropped_image_sizes['height']; ?>;
 	</script>
 	<div class="wprie-buttons">
-		<input type="button" value="Cancel" class="button" onclick="javascript:;" />
+		<input type="button" value="Cancel" class="button" onclick="javascript:wprieCancelCropImage();" />
 		<input type="button" value="Save" class="button button-primary" onclick="javascript:wprieCropImage();" />
 	</div>
 	<div style="max-width: <?php echo $full_image_attributes[1]; ?>px;max-height: <?php echo $full_image_attributes[2]; ?>px;">

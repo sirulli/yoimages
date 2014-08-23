@@ -1,13 +1,19 @@
 //TODO better js
+
+function wprieCancelCropImage() {
+	window.location.href = wprie_back_url;
+}
+
 function wprieCropImage() {
 	var data = jQuery('#wprie-cropper').cropper('getData');
 	data['action'] = 'wprie_crop_image';
 	data['post'] = wprie_image_id;
 	data['size'] = wprie_image_size;
 	jQuery.post(ajaxurl, data, function(response) {
-		jQuery('body').append(response);
+		// TODO handle errors
+		window.location.href = wprie_back_url;
 	});
-	
+
 }
 
 jQuery(document).ready(function($) {
