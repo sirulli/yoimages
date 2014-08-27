@@ -1,7 +1,7 @@
 <?php
 $sizes = wprie_get_image_sizes ();
 foreach ( $sizes as $size_key => $size_value ) {
-	if ( $size_value['crop'] ) {
+	if ( $size_value['crop'] == 1 ) {
 	?>
 	<div>
 		<h3>
@@ -17,7 +17,7 @@ foreach ( $sizes as $size_key => $size_value ) {
 				<li>height: <?php echo $size_value['height']; ?></li>
 			</ul>
 			<?php
-			if ( $size_value['crop'] ) {
+			if ( $size_value['crop'] == 1 ) {
 			?>
 				<a href="<?php echo wprie_get_edit_image_url( $wprie_image_id, $size_key ); ?>">edit</a>
 			<?php
