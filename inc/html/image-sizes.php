@@ -1,6 +1,7 @@
 <?php
 $sizes = wprie_get_image_sizes ();
 foreach ( $sizes as $size_key => $size_value ) {
+	if ( $size_value['crop'] ) {
 	?>
 	<div>
 		<h3>
@@ -14,7 +15,6 @@ foreach ( $sizes as $size_key => $size_value ) {
 			<ul>
 				<li>width: <?php echo $size_value['width']; ?></li>
 				<li>height: <?php echo $size_value['height']; ?></li>
-				<li>crop: <?php echo $size_value['crop'] ? 'true' : 'false'; ?></li>
 			</ul>
 			<?php
 			if ( $size_value['crop'] ) {
@@ -26,4 +26,5 @@ foreach ( $sizes as $size_key => $size_value ) {
 		</p>
 	</div>
 	<?php
+	}
 }
