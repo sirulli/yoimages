@@ -1,7 +1,18 @@
 //TODO better js
 
+function wprieInitCropImage() {
+	if (typeof wprie_cropper_aspect_ratio !== 'undefined') {
+		jQuery('#wprie-cropper').cropper({
+			aspectRatio : wprie_cropper_aspect_ratio,
+			minWidth : wprie_cropper_min_width,
+			minHeight : wprie_cropper_min_height,
+			modal : true
+		});
+	}
+}
+
 function wprieCancelCropImage() {
-	window.location.href = wprie_back_url;
+	tb_remove();
 }
 
 function wprieCropImage() {
@@ -11,7 +22,13 @@ function wprieCropImage() {
 	data['size'] = wprie_image_size;
 	jQuery.post(ajaxurl, data, function(response) {
 		// TODO handle errors
-		window.location.href = wprie_back_url;
+		jQuery('img[src*=\'' + response + '\']').each(function(){
+			var img = jQuery(this);
+			var imgSrc = img.attr('src');
+			imgSrc = imgSrc + (imgSrc.indexOf('?') > -1 ? '&' : '?') + '_r=' + Math.floor((Math.random() * 100) + 1);
+			img.attr('src', imgSrc);
+		});
+		tb_remove();
 	});
 
 }
@@ -29,15 +46,6 @@ jQuery(document).ready(function($) {
 				$('.wp_attachment_details.edit-form-section').after(response);
 			});
 		}
-	}
-
-	if (typeof wprie_cropper_aspect_ratio !== 'undefined') {
-		$('#wprie-cropper').cropper({
-			aspectRatio : wprie_cropper_aspect_ratio,
-			minWidth : wprie_cropper_min_width,
-			minHeight : wprie_cropper_min_height,
-			modal : true
-		});
 	}
 
 });

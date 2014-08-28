@@ -1,6 +1,6 @@
 <?php
 function wprie_get_edit_image_url($id, $size) {
-	return admin_url ( 'admin.php?page=' . WPRIE_EDIT_IMAGE_ACTION . '&post=' . $id . '&size=' . $size );
+	return admin_url( 'admin-ajax.php' ) . '?action=wprie_edit_thumbnails_page&post=' . $id . '&size=' . $size;
 }
 function wprie_get_image_sizes( $size = '' ) {
 	global $_wp_additional_image_sizes;

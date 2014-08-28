@@ -22,15 +22,10 @@ function wprie_crop_image() {
 	$img_editor->crop( $_POST['x'], $_POST['y'], $_POST['width'], $_POST['height'] );
 	$img_editor->resize( $cropped_image_sizes['width'], $cropped_image_sizes['height'] );
 	$img_path_parts = pathinfo($img_path);
-	$img_editor->save( $img_path_parts['dirname'] .
-			'/' .
-			$img_path_parts['filename'] .
-			'-' .
-			$cropped_image_sizes['width'] .
-			'x' .
-			$cropped_image_sizes['height'] .
-			'.' .
-			$img_path_parts['extension'] );
+	// TODO fix this $cropped_image_filename updating filename and sizes too
+	$cropped_image_filename = $img_path_parts['filename'] . '-' . $cropped_image_sizes['width'] . 'x' . $cropped_image_sizes['height'] . '.' . $img_path_parts['extension'];
+	$img_editor->save( $img_path_parts['dirname'] . '/' . $cropped_image_filename );
+	echo $cropped_image_filename;
 	die();
 }
 
@@ -40,29 +35,27 @@ function wprie_edit_thumbnails_page() {
 	$wprie_image_id = $_GET ['post'];
 	$wprie_image_size = $_GET ['size'];
 	if (current_user_can ( 'edit_post', $wprie_image_id )) {
-		wp_enqueue_style( 'wprie-cropper-css', WPRIE_URL . 'js/cropper/cropper.min.css' );
-		wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
 		include (WPRIE_PATH . 'inc/html/edit-image-size.php');
 	} else {
 		die ();
 	}
 }
-function wprie_register_edit_thumbnails_page() {
-	add_submenu_page ( null, 'Edit Thumbnails Page', 'Edit Thumbnails Page', 'manage_options', WPRIE_EDIT_IMAGE_ACTION, 'wprie_edit_thumbnails_page' );
-}
 
 if ( is_admin () ) {
 	wp_enqueue_style( 'wprie-admin-css', WPRIE_URL . 'css/wprie-admin.css' );
-	wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'jquery' ), false, true );
+	wp_enqueue_style( 'wprie-cropper-css', WPRIE_URL . 'js/cropper/cropper.min.css' );
+	wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'wprie-cropper-js' ), false, true );
 	add_action( 'wp_ajax_wprie_get_images', 'wprie_get_images' );
+	add_action( 'wp_ajax_wprie_edit_thumbnails_page', 'wprie_edit_thumbnails_page' );
 	add_action( 'wp_ajax_wprie_crop_image', 'wprie_crop_image' );
 	$wprie_post_id = $_GET['post'];
 	if ( ! empty( $wprie_post_id ) ) {
+		//TODO check if actually needed this
 		?>
 		<script>
 		var wprie_post_id = <?php echo $wprie_post_id; ?>;
 		</script>
 		<?php
 	}
-	add_action ( 'admin_menu', 'wprie_register_edit_thumbnails_page' );
 }

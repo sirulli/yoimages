@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined ( 'ABSPATH' ) ) {
+	die ( 'No script kiddies please!' );
+}
+
 $cropped_image_sizes = wprie_get_image_sizes( $wprie_image_size );
 $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 ?>
@@ -19,4 +24,6 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 		<img id="wprie-cropper" src="<?php echo $full_image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
 	</div>
 </div>
+<script>wprieInitCropImage();</script>
 <?php
+exit();
