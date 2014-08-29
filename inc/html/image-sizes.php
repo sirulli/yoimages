@@ -7,7 +7,8 @@ if ( ! defined ( 'ABSPATH' ) ) {
 $sizes = wprie_get_image_sizes ();
 foreach ( $sizes as $size_key => $size_value ) {
 	if ( $size_value['crop'] == 1 ) {
-	?>
+		add_thickbox();
+		?>
 		<div>
 			<h3><?php echo $size_key; ?></h3>
 			<?php
