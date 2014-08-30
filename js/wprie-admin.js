@@ -1,5 +1,11 @@
 //TODO better js
 
+function wprieExtendMediaLightboxTemplate(editImageAnchor) {
+	var attachmentDetailsTmpl = jQuery('#tmpl-attachment-details').text();
+	attachmentDetailsTmpl = attachmentDetailsTmpl.replace(/(<a class="edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + editImageAnchor);
+    jQuery('#tmpl-attachment-details').text(attachmentDetailsTmpl);
+}
+
 function wprieInitCropImage() {
 	if (typeof wprie_cropper_aspect_ratio !== 'undefined') {
 		jQuery('#wprie-cropper').cropper({

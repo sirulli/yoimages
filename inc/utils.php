@@ -3,10 +3,10 @@ function wprie_get_edit_image_url( $id, $size ) {
 	return admin_url( 'admin-ajax.php' ) . '?action=wprie_edit_thumbnails_page&post=' . $id . '&size=' . $size;
 }
 
-function wprie_get_edit_image_anchor( $id, $size = 'thumbnail' ) {
+function wprie_get_edit_image_anchor( $id, $size = 'thumbnail', $styles = '' ) {
 	add_thickbox();
 	$edit_crops_url = wprie_get_edit_image_url( $id, $size );
-	return '<a class="thickbox" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '">' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '</a>';
+	return '<a class="thickbox" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '">' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '</a>';
 }
 
 function wprie_get_image_sizes( $size = '' ) {

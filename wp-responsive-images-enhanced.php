@@ -31,11 +31,13 @@ if (! defined ( 'ABSPATH' )) {
 	die ( 'No script kiddies please!' );
 }
 
-define ( 'WPRIE_PATH', dirname ( __FILE__ ) . '/' );
-define ( 'WPRIE_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );
-define ( 'WPRIE_EDIT_IMAGE_ACTION', 'wprie-edit-thumbnails' );
-define ( 'WPRIE_DOMAIN', 'wprie' );
-
-require_once (WPRIE_PATH . 'inc/utils.php');
-require_once (WPRIE_PATH . 'inc/extend-admin-media.php');
-require_once (WPRIE_PATH . 'inc/extend-admin-post.php');
+if ( is_admin() ) {
+	define ( 'WPRIE_PATH', dirname ( __FILE__ ) . '/' );
+	define ( 'WPRIE_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );
+	define ( 'WPRIE_EDIT_IMAGE_ACTION', 'wprie-edit-thumbnails' );
+	define ( 'WPRIE_DOMAIN', 'wprie' );
+	require_once (WPRIE_PATH . 'inc/utils.php');
+	require_once (WPRIE_PATH . 'inc/extend-admin-media.php');
+	require_once (WPRIE_PATH . 'inc/extend-admin-media-lightbox.php');
+	require_once (WPRIE_PATH . 'inc/extend-admin-post.php');
+}
