@@ -41,6 +41,13 @@ function wprie_edit_thumbnails_page() {
 	}
 }
 
+function wprie_media_row_actions( $actions, $post, $detached ) {
+	if ( wp_attachment_is_image( $post->ID ) ) {
+		$actions['wprie_crop'] = wprie_get_edit_image_anchor( $post->ID );
+	}
+	return $actions;
+}
+
 if ( is_admin () ) {
 	wp_enqueue_style( 'wprie-admin-css', WPRIE_URL . 'css/wprie-admin.css' );
 	wp_enqueue_style( 'wprie-cropper-css', WPRIE_URL . 'js/cropper/cropper.min.css' );
@@ -49,6 +56,7 @@ if ( is_admin () ) {
 	add_action( 'wp_ajax_wprie_get_images', 'wprie_get_images' );
 	add_action( 'wp_ajax_wprie_edit_thumbnails_page', 'wprie_edit_thumbnails_page' );
 	add_action( 'wp_ajax_wprie_crop_image', 'wprie_crop_image' );
+	add_filter( 'media_row_actions', 'wprie_media_row_actions', 10, 3);
 	$wprie_post_id = $_GET['post'];
 	if ( ! empty( $wprie_post_id ) ) {
 		//TODO check if actually needed this
