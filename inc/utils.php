@@ -1,4 +1,9 @@
 <?php
+
+function wprie_get_cropped_image_filename( $filename, $width, $height, $extension ) {
+	return $filename . '-' . $width . 'x' . $height . '.' . $extension;
+}
+
 function wprie_get_edit_image_url( $id, $size ) {
 	return admin_url( 'admin-ajax.php' ) . '?action=wprie_edit_thumbnails_page&post=' . $id . '&size=' . $size;
 }

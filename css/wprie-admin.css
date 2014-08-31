@@ -5,3 +5,12 @@
 #wprie-cropper-wrapper .wprie-buttons {
 	margin-bottom: 20px;
 }
+
+.wprie-not-existing-crop img {
+	display: none;
+}
+
+.wprie-not-existing-crop p {
+	font-style: italic;
+	color: #ff0000;
+}

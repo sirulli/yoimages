@@ -36,7 +36,14 @@ if ( is_admin() ) {
 	define ( 'WPRIE_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );
 	define ( 'WPRIE_EDIT_IMAGE_ACTION', 'wprie-edit-thumbnails' );
 	define ( 'WPRIE_DOMAIN', 'wprie' );
+	
+	wp_enqueue_style( 'wprie-admin-css', WPRIE_URL . 'css/wprie-admin.css' );
+	wp_enqueue_style( 'wprie-cropper-css', WPRIE_URL . 'js/cropper/cropper.min.css' );
+	wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'wprie-cropper-js' ), false, true );
+	
 	require_once (WPRIE_PATH . 'inc/utils.php');
+	require_once (WPRIE_PATH . 'inc/image-editor.php');
 	require_once (WPRIE_PATH . 'inc/extend-admin-media.php');
 	require_once (WPRIE_PATH . 'inc/extend-admin-media-lightbox.php');
 	require_once (WPRIE_PATH . 'inc/extend-admin-post.php');
