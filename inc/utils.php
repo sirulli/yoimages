@@ -3,11 +3,18 @@ function wprie_get_edit_image_url( $id, $size ) {
 	return admin_url( 'admin-ajax.php' ) . '?action=wprie_edit_thumbnails_page&post=' . $id . '&size=' . $size;
 }
 
-function wprie_get_edit_image_anchor( $id, $size = 'thumbnail', $styles = '' ) {
+function wprie_get_edit_image_anchor( $id, $size = 'thumbnail', $styles = '', $classes = '' ) {
 	add_thickbox();
 	$edit_crops_url = wprie_get_edit_image_url( $id, $size );
-	return '<a class="thickbox" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '">' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '</a>';
+	return '<a class="thickbox wprie ' . $classes . '" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '">' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '</a>';
 }
+
+function wprie_get_edit_image_anchor_ajax() {
+	echo wprie_get_edit_image_anchor( $_POST['post'], 'thumbnail', 'margin-right:10px;', 'edit-attachment' );
+	die();
+}
+
+add_action( 'wp_ajax_wprie_get_edit_image_anchor', 'wprie_get_edit_image_anchor_ajax' );
 
 function wprie_get_image_sizes( $size = '' ) {
 	global $_wp_additional_image_sizes;

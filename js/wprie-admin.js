@@ -1,9 +1,34 @@
 //TODO better js
 
+function wprieAddEditImageAnchors() {
+	var wprieAddEditImageAnchorsInterval = setInterval(function() {
+		if (jQuery('#media-items .edit-attachment').length) {
+			jQuery('#media-items .edit-attachment').each(function(i, k) {
+				try {
+					var currEl = jQuery(this);
+					var mRegexp = /\?post=([0-9]+)/;
+					var match = mRegexp.exec(currEl.attr('href'));
+					if (!currEl.parent().find('.wprie').length && currEl.parent().find('.pinkynail').attr('src').match(/upload/g)) {
+						var data = {
+							'action' : 'wprie_get_edit_image_anchor',
+							'post' : match[1]
+						};
+						jQuery.post(ajaxurl, data, function(response) {
+							currEl.after(response);
+						});
+					}
+				} catch (e) {
+					console.log(e);
+				}
+			});
+		}
+	}, 500);
+}
+
 function wprieExtendMediaLightboxTemplate(editImageAnchor) {
 	var attachmentDetailsTmpl = jQuery('#tmpl-attachment-details').text();
 	attachmentDetailsTmpl = attachmentDetailsTmpl.replace(/(<a class="edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + editImageAnchor);
-    jQuery('#tmpl-attachment-details').text(attachmentDetailsTmpl);
+	jQuery('#tmpl-attachment-details').text(attachmentDetailsTmpl);
 }
 
 function wprieInitCropImage() {
@@ -28,7 +53,7 @@ function wprieCropImage() {
 	data['size'] = wprie_image_size;
 	jQuery.post(ajaxurl, data, function(response) {
 		// TODO handle errors
-		jQuery('img[src*=\'' + response + '\']').each(function(){
+		jQuery('img[src*=\'' + response + '\']').each(function() {
 			var img = jQuery(this);
 			var imgSrc = img.attr('src');
 			imgSrc = imgSrc + (imgSrc.indexOf('?') > -1 ? '&' : '?') + '_r=' + Math.floor((Math.random() * 100) + 1);
@@ -53,5 +78,7 @@ jQuery(document).ready(function($) {
 			});
 		}
 	}
+
+	wprieAddEditImageAnchors();
 
 });
