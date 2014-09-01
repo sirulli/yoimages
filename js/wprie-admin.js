@@ -62,7 +62,6 @@ function wprieCropImage() {
 				img.parents('.wprie-not-existing-crop').removeClass('wprie-not-existing-crop').find('p').hide();
 			}
 		});
-		jQuery('#wprie-cropper-wrapper').remove();
 	});
 
 }
@@ -86,8 +85,13 @@ jQuery(document).ready(function($) {
 
 	$(document).on('click', 'a.wprie-thickbox', function(e) {
 		e.preventDefault();
-		$.get($(this).attr('href'), function(data) {
-			$('body').append(data);
+		var currEl = $(this)
+		$.get(currEl.attr('href'), function(data) {
+			if (currEl.hasClass('wprie-thickbox-partial')) {
+				$('#wprie-cropper-wrapper .media-modal-content').empty().append(data);
+			} else {
+				$('body').append(data);
+			}
 		});
 		return false;
 	});
