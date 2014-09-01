@@ -11,7 +11,7 @@ function wprie_get_edit_image_url( $id, $size ) {
 function wprie_get_edit_image_anchor( $id, $size = 'thumbnail', $styles = '', $classes = '' ) {
 	add_thickbox();
 	$edit_crops_url = wprie_get_edit_image_url( $id, $size );
-	return '<a class="thickbox wprie ' . $classes . '" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '">' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '</a>';
+	return '<a class="wprie-thickbox wprie ' . $classes . '" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '">' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '</a>';
 }
 
 function wprie_get_edit_image_anchor_ajax() {

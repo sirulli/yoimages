@@ -37,6 +37,7 @@ if ( is_admin() ) {
 	define ( 'WPRIE_EDIT_IMAGE_ACTION', 'wprie-edit-thumbnails' );
 	define ( 'WPRIE_DOMAIN', 'wprie' );
 	
+	wp_enqueue_style( 'media-views' );
 	wp_enqueue_style( 'wprie-admin-css', WPRIE_URL . 'css/wprie-admin.css' );
 	wp_enqueue_style( 'wprie-cropper-css', WPRIE_URL . 'js/cropper/cropper.min.css' );
 	wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );

@@ -1,9 +1,18 @@
-#wprie-cropper-wrapper {
-	margin: 20px 20px 30px 0;
+#wprie-cropper-wrapper .media-modal-backdrop {
+	z-index: 17000000;
 }
 
-#wprie-cropper-wrapper .wprie-buttons {
-	margin-bottom: 20px;
+#wprie-cropper-wrapper .media-modal {
+	z-index: 17000001;
+}
+
+#wprie-cropper-wrapper .media-frame-content,#wprie-cropper-wrapper .media-frame-router,#wprie-cropper-wrapper .media-frame-title
+	{
+	left: 0;
+}
+
+#wprie-cropper-wrapper .media-frame-content {
+	padding: 16px;
 }
 
 .wprie-not-existing-crop img {

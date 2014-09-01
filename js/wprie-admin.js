@@ -43,7 +43,7 @@ function wprieInitCropImage() {
 }
 
 function wprieCancelCropImage() {
-	tb_remove();
+	jQuery('#wprie-cropper-wrapper').remove();
 }
 
 function wprieCropImage() {
@@ -62,7 +62,7 @@ function wprieCropImage() {
 				img.parents('.wprie-not-existing-crop').removeClass('wprie-not-existing-crop').find('p').hide();
 			}
 		});
-		tb_remove();
+		jQuery('#wprie-cropper-wrapper').remove();
 	});
 
 }
@@ -83,5 +83,24 @@ jQuery(document).ready(function($) {
 	}
 
 	wprieAddEditImageAnchors();
+
+	$(document).on('click', 'a.wprie-thickbox', function(e) {
+		e.preventDefault();
+		$.get($(this).attr('href'), function(data) {
+			$('body').append(data);
+		});
+		return false;
+	});
+	$(document).on('click', function(e) {
+		if ($(e.target).attr('id') === 'wprie-cropper-bckgr') {
+			wprieCancelCropImage();
+		}
+	});
+	$(document).on('keydown', function(e) {
+		if (e.keyCode === 27) {
+			wprieCancelCropImage();
+			return false;
+		}
+	});
 
 });
