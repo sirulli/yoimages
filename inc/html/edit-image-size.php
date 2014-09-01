@@ -4,6 +4,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	die ( 'No script kiddies please!' );
 }
 
+$attachment_metadata = wp_get_attachment_metadata( $wprie_image_id );
 $cropped_image_sizes = wprie_get_image_sizes( $wprie_image_size );
 $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 ?>	
@@ -23,7 +24,7 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 		<div class="media-modal-content">
 <?php } ?>
 	    	<div class="media-frame wp-core-ui">	
-				<div class="media-frame-title"><h1><?php _e( 'Edit cropped formats', WPRIE_DOMAIN ); ?></h1></div>
+				<div class="media-frame-title"><h1><?php _e( 'Edit cropped formats from full image', WPRIE_DOMAIN ); ?> (<?php echo $full_image_attributes[1]; ?>x<?php echo $full_image_attributes[2]; ?>)</h1></div>
 				<div class="media-frame-router">
 					<div class="media-router">
 						<?php
@@ -42,15 +43,49 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 					</div>
 				</div>
 				<div class="media-frame-content">
-					<div style="max-width: <?php echo $full_image_attributes[1]; ?>px;max-height: <?php echo $full_image_attributes[2]; ?>px;">
-						<img id="wprie-cropper" src="<?php echo $full_image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
+					<div class="attachments-browser">
+						<div class="attachments">
+							<div style="max-width: <?php echo $full_image_attributes[1]; ?>px;max-height: <?php echo $full_image_attributes[2]; ?>px;">
+								<img id="wprie-cropper" src="<?php echo $full_image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
+							</div>
+						</div>
+						<div class="media-sidebar">
+							<div class="attachment-details">
+								<?php
+								$this_crop_exists = ! empty( $attachment_metadata['sizes'][$wprie_image_size]['file'] );
+								if ( $this_crop_exists ) {
+								?>
+									<h3><?php _e( 'Current', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?> (<?php echo $attachment_metadata['sizes'][$wprie_image_size]['width']; ?>x<?php echo $attachment_metadata['sizes'][$wprie_image_size]['height']; ?>)</h3>
+								<?php
+								} else {
+								?>
+									<h3><?php _e( 'Current', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?></h3>
+								<?php	
+								}
+								$image_attributes = wp_get_attachment_image_src( $wprie_image_id, $wprie_image_size );
+								if ( $this_crop_exists ) {
+								?>
+									<img src="<?php echo $image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
+								<?php
+								} else {
+									$img_url_parts = parse_url( $image_attributes[0] );
+									$img_path_parts = pathinfo( $img_url_parts['path'] );
+									$expected_url = $img_path_parts['dirname'] . '/' . wprie_get_cropped_image_filename( $img_path_parts['filename'], $cropped_image_sizes['width'], $cropped_image_sizes['height'], $img_path_parts['extension'] );
+									?>
+									<div class="wprie-not-existing-crop">
+										<img src="<?php echo $expected_url; ?>" style="max-width: 100%;" />
+										<p><?php _e( 'Crop not generated yet', WPRIE_DOMAIN ); ?></p>
+									</div>
+								<?php } ?>
+								<!--h3><?php _e( 'Crop preview', WPRIE_DOMAIN ); ?></h3-->
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="media-frame-toolbar">
 	        		<div class="media-toolbar">
 						<div class="media-toolbar-primary">
-							<a href="javascript:wprieCancelCropImage();" class="button media-button button-large media-button-select"><?php _e( 'Cancel', WPRIE_DOMAIN ); ?></a>
-							<a href="javascript:wprieCropImage();" class="button media-button button-primary button-large media-button-select"><?php _e( 'Save', WPRIE_DOMAIN ); ?></a>
+							<a href="javascript:wprieCropImage();" class="button media-button button-primary button-large media-button-select"><?php _e( 'Crop', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?></a>
 						</div>
 					</div>
 				</div>	

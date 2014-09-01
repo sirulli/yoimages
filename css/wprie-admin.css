@@ -12,8 +12,11 @@
 }
 
 #wprie-cropper-wrapper .media-frame-content {
-	padding: 16px;
-	border-bottom: none;
+	padding-left: 16px;
+}
+
+#wprie-cropper-wrapper .attachments-browser .attachments {
+	top: 9px;
 }
 
 #wprie-cropper-wrapper .media-frame-toolbar {
