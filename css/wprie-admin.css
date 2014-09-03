@@ -35,3 +35,7 @@
 	font-style: italic;
 	color: #ff0000;
 }
+
+#wprie-cropper-preview {
+	overflow: hidden;
+}

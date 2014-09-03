@@ -33,11 +33,21 @@ function wprieExtendMediaLightboxTemplate(editImageAnchor) {
 
 function wprieInitCropImage() {
 	if (typeof wprie_cropper_aspect_ratio !== 'undefined') {
+		function adaptCropPreviewWidth() {
+			var width = Math.min(jQuery('#wprie-cropper-preview-title').width(), wprie_cropper_min_width);
+			jQuery('#wprie-cropper-preview').css({
+				'height' : (width / wprie_cropper_aspect_ratio) + 'px',
+				'width' : width + 'px'
+			});
+		}
+		jQuery(window).resize(adaptCropPreviewWidth);
+		adaptCropPreviewWidth();
 		jQuery('#wprie-cropper').cropper({
 			aspectRatio : wprie_cropper_aspect_ratio,
 			minWidth : wprie_cropper_min_width,
 			minHeight : wprie_cropper_min_height,
-			modal : true
+			modal : true,
+			preview : '#wprie-cropper-preview'
 		});
 	}
 }

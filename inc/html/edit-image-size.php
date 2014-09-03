@@ -77,7 +77,8 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 										<p><?php _e( 'Crop not generated yet', WPRIE_DOMAIN ); ?></p>
 									</div>
 								<?php } ?>
-								<!--h3><?php _e( 'Crop preview', WPRIE_DOMAIN ); ?></h3-->
+								<h3 id="wprie-cropper-preview-title"><?php _e( 'Crop preview', WPRIE_DOMAIN ); ?></h3>
+								<div id="wprie-cropper-preview"></div>
 							</div>
 						</div>
 					</div>
