@@ -48,4 +48,5 @@ if ( is_admin() ) {
 	require_once (WPRIE_PATH . 'inc/extend-admin-media.php');
 	require_once (WPRIE_PATH . 'inc/extend-admin-media-lightbox.php');
 	require_once (WPRIE_PATH . 'inc/extend-admin-post.php');
+	require_once (WPRIE_PATH . 'inc/extend-admin-options-media.php');
 }

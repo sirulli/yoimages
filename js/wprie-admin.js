@@ -117,4 +117,13 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	if ($('input#large_size_h').length) {
+		var data = {
+			'action' : 'wprie_get_custom_sizes_table_rows'
+		};
+		$.post(ajaxurl, data, function(response) {
+			$('input#large_size_h').parents('table.form-table').append(response);
+		});
+	}
+
 });

@@ -10,6 +10,7 @@ function wprie_get_images() {
 	include (WPRIE_PATH . 'inc/html/image-sizes.php');
 	die();
 }
+add_action( 'wp_ajax_wprie_get_images', 'wprie_get_images' );
 
 function wprie_media_row_actions( $actions, $post, $detached ) {
 	if ( wp_attachment_is_image( $post->ID ) ) {
@@ -17,8 +18,6 @@ function wprie_media_row_actions( $actions, $post, $detached ) {
 	}
 	return $actions;
 }
-
-add_action( 'wp_ajax_wprie_get_images', 'wprie_get_images' );
 add_filter( 'media_row_actions', 'wprie_media_row_actions', 10, 3);
 
 $wprie_post_id = $_GET['post'];
