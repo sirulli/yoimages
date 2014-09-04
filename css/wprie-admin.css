@@ -39,3 +39,7 @@
 #wprie-cropper-preview {
 	overflow: hidden;
 }
+
+.wprie-thickbox.button {
+	margin-left: 10px;
+}

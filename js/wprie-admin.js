@@ -25,10 +25,14 @@ function wprieAddEditImageAnchors() {
 	}, 500);
 }
 
-function wprieExtendMediaLightboxTemplate(editImageAnchor) {
+function wprieExtendMediaLightboxTemplate(editImageAnchorForAttachmentDetails, editImageAnchorForAttachmentDetailsTwoColumn1, editImageAnchorForAttachmentDetailsTwoColumn2) {
 	var attachmentDetailsTmpl = jQuery('#tmpl-attachment-details').text();
-	attachmentDetailsTmpl = attachmentDetailsTmpl.replace(/(<a class="edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + editImageAnchor);
+	attachmentDetailsTmpl = attachmentDetailsTmpl.replace(/(<a class="edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + editImageAnchorForAttachmentDetails);
 	jQuery('#tmpl-attachment-details').text(attachmentDetailsTmpl);
+	var attachmentDetailsTmplTwoColumn = jQuery('#tmpl-attachment-details-two-column').text();
+	attachmentDetailsTmplTwoColumn = attachmentDetailsTmplTwoColumn.replace(/(<a class="view-attachment"[^>]+[^<]+<\/a>[^<]+)<a/, '\n$1' + editImageAnchorForAttachmentDetailsTwoColumn1 + ' | <a');
+	attachmentDetailsTmplTwoColumn = attachmentDetailsTmplTwoColumn.replace(/(<a class="button edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + editImageAnchorForAttachmentDetailsTwoColumn2);
+	jQuery('#tmpl-attachment-details-two-column').text(attachmentDetailsTmplTwoColumn);
 }
 
 function wprieInitCropImage() {
@@ -82,11 +86,12 @@ jQuery(document).ready(function($) {
 		var editImageBtn = $('#imgedit-open-btn-' + wprie_post_id);
 		if (editImageBtn.length) {
 			var data = {
-				'action' : 'wprie_get_images',
-				'post' : wprie_post_id
+				'action' : 'wprie_get_edit_image_anchor',
+				'post' : wprie_post_id,
+				'classes' : 'button'
 			};
-			$.post(ajaxurl, data, function(response) {
-				$('.wp_attachment_details.edit-form-section').after(response);
+			jQuery.post(ajaxurl, data, function(response) {
+				editImageBtn.after(response);
 			});
 		}
 	}

@@ -4,14 +4,6 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	die ( 'No script kiddies please!' );
 }
 
-function wprie_get_images() {
-	global $wprie_image_id;
-	$wprie_image_id = $_POST['post'];
-	include (WPRIE_PATH . 'inc/html/image-sizes.php');
-	die();
-}
-add_action( 'wp_ajax_wprie_get_images', 'wprie_get_images' );
-
 function wprie_media_row_actions( $actions, $post, $detached ) {
 	if ( wp_attachment_is_image( $post->ID ) ) {
 		$actions['wprie_crop'] = wprie_get_edit_image_anchor( $post->ID );

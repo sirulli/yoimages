@@ -8,7 +8,11 @@ function wprie_print_media_templates() {
 	?>
 	<script>
 	jQuery(document).ready(function() {
-		wprieExtendMediaLightboxTemplate('<?php echo wprie_get_edit_image_anchor( '{{ data.id }}', 'thumbnail', 'display:block;text-decoration:none;' ); ?>');
+		wprieExtendMediaLightboxTemplate(
+			'<?php echo wprie_get_edit_image_anchor( '{{ data.id }}', 'thumbnail', 'display:block;text-decoration:none;' ); ?>',
+			'<?php echo wprie_get_edit_image_anchor( '{{ data.id }}', 'thumbnail', 'text-decoration:none;' ); ?>',
+			'<?php echo wprie_get_edit_image_anchor( '{{ data.id }}', 'thumbnail', '', 'button' ); ?>'
+		);
 	});
 	</script>
 	<?php

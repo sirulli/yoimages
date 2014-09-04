@@ -15,7 +15,8 @@ function wprie_get_edit_image_anchor( $id, $size = 'thumbnail', $styles = '', $c
 }
 
 function wprie_get_edit_image_anchor_ajax() {
-	echo wprie_get_edit_image_anchor( $_POST['post'], 'thumbnail', 'margin-right:10px;', 'edit-attachment' );
+	$classes = empty( $_POST['classes'] ) ? 'edit-attachment' : $_POST['classes'];
+	echo wprie_get_edit_image_anchor( $_POST['post'], 'thumbnail', 'margin-right:10px;', $classes );
 	die();
 }
 
