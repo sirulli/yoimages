@@ -11,7 +11,8 @@ function wprie_print_media_templates() {
 		wprieExtendMediaLightboxTemplate(
 			'<?php echo wprie_get_edit_image_anchor( '{{ data.id }}', 'thumbnail', 'display:block;text-decoration:none;' ); ?>',
 			'<?php echo wprie_get_edit_image_anchor( '{{ data.id }}', 'thumbnail', 'text-decoration:none;' ); ?>',
-			'<?php echo wprie_get_edit_image_anchor( '{{ data.id }}', 'thumbnail', '', 'button' ); ?>'
+			'<?php echo wprie_get_edit_image_anchor( '{{ data.id }}', 'thumbnail', '', 'button' ); ?>',
+			'<?php echo wprie_get_edit_image_anchor( '{{ data.attachment.id }}', 'thumbnail', '', 'button' ); ?>'
 		);
 	});
 	</script>

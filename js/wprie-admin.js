@@ -25,14 +25,17 @@ function wprieAddEditImageAnchors() {
 	}, 500);
 }
 
-function wprieExtendMediaLightboxTemplate(editImageAnchorForAttachmentDetails, editImageAnchorForAttachmentDetailsTwoColumn1, editImageAnchorForAttachmentDetailsTwoColumn2) {
+function wprieExtendMediaLightboxTemplate(anchor1, anchor2, anchor3, anchor4) {
 	var attachmentDetailsTmpl = jQuery('#tmpl-attachment-details').text();
-	attachmentDetailsTmpl = attachmentDetailsTmpl.replace(/(<a class="edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + editImageAnchorForAttachmentDetails);
+	attachmentDetailsTmpl = attachmentDetailsTmpl.replace(/(<a class="edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + anchor1);
 	jQuery('#tmpl-attachment-details').text(attachmentDetailsTmpl);
 	var attachmentDetailsTmplTwoColumn = jQuery('#tmpl-attachment-details-two-column').text();
-	attachmentDetailsTmplTwoColumn = attachmentDetailsTmplTwoColumn.replace(/(<a class="view-attachment"[^>]+[^<]+<\/a>[^<]+)<a/, '\n$1' + editImageAnchorForAttachmentDetailsTwoColumn1 + ' | <a');
-	attachmentDetailsTmplTwoColumn = attachmentDetailsTmplTwoColumn.replace(/(<a class="button edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + editImageAnchorForAttachmentDetailsTwoColumn2);
+	attachmentDetailsTmplTwoColumn = attachmentDetailsTmplTwoColumn.replace(/(<a class="view-attachment"[^>]+[^<]+<\/a>[^<]+)<a/, '\n$1' + anchor2 + ' | <a');
+	attachmentDetailsTmplTwoColumn = attachmentDetailsTmplTwoColumn.replace(/(<a class="button edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + anchor3);
 	jQuery('#tmpl-attachment-details-two-column').text(attachmentDetailsTmplTwoColumn);
+	var imageDetailsTmpl = jQuery('#tmpl-image-details').text();
+	imageDetailsTmpl = imageDetailsTmpl.replace(/(<input type="button" class="replace-attachment button")/, anchor4 + '\n$1');
+	jQuery('#tmpl-image-details').text(imageDetailsTmpl);
 }
 
 function wprieInitCropImage() {
