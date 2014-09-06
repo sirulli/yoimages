@@ -86,12 +86,14 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 				<div class="media-frame-toolbar">
 	        		<div class="media-toolbar">
 						<div class="media-toolbar-primary">
-							<label for="wprie-cropper-quality"><?php _e( 'Crop quality', WPRIE_DOMAIN ); ?></label>
-							<select name="quality" id="wprie-cropper-quality">
-								<option value="100">100%</option>
-								<option value="50">50%</option>
-								<option value="10">10%</option>
-							</select>
+							<div class="wprie-cropper-quality-wrapper">
+								<label for="wprie-cropper-quality"><?php _e( 'Crop quality', WPRIE_DOMAIN ); ?>:</label>
+								<select name="quality" id="wprie-cropper-quality">
+									<option value="100">100%</option>
+									<option value="50">50%</option>
+									<option value="10">10%</option>
+								</select>
+							</div>
 							<a href="javascript:wprieCropImage();" class="button media-button button-primary button-large media-button-select"><?php _e( 'Crop', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?></a>
 						</div>
 					</div>

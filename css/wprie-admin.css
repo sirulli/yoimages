@@ -43,3 +43,12 @@
 .wprie-thickbox.button {
 	margin: 0 5px;
 }
+
+.wprie-cropper-quality-wrapper {
+	display: inline-block;
+	float: left;
+	height: 30px;
+	line-height: 28px;
+	margin-top: 15px;
+	padding: 0 12px 2px;
+}
