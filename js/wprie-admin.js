@@ -68,6 +68,7 @@ function wprieCropImage() {
 	data['action'] = 'wprie_crop_image';
 	data['post'] = wprie_image_id;
 	data['size'] = wprie_image_size;
+	data['quality'] = jQuery('#wprie-cropper-quality').val();
 	jQuery.post(ajaxurl, data, function(response) {
 		// TODO handle errors
 		jQuery('img[src*=\'' + response + '\']').each(function() {

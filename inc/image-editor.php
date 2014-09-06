@@ -12,8 +12,8 @@ function wprie_crop_image() {
 		return false;
 	}
 	$cropped_image_sizes = wprie_get_image_sizes( $_POST['size'] );
-	$img_editor->crop( $_POST['x'], $_POST['y'], $_POST['width'], $_POST['height'] );
-	$img_editor->resize( $cropped_image_sizes['width'], $cropped_image_sizes['height'] );
+	$img_editor->crop( $_POST['x'], $_POST['y'], $_POST['width'], $_POST['height'], $cropped_image_sizes['width'], $cropped_image_sizes['height'], false );
+	$img_editor->set_quality( $_POST['quality'] );
 	$img_path_parts = pathinfo($img_path);
 	$attachment_metadata = wp_get_attachment_metadata( $_POST['post'] );
 	if ( empty( $attachment_metadata['sizes'][$_POST['size']] ) || empty( $attachment_metadata['sizes'][$_POST['size']]['file'] ) ) {
