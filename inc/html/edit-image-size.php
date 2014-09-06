@@ -14,6 +14,16 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 	var wprie_cropper_min_width = <?php echo $cropped_image_sizes['width']; ?>;
 	var wprie_cropper_min_height = <?php echo $cropped_image_sizes['height']; ?>;
 	var wprie_cropper_aspect_ratio = <?php echo $cropped_image_sizes['width']; ?> / <?php echo $cropped_image_sizes['height']; ?>;
+	<?php
+	if ( ! empty( $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size] ) ) {
+	?>
+		var wprie_prev_crop_x = <?php echo $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['x']; ?>;
+		var wprie_prev_crop_y = <?php echo $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['y']; ?>;
+		var wprie_prev_crop_width = <?php echo $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['width']; ?>;
+		var wprie_prev_crop_height = <?php echo $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['height']; ?>;
+	<?php
+	}
+	?>
 </script>
 <?php if ( $_GET['partial'] != '1' ) { ?>
 <div id="wprie-cropper-wrapper">

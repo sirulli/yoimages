@@ -30,7 +30,15 @@ function wprie_crop_image() {
 	$img_editor->save( $img_path_parts['dirname'] . '/' . $cropped_image_filename );
 	$attachment_metadata['sizes'][$_POST['size']]['width'] = $cropped_image_sizes['width'];
 	$attachment_metadata['sizes'][$_POST['size']]['height'] = $cropped_image_sizes['height'];
-	//TODO a custom meta here
+	if ( empty( $attachment_metadata['wprie_attachment_metadata']['crop'] ) ) {
+		$attachment_metadata['wprie_attachment_metadata']['crop'] = array();
+	}
+	$attachment_metadata['wprie_attachment_metadata']['crop'][$_POST['size']] = array(
+			'x' => $_POST['x'],
+			'y' => $_POST['y'],
+			'width' => $_POST['width'],
+			'height' => $_POST['height']
+	);
 	wp_update_attachment_metadata( $_POST['post'], $attachment_metadata );
 	echo $cropped_image_filename;
 	die();

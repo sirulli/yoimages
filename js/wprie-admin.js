@@ -49,11 +49,23 @@ function wprieInitCropImage() {
 		}
 		jQuery(window).resize(adaptCropPreviewWidth);
 		adaptCropPreviewWidth();
+		var cropperData;
+		if (typeof wprie_prev_crop_x !== 'undefined') {
+			cropperData = {
+				x : wprie_prev_crop_x,
+				y : wprie_prev_crop_y,
+				width : wprie_prev_crop_width,
+				height : wprie_prev_crop_height
+			};
+		} else {
+			cropperData = {};
+		}
 		jQuery('#wprie-cropper').cropper({
 			aspectRatio : wprie_cropper_aspect_ratio,
 			minWidth : wprie_cropper_min_width,
 			minHeight : wprie_cropper_min_height,
 			modal : true,
+			data : cropperData,
 			preview : '#wprie-cropper-preview'
 		});
 	}
