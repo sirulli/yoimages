@@ -27,6 +27,10 @@
 	border: none;
 }
 
+#wprie-cropper-wrapper .media-modal-close {
+	border: none !important;
+}
+
 .wprie-not-existing-crop img {
 	display: none;
 }

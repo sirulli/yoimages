@@ -60,6 +60,10 @@ function wprieInitCropImage() {
 		} else {
 			cropperData = {};
 		}
+		jQuery('#wprie-cropper-container').css({
+			'max-width' : jQuery('#wprie-cropper-wrapper .attachments').width() + 'px',
+			'max-height' : jQuery('#wprie-cropper-wrapper .attachments').height() + 'px'
+		});
 		jQuery('#wprie-cropper').cropper({
 			aspectRatio : wprie_cropper_aspect_ratio,
 			minWidth : wprie_cropper_min_width,
