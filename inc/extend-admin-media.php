@@ -5,7 +5,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 }
 
 function wprie_media_row_actions( $actions, $post, $detached ) {
-	if ( wp_attachment_is_image( $post->ID ) ) {
+	if ( wp_attachment_is_image( $post->ID ) && current_user_can( 'edit_post', $post->ID ) ) {
 		$actions['wprie_crop'] = wprie_get_edit_image_anchor( $post->ID );
 	}
 	return $actions;

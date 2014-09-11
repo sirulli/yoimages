@@ -8,7 +8,11 @@ function wprie_admin_post_thumbnail_html( $content, $id ) {
 	if ( ! has_post_thumbnail( $id ) ) {
 		return $content;
 	}
-	$edit_crops_content = '<p>' . wprie_get_edit_image_anchor( get_post_thumbnail_id( $id ) ) . '</p>';
+	$image_id = get_post_thumbnail_id( $id );
+	if ( ! current_user_can( 'edit_post', $image_id ) ) {
+		return $content;
+	}
+	$edit_crops_content = '<p>' . wprie_get_edit_image_anchor( $image_id ) . '</p>';
 	return $content . $edit_crops_content;
 }
 
