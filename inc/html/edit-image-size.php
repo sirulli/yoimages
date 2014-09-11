@@ -84,7 +84,9 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 									?>
 									<div class="wprie-not-existing-crop">
 										<img src="<?php echo $expected_url; ?>" style="max-width: 100%;" />
-										<p><?php _e( 'Crop not generated yet', WPRIE_DOMAIN ); ?></p>
+										<div class="message error">
+											<p><?php _e( 'Crop not generated yet', WPRIE_DOMAIN ); ?></p>
+										</div>
 									</div>
 								<?php } ?>
 								<h3 id="wprie-cropper-preview-title"><?php _e( 'Crop preview', WPRIE_DOMAIN ); ?></h3>
