@@ -64,3 +64,12 @@
 	display: inline-block;
 	padding-right: 12px;
 }
+
+#wprie-replace-media-uploader .media-sidebar {
+	display: none;
+}
+
+#wprie-replace-media-uploader .attachments-browser .attachments,#wprie-replace-media-uploader .attachments-browser .uploader-inline,#wprie-replace-media-uploader .attachments-browser .media-toolbar
+	{
+	right: 0;
+}

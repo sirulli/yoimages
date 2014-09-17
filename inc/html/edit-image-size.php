@@ -6,7 +6,13 @@ if ( ! defined ( 'ABSPATH' ) ) {
 
 $attachment_metadata = wp_get_attachment_metadata( $wprie_image_id );
 $cropped_image_sizes = wprie_get_image_sizes( $wprie_image_size );
-$full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
+$replacement = $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['replacement'];
+$has_replacement = ! empty ( $replacement ) && get_post( $replacement );
+if ( $has_replacement ) {
+	$full_image_attributes = wp_get_attachment_image_src( $replacement, 'full' );
+} else {
+	$full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
+}
 ?>	
 <script>
 	var wprie_image_id = <?php echo $wprie_image_id; ?>;
@@ -15,9 +21,10 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 	var wprie_cropper_min_height = <?php echo $cropped_image_sizes['height']; ?>;
 	var wprie_cropper_aspect_ratio = <?php echo $cropped_image_sizes['width']; ?> / <?php echo $cropped_image_sizes['height']; ?>;
 	<?php
-	if ( ! empty( $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size] ) ) {
+	$crop_x = $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['x'];
+	if ( is_numeric( $crop_x ) && $crop_x >= 0 ) {
 	?>
-		var wprie_prev_crop_x = <?php echo $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['x']; ?>;
+		var wprie_prev_crop_x = <?php echo $crop_x; ?>;
 		var wprie_prev_crop_y = <?php echo $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['y']; ?>;
 		var wprie_prev_crop_width = <?php echo $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['width']; ?>;
 		var wprie_prev_crop_height = <?php echo $attachment_metadata['wprie_attachment_metadata']['crop'][$wprie_image_size]['height']; ?>;
@@ -54,6 +61,10 @@ $full_image_attributes = wp_get_attachment_image_src( $wprie_image_id, 'full' );
 				</div>
 				<div class="media-frame-content">
 					<div class="attachments-browser">
+						<a href="#" id="wprie-replace-img-btn" style="display:none;"><?php _e( 'Replace', WPRIE_DOMAIN ); ?></a>
+						<?php if ( $has_replacement ) {?>
+							<a href="#" id="wprie-restore-img-btn"><?php _e( 'Restore original', WPRIE_DOMAIN ); ?></a>
+						<?php } ?>
 						<div class="attachments">
 							<div id="wprie-cropper-container" style="max-width: <?php echo $full_image_attributes[1]; ?>px;max-height: <?php echo $full_image_attributes[2]; ?>px;">
 								<img id="wprie-cropper" src="<?php echo $full_image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />

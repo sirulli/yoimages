@@ -1,5 +1,7 @@
 //TODO better js
 
+var wprieMediaUploader;
+
 function wprieAddEditImageAnchors() {
 	var wprieAddEditImageAnchorsInterval = setInterval(function() {
 		if (jQuery('#media-items .edit-attachment').length) {
@@ -22,7 +24,7 @@ function wprieAddEditImageAnchors() {
 				}
 			});
 		}
-	}, 500);
+	}, 600);
 }
 
 function wprieExtendMediaLightboxTemplate(anchor1, anchor2, anchor3, anchor4) {
@@ -72,6 +74,52 @@ function wprieInitCropImage() {
 			data : cropperData,
 			preview : '#wprie-cropper-preview'
 		});
+
+		if (wp.media) { // TODO fix issue:
+			jQuery('#wprie-replace-img-btn').show().click(function() {
+				if (wprieMediaUploader) {
+					wprieMediaUploader.open();
+					return;
+				}
+				wprieMediaUploader = wp.media({
+					id : 'wprie-replace-media-uploader',
+					title : 'Wheee title',
+					multiple : false,
+					button : {
+						text : 'Wheee button'
+					},
+					library : {
+						type : 'image'
+					}
+				});
+				wprieMediaUploader.on('select', function() {
+					attachment = wprieMediaUploader.state().get('selection').first().toJSON();
+					var data = {
+						'action' : 'wprie_replace_image_for_size',
+						'image' : wprie_image_id,
+						'size' : wprie_image_size,
+						'replacement' : attachment.id
+					};
+					jQuery.post(ajaxurl, data, function(response) {
+						jQuery('#wprie-cropper-wrapper .wprie-thickbox-partial.active').click();
+					});
+
+				});
+				wprieMediaUploader.open();
+				jQuery('#wprie-replace-media-uploader').parents('.media-modal.wp-core-ui').css('z-index', '17000002');
+			});
+		}
+		jQuery('#wprie-restore-img-btn').click(function() {
+			var data = {
+					'action' : 'wprie_restore_original_image_for_size',
+					'image' : wprie_image_id,
+					'size' : wprie_image_size
+				};
+				jQuery.post(ajaxurl, data, function(response) {
+					jQuery('#wprie-cropper-wrapper .wprie-thickbox-partial.active').click();
+				});
+		});
+
 	}
 }
 
@@ -120,7 +168,7 @@ jQuery(document).ready(function($) {
 
 	$(document).on('click', 'a.wprie-thickbox', function(e) {
 		e.preventDefault();
-		var currEl = $(this)
+		var currEl = $(this);
 		$.get(currEl.attr('href'), function(data) {
 			if (currEl.hasClass('wprie-thickbox-partial')) {
 				$('#wprie-cropper-wrapper .media-modal-content').empty().append(data);
