@@ -61,12 +61,14 @@ if ( $has_replacement ) {
 				</div>
 				<div class="media-frame-content">
 					<div class="attachments-browser">
-						<a href="#" id="wprie-replace-img-btn" style="display:none;"><?php _e( 'Replace', WPRIE_DOMAIN ); ?></a>
-						<?php if ( $has_replacement ) {?>
-							<a href="#" id="wprie-restore-img-btn"><?php _e( 'Restore original', WPRIE_DOMAIN ); ?></a>
-						<?php } ?>
 						<div class="attachments">
 							<div id="wprie-cropper-container" style="max-width: <?php echo $full_image_attributes[1]; ?>px;max-height: <?php echo $full_image_attributes[2]; ?>px;">
+								<div id="wprie-cropper-replace-tools" class="imgedit-menu">
+									<div id="wprie-replace-img-btn" style="display:none;" title="<?php _e( 'Replace image source for this format', WPRIE_DOMAIN ); ?>" class="dashicons dashicons-update" data-code="f463"></div>
+									<?php if ( $has_replacement ) {?>
+										<div id="wprie-restore-img-btn" title="<?php _e( 'Restore original image source for this format', WPRIE_DOMAIN ); ?>" class="dashicons dashicons-undo" data-code="f171"></div>
+									<?php } ?>
+								</div>
 								<img id="wprie-cropper" src="<?php echo $full_image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
 							</div>
 						</div>

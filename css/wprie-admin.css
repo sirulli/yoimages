@@ -31,6 +31,17 @@
 	border: none !important;
 }
 
+#wprie-cropper-replace-tools {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+#wprie-cropper-replace-tools.imgedit-menu {
+	min-width: 0;
+}
+
 .wprie-not-existing-crop img {
 	display: none;
 }
