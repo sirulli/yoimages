@@ -78,15 +78,18 @@ function wprieInitCropImage() {
 		if (wp.media) { // TODO fix issue:
 			jQuery('#wprie-replace-img-btn').show().click(function() {
 				if (wprieMediaUploader) {
+					// TODO find "the backbone way" solution for dynamic title
+					jQuery('#wprie-replace-media-uploader .media-frame-title h1').text(jQuery(this).attr('title'));
 					wprieMediaUploader.open();
 					return;
 				}
+				var el = jQuery(this);
 				wprieMediaUploader = wp.media({
 					id : 'wprie-replace-media-uploader',
-					title : 'Wheee title',
+					title : el.attr('title'),
 					multiple : false,
 					button : {
-						text : 'Wheee button'
+						text : el.attr('data-button-text')
 					},
 					library : {
 						type : 'image'
