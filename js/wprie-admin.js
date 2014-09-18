@@ -111,13 +111,13 @@ function wprieInitCropImage() {
 		}
 		jQuery('#wprie-restore-img-btn').click(function() {
 			var data = {
-					'action' : 'wprie_restore_original_image_for_size',
-					'image' : wprie_image_id,
-					'size' : wprie_image_size
-				};
-				jQuery.post(ajaxurl, data, function(response) {
-					jQuery('#wprie-cropper-wrapper .wprie-thickbox-partial.active').click();
-				});
+				'action' : 'wprie_restore_original_image_for_size',
+				'image' : wprie_image_id,
+				'size' : wprie_image_size
+			};
+			jQuery.post(ajaxurl, data, function(response) {
+				jQuery('#wprie-cropper-wrapper .wprie-thickbox-partial.active').click();
+			});
 		});
 
 	}
@@ -148,14 +148,26 @@ function wprieCropImage() {
 
 }
 
+function wprieGetUrlVars() {
+	var vars = [], hash;
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	for (var i = 0; i < hashes.length; i++) {
+		hash = hashes[i].split('=');
+		vars.push(hash[0]);
+		vars[hash[0]] = hash[1];
+	}
+	return vars;
+}
+
 jQuery(document).ready(function($) {
 
-	if (typeof wprie_post_id !== 'undefined') {
-		var editImageBtn = $('#imgedit-open-btn-' + wprie_post_id);
+	if ($('body.post-type-attachment').length) {
+		var currPostId = wprieGetUrlVars()['post'];
+		var editImageBtn = $('#imgedit-open-btn-' + currPostId);
 		if (editImageBtn.length) {
 			var data = {
 				'action' : 'wprie_get_edit_image_anchor',
-				'post' : wprie_post_id,
+				'post' : currPostId,
 				'classes' : 'button'
 			};
 			jQuery.post(ajaxurl, data, function(response) {
