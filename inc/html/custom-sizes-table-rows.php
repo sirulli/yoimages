@@ -85,7 +85,7 @@ jQuery(document).ready(function(){
 <?php
 } else {
 ?>
-<p><?php echo get_current_theme(); ?> <?php _e( 'doesn\'t define any specific image size', WPRIE_DOMAIN ); ?></p>
+<p><?php echo get_current_theme(); ?> <?php _e( 'doesn\'t define any additional image size using the standard Wordpress functions (<a href="http://codex.wordpress.org/Function_Reference/add_image_size" target="_blank">add_image_size</a> and <a href="http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size" target="_blank">set_post_thumbnail_size</a>)', WPRIE_DOMAIN ); ?></p>
 <br />
 <?php
 }
