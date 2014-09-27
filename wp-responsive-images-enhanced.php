@@ -31,31 +31,46 @@ if (! defined ( 'ABSPATH' )) {
 	die ( 'No script kiddies please!' );
 }
 
+define ( 'WPRIE_CROP_ENABLED', true );
+define ( 'WPRIE_ALT_ENABLED', true );
+define ( 'WPRIE_ALT_CHANGE_IMAGE_TITLE', true );
+define ( 'WPRIE_ALT_CHANGE_IMAGE_ALT', true );
+define ( 'WPRIE_ALT_CHANGE_IMAGE_FILENAME', true );
+
 if ( is_admin() ) {
 	define ( 'WPRIE_PATH', dirname ( __FILE__ ) . '/' );
 	define ( 'WPRIE_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );
 	define ( 'WPRIE_EDIT_IMAGE_ACTION', 'wprie-edit-thumbnails' );
 	define ( 'WPRIE_DOMAIN', 'wprie' );
-	
+
 	require_once (WPRIE_PATH . 'inc/utils.php');
-	require_once (WPRIE_PATH . 'inc/image-editor.php');
-	require_once (WPRIE_PATH . 'inc/extend-admin-media.php');
-	require_once (WPRIE_PATH . 'inc/extend-admin-media-lightbox.php');
-	require_once (WPRIE_PATH . 'inc/extend-admin-post.php');
-	require_once (WPRIE_PATH . 'inc/extend-admin-options-media.php');
+	
+	if ( WPRIE_CROP_ENABLED ) {
+		require_once (WPRIE_PATH . 'inc/image-editor.php');
+		require_once (WPRIE_PATH . 'inc/extend-admin-media.php');
+		require_once (WPRIE_PATH . 'inc/extend-admin-media-lightbox.php');
+		require_once (WPRIE_PATH . 'inc/extend-admin-post.php');
+		require_once (WPRIE_PATH . 'inc/extend-admin-options-media.php');
+	}
+
+	if ( WPRIE_ALT_ENABLED ) {
+		require_once (WPRIE_PATH . 'inc/alt/extend-attachment-uploading.php');
+	}
+	
 }
 
 function wprie_admin_load_styles_and_scripts( $hook ) {
-	if ( $hook == 'post.php' ) {
-		// if ( $hook == 'post.php' || $hook == 'upload.php' ) { TODO solve issue http://stackoverflow.com/questions/25884434/wordpress-wp-enqueue-media-causes-javascript-error-from-wp-admin-upload-phpmo
-		wp_enqueue_media();
-	} else {
-		wp_enqueue_style( 'media-views' );
+	if ( WPRIE_CROP_ENABLED ) {
+		if ( $hook == 'post.php' ) {
+			// if ( $hook == 'post.php' || $hook == 'upload.php' ) { TODO solve issue http://stackoverflow.com/questions/25884434/wordpress-wp-enqueue-media-causes-javascript-error-from-wp-admin-upload-phpmo
+			wp_enqueue_media();
+		} else {
+			wp_enqueue_style( 'media-views' );
+		}
+		wp_enqueue_style( 'wprie-admin-css', WPRIE_URL . 'css/wprie-admin.css' );
+		wp_enqueue_style( 'wprie-cropper-css', WPRIE_URL . 'js/cropper/cropper.min.css' );
+		wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'wprie-cropper-js' ), false, true );
 	}
-	wp_enqueue_style( 'wprie-admin-css', WPRIE_URL . 'css/wprie-admin.css' );
-	wp_enqueue_style( 'wprie-cropper-css', WPRIE_URL . 'js/cropper/cropper.min.css' );
-	wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'wprie-cropper-js' ), false, true );
 }
 add_action( 'admin_enqueue_scripts', 'wprie_admin_load_styles_and_scripts' );
-
