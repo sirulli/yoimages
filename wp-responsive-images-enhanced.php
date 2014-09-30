@@ -44,6 +44,7 @@ if ( is_admin() ) {
 	define ( 'WPRIE_DOMAIN', 'wprie' );
 
 	require_once (WPRIE_PATH . 'inc/utils.php');
+	require_once (WPRIE_PATH . 'inc/settings.php');
 	
 	if ( WPRIE_CROP_ENABLED ) {
 		require_once (WPRIE_PATH . 'inc/image-editor.php');
