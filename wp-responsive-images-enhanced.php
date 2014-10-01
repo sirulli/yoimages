@@ -36,7 +36,6 @@ if ( is_admin() ) {
 	/* Defaults */
 	define ( 'WPRIE_DEFAULT_CROP_ENABLED', TRUE );
 	define ( 'WPRIE_DEFAULT_CROP_QUALITIES', serialize( array( 100, 80, 60 ) ) );
-	define ( 'WPRIE_DEFAULT_ALT_ENABLED', TRUE );
 	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_TITLE', TRUE );
 	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT', TRUE );
 	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME', TRUE );
@@ -44,10 +43,11 @@ if ( is_admin() ) {
 	$wprie_settings = get_option( 'wprie_settings' );
 	
 	define ( 'WPRIE_CROP_ENABLED', $wprie_settings && isset( $wprie_settings['cropping_is_active'] ) ? $wprie_settings['cropping_is_active'] : WPRIE_DEFAULT_CROP_ENABLED );
-	define ( 'WPRIE_ALT_ENABLED', $wprie_settings && isset( $wprie_settings['alt_is_active'] ) ? $wprie_settings['alt_is_active'] : WPRIE_DEFAULT_ALT_ENABLED );
+	
 	define ( 'WPRIE_ALT_CHANGE_IMAGE_TITLE', $wprie_settings && isset( $wprie_settings['alt_change_image_title'] ) ? $wprie_settings['alt_change_image_title'] : WPRIE_DEFAULT_ALT_CHANGE_IMAGE_TITLE );
 	define ( 'WPRIE_ALT_CHANGE_IMAGE_ALT', $wprie_settings && isset( $wprie_settings['alt_change_image_alt'] ) ? $wprie_settings['alt_change_image_alt'] : WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT );
 	define ( 'WPRIE_ALT_CHANGE_IMAGE_FILENAME', $wprie_settings && isset( $wprie_settings['alt_change_image_filename'] ) ? $wprie_settings['alt_change_image_filename'] : WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME );
+	define ( 'WPRIE_ALT_ENABLED', WPRIE_ALT_CHANGE_IMAGE_TITLE || WPRIE_ALT_CHANGE_IMAGE_ALT || WPRIE_ALT_CHANGE_IMAGE_FILENAME );
 	
 	define ( 'WPRIE_PATH', dirname ( __FILE__ ) . '/' );
 	define ( 'WPRIE_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );
@@ -83,6 +83,9 @@ function wprie_admin_load_styles_and_scripts( $hook ) {
 		wp_enqueue_style( 'wprie-cropper-css', WPRIE_URL . 'js/cropper/cropper.min.css' );
 		wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'wprie-cropper-js' ), false, true );
+	}
+	if ( $_GET['page'] == 'wprie-settings' ) {
+		wp_enqueue_script( 'wprie-settings-js', WPRIE_URL . 'js/wprie-settings.js', array( 'jquery' ), false, true );
 	}
 }
 add_action( 'admin_enqueue_scripts', 'wprie_admin_load_styles_and_scripts' );

@@ -21,8 +21,7 @@ class WprieSettingsPage {
 		}
 		$this->options = get_option( 'wprie_settings' );
 		?>
-		<div class="wrap">
-			<?php screen_icon(); ?>
+		<div class="wrap" id="wprie-settings-wrapper">
 			<h2><?php _e( 'YoImages settings', WPRIE_DOMAIN ); ?></h2>
 			<form method="post" action="options.php">
 			<?php
@@ -43,7 +42,6 @@ class WprieSettingsPage {
 		add_settings_field( 'crop_qualities', __( 'Crop qualities', WPRIE_DOMAIN), array( $this, 'crop_qualities_callback' ), 'wprie-settings', 'wprie_crop_options_section' );
 		
 		add_settings_section( 'wprie_alt_options_section', __( 'SEO for images', WPRIE_DOMAIN ), array( $this, 'print_alt_options_section_info' ), 'wprie-settings' );
-		add_settings_field( 'alt_is_active', __( 'Active', WPRIE_DOMAIN ), array( $this, 'alt_is_active_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
 		add_settings_field( 'alt_change_image_title', __( 'Change image title', WPRIE_DOMAIN ), array( $this, 'alt_change_image_title_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
 		add_settings_field( 'alt_change_image_alt', __( 'Change image alt attribute', WPRIE_DOMAIN ), array( $this, 'alt_change_image_alt_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
 		add_settings_field( 'alt_change_image_filename', __( 'Change image file name', WPRIE_DOMAIN ), array( $this, 'alt_change_image_filename_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
@@ -60,43 +58,40 @@ class WprieSettingsPage {
 	
 	public function cropping_is_active_callback() {
 		printf(
-			'<input type="checkbox" id="cropping_is_active" name="wprie_settings[cropping_is_active]" value="TRUE" %s />',
+			'<input type="checkbox" id="cropping_is_active" name="wprie_settings[cropping_is_active]" value="TRUE" %s />
+			<p class="description">' . __( 'Lorem ipsum cropping_is_active', WPRIE_DOMAIN ) . '</p>',
 			$this->options['cropping_is_active'] ? 'checked="checked"' : ( WPRIE_DEFAULT_CROP_ENABLED && ! isset( $this->options['cropping_is_active'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
 	public function crop_qualities_callback() {
 		printf(
-			'<input type="text" id="crop_qualities" name="wprie_settings[crop_qualities]" value="%s" />
+			'<input type="text" id="crop_qualities" name="wprie_settings[crop_qualities]" value="%s" class="cropping_is_active-dep" />
 			<p class="description">' . __( 'Comma separated list of crop quality values', WPRIE_DOMAIN ) . '</p>',
 			! empty( $this->options['crop_qualities'] ) ? esc_attr( implode( ',', $this->options['crop_qualities'] ) ) : implode( ',', unserialize( WPRIE_DEFAULT_CROP_QUALITIES ) )
 		);
 	}
 
-	public function alt_is_active_callback() {
-		printf(
-			'<input type="checkbox" id="alt_is_active" name="wprie_settings[alt_is_active]" value="TRUE" %s />',
-			$this->options['alt_is_active'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_ENABLED && ! isset( $this->options['alt_is_active'] ) ? 'checked="checked"' : '' )
-		);
-	}
-
 	public function alt_change_image_title_callback() {
 		printf(
-			'<input type="checkbox" id="alt_change_image_title" name="wprie_settings[alt_change_image_title]" value="TRUE" %s />',
+			'<input type="checkbox" id="alt_change_image_title" name="wprie_settings[alt_change_image_title]" value="TRUE" %s />
+			<p class="description">' . __( 'Lorem ipsum alt_change_image_title', WPRIE_DOMAIN ) . '</p>',
 			$this->options['alt_change_image_title'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_TITLE && ! isset( $this->options['alt_change_image_title'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
 	public function alt_change_image_alt_callback() {
 		printf(
-			'<input type="checkbox" id="alt_change_image_alt" name="wprie_settings[alt_change_image_alt]" value="TRUE" %s />',
+			'<input type="checkbox" id="alt_change_image_alt" name="wprie_settings[alt_change_image_alt]" value="TRUE" %s />
+			<p class="description">' . __( 'Lorem ipsum alt_change_image_alt', WPRIE_DOMAIN ) . '</p>',
 			$this->options['alt_change_image_alt'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT && ! isset( $this->options['alt_change_image_alt'] ) ? 'checked="checked"' : '' )
 		);
 	}
 	
 	public function alt_change_image_filename_callback() {
 		printf(
-			'<input type="checkbox" id="alt_change_image_filename" name="wprie_settings[alt_change_image_filename]" value="TRUE" %s />',
+			'<input type="checkbox" id="alt_change_image_filename" name="wprie_settings[alt_change_image_filename]" value="TRUE" %s />
+			<p class="description">' . __( 'Lorem ipsum alt_change_image_filename', WPRIE_DOMAIN ) . '</p>',
 			$this->options['alt_change_image_filename'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME && ! isset( $this->options['alt_change_image_filename'] ) ? 'checked="checked"' : '' )
 		);
 	}
@@ -132,11 +127,6 @@ class WprieSettingsPage {
 			}
 		} else {
 			$new_input['crop_qualities'] = unserialize( WPRIE_DEFAULT_CROP_QUALITIES );
-		}
-		if( $input['alt_is_active'] === 'TRUE' || $input['alt_is_active'] === TRUE ) {
-			$new_input['alt_is_active'] = TRUE;
-		} else {
-			$new_input['alt_is_active'] = FALSE;
 		}
 		if( $input['alt_change_image_title'] === 'TRUE' || $input['alt_change_image_title'] === TRUE ) {
 			$new_input['alt_change_image_title'] = TRUE;
