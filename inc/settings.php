@@ -37,15 +37,27 @@ class WprieSettingsPage {
 
 	public function init_admin_page() {
 		register_setting( 'wprie_crop_options_group', 'wprie_settings', array( $this, 'sanitize' ) );
+		
 		add_settings_section( 'wprie_crop_options_section', __( 'Cropping', WPRIE_DOMAIN ), array( $this, 'print_crop_options_section_info' ), 'wprie-settings' );
 		add_settings_field( 'cropping_is_active', __( 'Active', WPRIE_DOMAIN ), array( $this, 'cropping_is_active_callback' ), 'wprie-settings', 'wprie_crop_options_section' );
 		add_settings_field( 'crop_qualities', __( 'Crop qualities', WPRIE_DOMAIN), array( $this, 'crop_qualities_callback' ), 'wprie-settings', 'wprie_crop_options_section' );
+		
+		add_settings_section( 'wprie_alt_options_section', __( 'SEO for images', WPRIE_DOMAIN ), array( $this, 'print_alt_options_section_info' ), 'wprie-settings' );
+		add_settings_field( 'alt_is_active', __( 'Active', WPRIE_DOMAIN ), array( $this, 'alt_is_active_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
+		add_settings_field( 'alt_change_image_title', __( 'Change image title', WPRIE_DOMAIN ), array( $this, 'alt_change_image_title_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
+		add_settings_field( 'alt_change_image_alt', __( 'Change image alt attribute', WPRIE_DOMAIN ), array( $this, 'alt_change_image_alt_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
+		add_settings_field( 'alt_change_image_filename', __( 'Change image file name', WPRIE_DOMAIN ), array( $this, 'alt_change_image_filename_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
+
 	}
 	
 	public function print_crop_options_section_info() {
 		print __('Enter your cropping settings here below', WPRIE_DOMAIN );
 	}
 
+	public function print_alt_options_section_info() {
+		print __('Enter your images SEO settings here below', WPRIE_DOMAIN );
+	}
+	
 	public function cropping_is_active_callback() {
 		printf(
 			'<input type="checkbox" id="cropping_is_active" name="wprie_settings[cropping_is_active]" value="TRUE" %s />',
@@ -61,6 +73,34 @@ class WprieSettingsPage {
 		);
 	}
 
+	public function alt_is_active_callback() {
+		printf(
+			'<input type="checkbox" id="alt_is_active" name="wprie_settings[alt_is_active]" value="TRUE" %s />',
+			$this->options['alt_is_active'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_ENABLED && ! isset( $this->options['alt_is_active'] ) ? 'checked="checked"' : '' )
+		);
+	}
+
+	public function alt_change_image_title_callback() {
+		printf(
+			'<input type="checkbox" id="alt_change_image_title" name="wprie_settings[alt_change_image_title]" value="TRUE" %s />',
+			$this->options['alt_change_image_title'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_TITLE && ! isset( $this->options['alt_change_image_title'] ) ? 'checked="checked"' : '' )
+		);
+	}
+
+	public function alt_change_image_alt_callback() {
+		printf(
+			'<input type="checkbox" id="alt_change_image_alt" name="wprie_settings[alt_change_image_alt]" value="TRUE" %s />',
+			$this->options['alt_change_image_alt'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT && ! isset( $this->options['alt_change_image_alt'] ) ? 'checked="checked"' : '' )
+		);
+	}
+	
+	public function alt_change_image_filename_callback() {
+		printf(
+			'<input type="checkbox" id="alt_change_image_filename" name="wprie_settings[alt_change_image_filename]" value="TRUE" %s />',
+			$this->options['alt_change_image_filename'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME && ! isset( $this->options['alt_change_image_filename'] ) ? 'checked="checked"' : '' )
+		);
+	}
+	
 	public function sanitize( $input ) {
 		$new_input = array();
 		if( $input['cropping_is_active'] === 'TRUE' || $input['cropping_is_active'] === TRUE ) {
@@ -92,6 +132,26 @@ class WprieSettingsPage {
 			}
 		} else {
 			$new_input['crop_qualities'] = unserialize( WPRIE_DEFAULT_CROP_QUALITIES );
+		}
+		if( $input['alt_is_active'] === 'TRUE' || $input['alt_is_active'] === TRUE ) {
+			$new_input['alt_is_active'] = TRUE;
+		} else {
+			$new_input['alt_is_active'] = FALSE;
+		}
+		if( $input['alt_change_image_title'] === 'TRUE' || $input['alt_change_image_title'] === TRUE ) {
+			$new_input['alt_change_image_title'] = TRUE;
+		} else {
+			$new_input['alt_change_image_title'] = FALSE;
+		}
+		if( $input['alt_change_image_alt'] === 'TRUE' || $input['alt_change_image_alt'] === TRUE ) {
+			$new_input['alt_change_image_alt'] = TRUE;
+		} else {
+			$new_input['alt_change_image_alt'] = FALSE;
+		}
+		if( $input['alt_change_image_filename'] === 'TRUE' || $input['alt_change_image_filename'] === TRUE ) {
+			$new_input['alt_change_image_filename'] = TRUE;
+		} else {
+			$new_input['alt_change_image_filename'] = FALSE;
 		}
 		return $new_input;
 	}

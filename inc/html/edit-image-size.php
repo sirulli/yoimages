@@ -117,7 +117,7 @@ if ( $has_replacement ) {
 								
 									<?php
 									$wprie_settings = get_option( 'wprie_settings' );
-									$crop_qualities = $wprie_settings ? $wprie_settings['crop_qualities'] : unserialize( WPRIE_DEFAULT_CROP_QUALITIES );
+									$crop_qualities = $wprie_settings && isset( $wprie_settings['crop_qualities'] ) ? $wprie_settings['crop_qualities'] : unserialize( WPRIE_DEFAULT_CROP_QUALITIES );
 									foreach ($crop_qualities AS $index => $value) {
 									?>
 										<option value="<?php echo $value; ?>"><?php echo $value; ?>%</option>
