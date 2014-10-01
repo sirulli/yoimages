@@ -31,13 +31,20 @@ if (! defined ( 'ABSPATH' )) {
 	die ( 'No script kiddies please!' );
 }
 
-define ( 'WPRIE_CROP_ENABLED', true );
-define ( 'WPRIE_ALT_ENABLED', true );
-define ( 'WPRIE_ALT_CHANGE_IMAGE_TITLE', true );
-define ( 'WPRIE_ALT_CHANGE_IMAGE_ALT', true );
-define ( 'WPRIE_ALT_CHANGE_IMAGE_FILENAME', true );
-
 if ( is_admin() ) {
+	
+	/* Defaults */
+	define ( 'WPRIE_DEFAULT_CROP_ENABLED', TRUE );
+	define ( 'WPRIE_DEFAULT_CROP_QUALITIES', serialize( array( 100, 80, 60 ) ) );
+	
+	$wprie_settings = get_option( 'wprie_settings' );
+	
+	define ( 'WPRIE_CROP_ENABLED', $wprie_settings ? $wprie_settings['cropping_is_active'] : WPRIE_DEFAULT_CROP_ENABLED );
+	define ( 'WPRIE_ALT_ENABLED', TRUE );
+	define ( 'WPRIE_ALT_CHANGE_IMAGE_TITLE', TRUE );
+	define ( 'WPRIE_ALT_CHANGE_IMAGE_ALT', TRUE );
+	define ( 'WPRIE_ALT_CHANGE_IMAGE_FILENAME', TRUE );
+	
 	define ( 'WPRIE_PATH', dirname ( __FILE__ ) . '/' );
 	define ( 'WPRIE_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );
 	define ( 'WPRIE_EDIT_IMAGE_ACTION', 'wprie-edit-thumbnails' );

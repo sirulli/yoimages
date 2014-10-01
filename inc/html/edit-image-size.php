@@ -114,9 +114,16 @@ if ( $has_replacement ) {
 							<div class="wprie-cropper-quality-wrapper">
 								<label for="wprie-cropper-quality"><?php _e( 'Crop quality', WPRIE_DOMAIN ); ?>:</label>
 								<select name="quality" id="wprie-cropper-quality">
-									<option value="100">100%</option>
-									<option value="50">50%</option>
-									<option value="10">10%</option>
+								
+									<?php
+									$wprie_settings = get_option( 'wprie_settings' );
+									$crop_qualities = $wprie_settings ? $wprie_settings['crop_qualities'] : unserialize( WPRIE_DEFAULT_CROP_QUALITIES );
+									foreach ($crop_qualities AS $index => $value) {
+									?>
+										<option value="<?php echo $value; ?>"><?php echo $value; ?>%</option>
+									<?php
+									}
+									?>
 								</select>
 							</div>
 							<a href="javascript:wprieCropImage();" class="button media-button button-primary button-large media-button-select"><?php _e( 'Crop', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?></a>
