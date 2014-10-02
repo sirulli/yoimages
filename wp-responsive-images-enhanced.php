@@ -84,7 +84,7 @@ function wprie_admin_load_styles_and_scripts( $hook ) {
 		wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'wprie-cropper-js' ), false, true );
 	}
-	if ( $_GET['page'] == 'wprie-settings' ) {
+	if ( $_GET['page'] === 'wprie-settings' ) {
 		wp_enqueue_script( 'wprie-settings-js', WPRIE_URL . 'js/wprie-settings.js', array( 'jquery' ), false, true );
 	}
 }
