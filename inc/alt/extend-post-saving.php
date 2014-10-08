@@ -5,20 +5,20 @@ if (! defined ( 'ABSPATH' )) {
 }
 
 function wprie_alt_save_post( $post_id ) {
-	$post_parent_title = get_the_title( $post_id );
+	$parent = get_post( $post_id );
 	$ids = array();
 	$ids = apply_filters( 'wprie_seo_images_to_update', $ids, $post_id );
 	$ids = array_unique( $ids ); 
 	foreach( $ids as $id ) {
 		if ( wp_attachment_is_image( $id ) ) {
+			$attachment = get_post( $id );
 			if ( WPRIE_ALT_CHANGE_IMAGE_TITLE && get_post_meta( $id, 'wprie_image_seo_title_updated', TRUE ) !== 'TRUE' ) {
-				$attachment = get_post( $id );
-				$attachment->post_title = wprie_alt_get_image_seo_title( $post_parent_title );
+				$attachment->post_title = wprie_alt_get_image_seo_title( $attachment, $parent );
 				wp_update_post( $attachment );
 				update_post_meta( $id, 'wprie_image_seo_title_updated', 'TRUE' );
 			}
 			if ( WPRIE_ALT_CHANGE_IMAGE_ALT && get_post_meta( $id, 'wprie_image_seo_alt_updated', TRUE ) !== 'TRUE' ) {
-				update_post_meta( $id, '_wp_attachment_image_alt', wprie_alt_get_image_seo_alt( $post_parent_title ) );
+				update_post_meta( $id, '_wp_attachment_image_alt', wprie_alt_get_image_seo_alt( $attachment, $parent ) );
 				update_post_meta( $id, 'wprie_image_seo_alt_updated', 'TRUE' );
 			}
 		}
