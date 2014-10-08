@@ -66,7 +66,9 @@ if ( is_admin() ) {
 	}
 
 	if ( WPRIE_ALT_ENABLED ) {
+		require_once (WPRIE_PATH . 'inc/alt/commons.php');
 		require_once (WPRIE_PATH . 'inc/alt/extend-attachment-uploading.php');
+		require_once (WPRIE_PATH . 'inc/alt/extend-post-saving.php');
 	}
 	
 }
@@ -74,8 +76,19 @@ if ( is_admin() ) {
 function wprie_admin_load_styles_and_scripts( $hook ) {
 	if ( WPRIE_CROP_ENABLED ) {
 		if ( $hook == 'post.php' ) {
-			// if ( $hook == 'post.php' || $hook == 'upload.php' ) { TODO solve issue http://stackoverflow.com/questions/25884434/wordpress-wp-enqueue-media-causes-javascript-error-from-wp-admin-upload-phpmo
 			wp_enqueue_media();
+		} else if ( $hook == 'upload.php' ) {
+			// issue http://stackoverflow.com/questions/25884434/wordpress-wp-enqueue-media-causes-javascript-error-from-wp-admin-upload-phpmo
+			$mode = get_user_option( 'media_library_mode', get_current_user_id() ) ? get_user_option( 'media_library_mode', get_current_user_id() ) : 'grid';
+			$modes = array( 'grid', 'list' );
+			if ( isset( $_GET['mode'] ) && in_array( $_GET['mode'], $modes ) ) {
+				$mode = $_GET['mode'];
+				update_user_option( get_current_user_id(), 'media_library_mode', $mode );
+			}
+			if ( 'list' === $mode ) {
+				wp_dequeue_script( 'media' );
+				wp_enqueue_media();
+			}
 		} else {
 			wp_enqueue_style( 'media-views' );
 		}
@@ -84,7 +97,7 @@ function wprie_admin_load_styles_and_scripts( $hook ) {
 		wp_enqueue_script( 'wprie-cropper-js', WPRIE_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'wprie-admin-js', WPRIE_URL . 'js/wprie-admin.js', array( 'wprie-cropper-js' ), false, true );
 	}
-	if ( $_GET['page'] === 'wprie-settings' ) {
+	if ( isset( $_GET['page'] ) && $_GET['page'] === 'wprie-settings' ) {
 		wp_enqueue_script( 'wprie-settings-js', WPRIE_URL . 'js/wprie-settings.js', array( 'jquery' ), false, true );
 	}
 }

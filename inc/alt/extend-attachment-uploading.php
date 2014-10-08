@@ -23,13 +23,11 @@ function wprie_attachment_added_to_post_or_page( $attachment_id ) {
 						$attachment_path_info = pathinfo( $attachment_path );
 						
 						if ( WPRIE_ALT_CHANGE_IMAGE_TITLE ) {
-							// TODO set value compared to other existing post parent attachments
-							$attachment->post_title = $post_parent_title;
+							$attachment->post_title = wprie_alt_get_image_seo_title( $post_parent_title );
 						}
 						
 						if ( WPRIE_ALT_CHANGE_IMAGE_ALT ) {
-							// TODO set value compared to other existing post parent attachments
-							update_post_meta( $attachment_id, '_wp_attachment_image_alt', $post_parent_title );
+							update_post_meta( $attachment_id, '_wp_attachment_image_alt', wprie_alt_get_image_seo_alt( $post_parent_title ) );
 						}
 						
 						if ( WPRIE_ALT_CHANGE_IMAGE_FILENAME ) {
