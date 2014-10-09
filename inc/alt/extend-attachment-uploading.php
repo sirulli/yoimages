@@ -17,7 +17,7 @@ function wprie_attachment_added_to_post_or_page( $attachment_id ) {
 					$post_parent_slug = $post_parent->post_name;
 					if ( ! empty ( $post_parent_title ) ) {
 						if ( empty( $post_parent_slug ) ) {
-							$post_parent_slug = sanitize_title( $attachment, $post_parent );
+							$post_parent_slug = sanitize_title( $post_parent_title );
 						}
 						$attachment_path = get_attached_file( $attachment_id );
 						$attachment_path_info = pathinfo( $attachment_path );
@@ -27,7 +27,7 @@ function wprie_attachment_added_to_post_or_page( $attachment_id ) {
 						}
 						
 						if ( WPRIE_ALT_CHANGE_IMAGE_ALT ) {
-							update_post_meta( $attachment_id, '_wp_attachment_image_alt', wprie_alt_get_image_seo_alt( $post_parent_title ) );
+							update_post_meta( $attachment_id, '_wp_attachment_image_alt', wprie_alt_get_image_seo_alt( $attachment, $post_parent ) );
 						}
 						
 						if ( WPRIE_ALT_CHANGE_IMAGE_FILENAME ) {
