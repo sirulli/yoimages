@@ -12,40 +12,37 @@ function wprie_attachment_added_to_post_or_page( $attachment_id ) {
 			$post_parent_id = $attachment->post_parent;
 			if ( $post_parent_id > 0 ) {
 				$post_parent = get_post( $post_parent_id );
-				if ( $post_parent ) {
-					$post_parent_title = $post_parent->post_title;
-					$post_parent_slug = $post_parent->post_name;
-					if ( ! empty ( $post_parent_title ) ) {
-						if ( empty( $post_parent_slug ) ) {
-							$post_parent_slug = sanitize_title( $post_parent_title );
-						}
-						$attachment_path = get_attached_file( $attachment_id );
-						$attachment_path_info = pathinfo( $attachment_path );
-						
-						if ( WPRIE_ALT_CHANGE_IMAGE_TITLE ) {
-							$attachment->post_title = wprie_alt_get_image_seo_title( $attachment, $post_parent );
-						}
-						
-						if ( WPRIE_ALT_CHANGE_IMAGE_ALT ) {
-							update_post_meta( $attachment_id, '_wp_attachment_image_alt', wprie_alt_get_image_seo_alt( $attachment, $post_parent ) );
-						}
-						
-						if ( WPRIE_ALT_CHANGE_IMAGE_FILENAME ) {
-							$attachment->post_name = wp_unique_post_slug( $post_parent_slug, $attachment_id, $attachment->post_status, $attachment->post_type, $post_parent_id );
-							$attachment_new_path = $attachment_path_info['dirname'] . '/' . $attachment->post_name . '.' . $attachment_path_info['extension'];
-							$count = 0;
-							$base_post_name = $attachment->post_name;
-							while ( file_exists( $attachment_new_path ) ) {
-								$count = $count + 1;
-								$attachment_new_path = $attachment_path_info['dirname'] . '/' . $base_post_name . $count . '.' . $attachment_path_info['extension'];
-								$attachment->post_name = $base_post_name . $count;
-							}
-							rename( $attachment_path, $attachment_new_path );
-							update_attached_file( $attachment_id, $attachment_new_path );
-							update_post_meta( $attachment_id, 'wprie_tmp_attachment_metadata', wp_generate_attachment_metadata( $attachment_id, $attachment_new_path ) );
-						}
-						
+				if ( $post_parent && ! empty ( $post_parent->post_title ) ) {
+					
+					$attachment_path = get_attached_file( $attachment_id );
+					$attachment_path_info = pathinfo( $attachment_path );
+					
+					if ( WPRIE_ALT_CHANGE_IMAGE_TITLE ) {
+						$attachment->post_title = wprie_alt_get_image_seo_title( $attachment, $post_parent );
+						update_post_meta( $attachment_id, 'wprie_image_seo_title_updated', 'TRUE' );
 					}
+					
+					if ( WPRIE_ALT_CHANGE_IMAGE_ALT ) {
+						update_post_meta( $attachment_id, '_wp_attachment_image_alt', wprie_alt_get_image_seo_alt( $attachment, $post_parent ) );
+						update_post_meta( $attachment_id, 'wprie_image_seo_alt_updated', 'TRUE' );
+					}
+					
+					if ( WPRIE_ALT_CHANGE_IMAGE_FILENAME ) {
+						$post_parent_slug = sanitize_title( wprie_alt_get_image_seo_filename( $attachment, $post_parent ) );
+						$attachment->post_name = wp_unique_post_slug( $post_parent_slug, $attachment_id, $attachment->post_status, $attachment->post_type, $post_parent_id );
+						$attachment_new_path = $attachment_path_info['dirname'] . '/' . $attachment->post_name . '.' . $attachment_path_info['extension'];
+						$count = 0;
+						$base_post_name = $attachment->post_name;
+						while ( file_exists( $attachment_new_path ) ) {
+							$count = $count + 1;
+							$attachment_new_path = $attachment_path_info['dirname'] . '/' . $base_post_name . $count . '.' . $attachment_path_info['extension'];
+							$attachment->post_name = $base_post_name . $count;
+						}
+						rename( $attachment_path, $attachment_new_path );
+						update_attached_file( $attachment_id, $attachment_new_path );
+						update_post_meta( $attachment_id, 'wprie_tmp_attachment_metadata', wp_generate_attachment_metadata( $attachment_id, $attachment_new_path ) );
+					}
+
 					wp_update_post( $attachment );
 				}
 			}
