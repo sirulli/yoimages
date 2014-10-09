@@ -8,7 +8,12 @@ function wprie_alt_get_image_seo_title( $attachment, $parent ) {
 	$base_title = $parent->post_title;
 	$title = $base_title;
 	$count = 1;
-	// TODO set value compared to other existing post parent attachments
+	$other = get_page_by_title( $title, 'OBJECT', 'attachment' );
+	while ( $other ) {
+		$title = $base_title . ' ' . $count;
+		$other = get_page_by_title( $title, 'OBJECT', 'attachment' );
+		$count++;
+	}
 	return $title;
 }
 
