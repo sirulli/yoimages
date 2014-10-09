@@ -43,9 +43,12 @@ class WprieSettingsPage {
 		
 		add_settings_section( 'wprie_alt_options_section', __( 'SEO for images', WPRIE_DOMAIN ), array( $this, 'print_alt_options_section_info' ), 'wprie-settings' );
 		add_settings_field( 'alt_change_image_title', __( 'Change image title', WPRIE_DOMAIN ), array( $this, 'alt_change_image_title_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
+		add_settings_field( 'alt_image_title_expression', __( 'Image title expression', WPRIE_DOMAIN), array( $this, 'alt_image_title_expression_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
 		add_settings_field( 'alt_change_image_alt', __( 'Change image alt attribute', WPRIE_DOMAIN ), array( $this, 'alt_change_image_alt_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
+		add_settings_field( 'alt_image_alt_expression', __( 'Image alt expression', WPRIE_DOMAIN), array( $this, 'alt_image_alt_expression_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
 		add_settings_field( 'alt_change_image_filename', __( 'Change image file name', WPRIE_DOMAIN ), array( $this, 'alt_change_image_filename_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
-
+		add_settings_field( 'alt_image_filename_expression', __( 'Image file name expression', WPRIE_DOMAIN), array( $this, 'alt_image_filename_expression_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
+		
 	}
 	
 	public function print_crop_options_section_info() {
@@ -80,6 +83,14 @@ class WprieSettingsPage {
 		);
 	}
 
+	public function alt_image_title_expression_callback() {
+		printf(
+		'<input type="text" id="alt_image_title_expression" name="wprie_settings[alt_image_title_expression]" value="%s" class="alt_change_image_title-dep" />
+			<p class="description">' . __( 'Lorem ipsum alt_image_title_expression', WPRIE_DOMAIN ) . '</p>',
+				! empty( $this->options['alt_image_title_expression'] ) ? esc_attr( $this->options['alt_image_title_expression'] ) : WPRIE_ALT_IMAGE_TITLE_EXPRESSION
+		);
+	}
+
 	public function alt_change_image_alt_callback() {
 		printf(
 			'<input type="checkbox" id="alt_change_image_alt" name="wprie_settings[alt_change_image_alt]" value="TRUE" %s />
@@ -87,7 +98,15 @@ class WprieSettingsPage {
 			$this->options['alt_change_image_alt'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT && ! isset( $this->options['alt_change_image_alt'] ) ? 'checked="checked"' : '' )
 		);
 	}
-	
+
+	public function alt_image_alt_expression_callback() {
+		printf(
+		'<input type="text" id="alt_image_alt_expression" name="wprie_settings[alt_image_alt_expression]" value="%s" class="alt_change_image_alt-dep" />
+			<p class="description">' . __( 'Lorem ipsum alt_image_alt_expression', WPRIE_DOMAIN ) . '</p>',
+				! empty( $this->options['alt_image_alt_expression'] ) ? esc_attr( $this->options['alt_image_alt_expression'] ) : WPRIE_ALT_IMAGE_ALT_EXPRESSION
+		);
+	}
+
 	public function alt_change_image_filename_callback() {
 		printf(
 			'<input type="checkbox" id="alt_change_image_filename" name="wprie_settings[alt_change_image_filename]" value="TRUE" %s />
@@ -95,7 +114,15 @@ class WprieSettingsPage {
 			$this->options['alt_change_image_filename'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME && ! isset( $this->options['alt_change_image_filename'] ) ? 'checked="checked"' : '' )
 		);
 	}
-	
+
+	public function alt_image_filename_expression_callback() {
+		printf(
+		'<input type="text" id="alt_image_filename_expression" name="wprie_settings[alt_image_filename_expression]" value="%s" class="alt_change_image_filename-dep" />
+			<p class="description">' . __( 'Lorem ipsum alt_image_filename_expression', WPRIE_DOMAIN ) . '</p>',
+				! empty( $this->options['alt_image_filename_expression'] ) ? esc_attr( $this->options['alt_image_filename_expression'] ) : WPRIE_ALT_IMAGE_FILENAME_EXPRESSION
+		);
+	}
+
 	public function sanitize( $input ) {
 		$new_input = array();
 		if( $input['cropping_is_active'] === 'TRUE' || $input['cropping_is_active'] === TRUE ) {
@@ -142,6 +169,15 @@ class WprieSettingsPage {
 			$new_input['alt_change_image_filename'] = TRUE;
 		} else {
 			$new_input['alt_change_image_filename'] = FALSE;
+		}
+		if( isset( $input['alt_image_title_expression'] ) ) {
+			$new_input['alt_image_title_expression'] = sanitize_text_field( $input['alt_image_title_expression'] );
+		}
+		if( isset( $input['alt_image_alt_expression'] ) ) {
+			$new_input['alt_image_alt_expression'] = sanitize_text_field( $input['alt_image_alt_expression'] );
+		}
+		if( isset( $input['alt_image_filename_expression'] ) ) {
+			$new_input['alt_image_filename_expression'] = sanitize_text_field( $input['alt_image_filename_expression'] );
 		}
 		return $new_input;
 	}

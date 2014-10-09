@@ -39,6 +39,9 @@ if ( is_admin() ) {
 	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_TITLE', TRUE );
 	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT', TRUE );
 	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME', TRUE );
+	define ( 'WPRIE_DEFAULT_ALT_IMAGE_TITLE_EXPRESSION', '[title]' );
+	define ( 'WPRIE_DEFAULT_ALT_IMAGE_ALT_EXPRESSION', '[title]' );
+	define ( 'WPRIE_DEFAULT_ALT_IMAGE_FILENAME_EXPRESSION', '[title]' );
 	
 	$wprie_settings = get_option( 'wprie_settings' );
 	
@@ -48,6 +51,10 @@ if ( is_admin() ) {
 	define ( 'WPRIE_ALT_CHANGE_IMAGE_ALT', $wprie_settings && isset( $wprie_settings['alt_change_image_alt'] ) ? $wprie_settings['alt_change_image_alt'] : WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT );
 	define ( 'WPRIE_ALT_CHANGE_IMAGE_FILENAME', $wprie_settings && isset( $wprie_settings['alt_change_image_filename'] ) ? $wprie_settings['alt_change_image_filename'] : WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME );
 	define ( 'WPRIE_ALT_ENABLED', WPRIE_ALT_CHANGE_IMAGE_TITLE || WPRIE_ALT_CHANGE_IMAGE_ALT || WPRIE_ALT_CHANGE_IMAGE_FILENAME );
+	
+	define ( 'WPRIE_ALT_IMAGE_TITLE_EXPRESSION', $wprie_settings && isset( $wprie_settings['alt_image_title_expression'] ) ? $wprie_settings['alt_image_title_expression'] : WPRIE_DEFAULT_ALT_IMAGE_TITLE_EXPRESSION );
+	define ( 'WPRIE_ALT_IMAGE_ALT_EXPRESSION', $wprie_settings && isset( $wprie_settings['alt_image_alt_expression'] ) ? $wprie_settings['alt_image_alt_expression'] : WPRIE_DEFAULT_ALT_IMAGE_ALT_EXPRESSION );
+	define ( 'WPRIE_ALT_IMAGE_FILENAME_EXPRESSION', $wprie_settings && isset( $wprie_settings['alt_image_filename_expression'] ) ? $wprie_settings['alt_image_filename_expression'] : WPRIE_DEFAULT_ALT_IMAGE_FILENAME_EXPRESSION );
 	
 	define ( 'WPRIE_PATH', dirname ( __FILE__ ) . '/' );
 	define ( 'WPRIE_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );
