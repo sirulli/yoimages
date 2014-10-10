@@ -9,6 +9,9 @@ function wprie_alt_explode_expression( $expression, $attachment, $parent ) {
 	if ( strpos( $result, WPRIE_TITLE_EXPRESSION ) !== FALSE ) {
 		$result = str_replace( WPRIE_TITLE_EXPRESSION, $parent->post_title, $result );
 	}
+	if ( strpos( $result, WPRIE_POST_TYPE_EXPRESSION ) !== FALSE ) {
+		$result = str_replace( WPRIE_POST_TYPE_EXPRESSION, $parent->post_type, $result );
+	}
 	if ( empty( $result ) ) {
 		return $parent->post_title;
 	} else {
