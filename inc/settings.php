@@ -170,14 +170,23 @@ class WprieSettingsPage {
 		} else {
 			$new_input['alt_change_image_filename'] = FALSE;
 		}
-		if( isset( $input['alt_image_title_expression'] ) ) {
+		if( isset( $input['alt_image_title_expression'] ) && ! empty( $input['alt_image_title_expression'] ) ) {
 			$new_input['alt_image_title_expression'] = sanitize_text_field( $input['alt_image_title_expression'] );
+		} else {
+			add_settings_error( 'wprie_crop_options_group', 'alt_image_title_expression', __( 'alt_image_title_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_ALT_IMAGE_TITLE_EXPRESSION, 'error' );
+			$new_input['alt_image_title_expression'] = WPRIE_DEFAULT_ALT_IMAGE_TITLE_EXPRESSION;
 		}
-		if( isset( $input['alt_image_alt_expression'] ) ) {
+		if( isset( $input['alt_image_alt_expression'] ) && ! empty( $input['alt_image_alt_expression'] ) ) {
 			$new_input['alt_image_alt_expression'] = sanitize_text_field( $input['alt_image_alt_expression'] );
+		} else {
+			add_settings_error( 'wprie_crop_options_group', 'alt_image_alt_expression', __( 'alt_image_alt_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_ALT_IMAGE_ALT_EXPRESSION, 'error' );
+			$new_input['alt_image_alt_expression'] = WPRIE_DEFAULT_ALT_IMAGE_ALT_EXPRESSION;
 		}
-		if( isset( $input['alt_image_filename_expression'] ) ) {
+		if( isset( $input['alt_image_filename_expression'] ) && ! empty( $input['alt_image_filename_expression'] ) ) {
 			$new_input['alt_image_filename_expression'] = sanitize_text_field( $input['alt_image_filename_expression'] );
+		} else {
+			add_settings_error( 'wprie_crop_options_group', 'alt_image_filename_expression', __( 'alt_image_filename_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_ALT_IMAGE_FILENAME_EXPRESSION, 'error' );
+			$new_input['alt_image_filename_expression'] = WPRIE_DEFAULT_ALT_IMAGE_FILENAME_EXPRESSION;
 		}
 		return $new_input;
 	}
