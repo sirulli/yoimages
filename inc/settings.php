@@ -2,6 +2,13 @@
 if (! defined ( 'ABSPATH' )) {
 	die ( 'No script kiddies please!' );
 }
+
+function wprie_default_supported_expressions( $supported_expressions ) {
+	array_push( $supported_expressions, WPRIE_TITLE_EXPRESSION, WPRIE_POST_TYPE_EXPRESSION, WPRIE_SITE_NAME_EXPRESSION );
+	return $supported_expressions;
+}
+add_filter( 'wprie_supported_expressions', 'wprie_default_supported_expressions', 10, 1 );
+
 class WprieSettingsPage {
 	
 	private $options;
@@ -57,6 +64,11 @@ class WprieSettingsPage {
 
 	public function print_alt_options_section_info() {
 		print __('Enter your images SEO settings here below', WPRIE_DOMAIN );
+		$supported_expressions = array();
+		printf( '<p>' .
+			__( 'Supported expressions:', WPRIE_DOMAIN ) . ' ' . implode( ', ', apply_filters( 'wprie_supported_expressions', $supported_expressions ) )
+			. '</p>'
+		);
 	}
 	
 	public function cropping_is_active_callback() {
