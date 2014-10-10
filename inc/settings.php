@@ -4,7 +4,7 @@ if (! defined ( 'ABSPATH' )) {
 }
 
 function wprie_default_supported_expressions( $supported_expressions ) {
-	array_push( $supported_expressions, WPRIE_TITLE_EXPRESSION, WPRIE_POST_TYPE_EXPRESSION, WPRIE_SITE_NAME_EXPRESSION );
+	array_push( $supported_expressions, WPRIE_TITLE_EXPRESSION, WPRIE_POST_TYPE_EXPRESSION, WPRIE_SITE_NAME_EXPRESSION, WPRIE_TAGS_EXPRESSION, WPRIE_CATEGORIES_EXPRESSION );
 	return $supported_expressions;
 }
 add_filter( 'wprie_supported_expressions', 'wprie_default_supported_expressions', 10, 1 );

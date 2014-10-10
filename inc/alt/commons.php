@@ -38,6 +38,38 @@ function wprie_seo_expression_site_name( $result, $attachment, $parent ) {
 }
 add_filter('wprie_seo_expressions', 'wprie_seo_expression_site_name', 10, 3);
 
+function wprie_seo_expression_tags( $result, $attachment, $parent ) {
+	if ( strpos( $result, WPRIE_TAGS_EXPRESSION ) !== FALSE ) {
+		$tags_str = '';
+		$posttags = get_the_tags( $parent->ID );
+		if ( $posttags ) {
+			foreach( $posttags as $tag ) {
+				$tags_str = $tags_str . $tag->name . ' ';
+			}
+			$tags_str = trim( $tags_str );
+		}
+		$result = str_replace( WPRIE_TAGS_EXPRESSION, $tags_str, $result );
+	}
+	return $result;
+}
+add_filter('wprie_seo_expressions', 'wprie_seo_expression_tags', 10, 3);
+
+function wprie_seo_expression_categories( $result, $attachment, $parent ) {
+	if ( strpos( $result, WPRIE_CATEGORIES_EXPRESSION ) !== FALSE ) {
+		$cats_str = '';
+		$cats = get_the_category( $parent->ID );
+		if ( $cats ) {
+			foreach( $cats as $cat ) {
+				$cats_str = $cats_str . $cat->cat_name . ' ';
+			}
+			$cats_str = trim( $cats_str );
+		}
+		$result = str_replace( WPRIE_CATEGORIES_EXPRESSION, $cats_str, $result );
+	}
+	return $result;
+}
+add_filter('wprie_seo_expressions', 'wprie_seo_expression_categories', 10, 3);
+
 function wprie_alt_get_image_seo_title( $attachment, $parent ) {
 	$base_title = wprie_alt_explode_expression( WPRIE_ALT_IMAGE_TITLE_EXPRESSION, $attachment, $parent );
 	$title = $base_title;
