@@ -6,18 +6,37 @@ if ( ! defined ( 'ABSPATH' ) ) {
 
 function wprie_alt_explode_expression( $expression, $attachment, $parent ) {
 	$result = $expression;
-	if ( strpos( $result, WPRIE_TITLE_EXPRESSION ) !== FALSE ) {
-		$result = str_replace( WPRIE_TITLE_EXPRESSION, $parent->post_title, $result );
-	}
-	if ( strpos( $result, WPRIE_POST_TYPE_EXPRESSION ) !== FALSE ) {
-		$result = str_replace( WPRIE_POST_TYPE_EXPRESSION, $parent->post_type, $result );
-	}
+	$result = apply_filters( 'wprie_seo_expressions', $result, $attachment, $parent );
 	if ( empty( $result ) ) {
 		return $parent->post_title;
 	} else {
 		return $result;
 	}
 }
+
+function wprie_seo_expression_title( $result, $attachment, $parent ) {
+	if ( strpos( $result, WPRIE_TITLE_EXPRESSION ) !== FALSE ) {
+		$result = str_replace( WPRIE_TITLE_EXPRESSION, $parent->post_title, $result );
+	}
+	return $result;
+}
+add_filter('wprie_seo_expressions', 'wprie_seo_expression_title', 10, 3);
+
+function wprie_seo_expression_post_type( $result, $attachment, $parent ) {
+if ( strpos( $result, WPRIE_POST_TYPE_EXPRESSION ) !== FALSE ) {
+		$result = str_replace( WPRIE_POST_TYPE_EXPRESSION, $parent->post_type, $result );
+	}
+	return $result;
+}
+add_filter('wprie_seo_expressions', 'wprie_seo_expression_post_type', 10, 3);
+
+function wprie_seo_expression_site_name( $result, $attachment, $parent ) {
+	if ( strpos( $result, WPRIE_SITE_NAME_EXPRESSION ) !== FALSE ) {
+		$result = str_replace( WPRIE_SITE_NAME_EXPRESSION, get_bloginfo( 'name' ), $result );
+	}
+	return $result;
+}
+add_filter('wprie_seo_expressions', 'wprie_seo_expression_site_name', 10, 3);
 
 function wprie_alt_get_image_seo_title( $attachment, $parent ) {
 	$base_title = wprie_alt_explode_expression( WPRIE_ALT_IMAGE_TITLE_EXPRESSION, $attachment, $parent );
