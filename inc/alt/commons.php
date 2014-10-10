@@ -6,8 +6,8 @@ if ( ! defined ( 'ABSPATH' ) ) {
 
 function wprie_alt_explode_expression( $expression, $attachment, $parent ) {
 	$result = $expression;
-	if ( strpos( $result, '[title]' ) !== FALSE ) {
-		$result = str_replace( '[title]', $parent->post_title, $result );
+	if ( strpos( $result, WPRIE_TITLE_EXPRESSION ) !== FALSE ) {
+		$result = str_replace( WPRIE_TITLE_EXPRESSION, $parent->post_title, $result );
 	}
 	if ( empty( $result ) ) {
 		return $parent->post_title;
