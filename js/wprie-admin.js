@@ -131,6 +131,7 @@ function wprieCancelCropImage() {
 }
 
 function wprieCropImage() {
+	jQuery('#wprie-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'inline-block');
 	var data = jQuery('#wprie-cropper').cropper('getData');
 	data['action'] = 'wprie_crop_image';
 	data['post'] = wprie_image_id;
@@ -147,6 +148,7 @@ function wprieCropImage() {
 				img.parents('.wprie-not-existing-crop').removeClass('wprie-not-existing-crop').find('p').hide();
 			}
 		});
+		jQuery('#wprie-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'none');
 	});
 
 }

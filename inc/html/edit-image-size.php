@@ -126,6 +126,7 @@ if ( $has_replacement ) {
 									?>
 								</select>
 							</div>
+							<div class="spinner"></div>
 							<a href="javascript:wprieCropImage();" class="button media-button button-primary button-large media-button-select"><?php _e( 'Crop', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?></a>
 						</div>
 					</div>
