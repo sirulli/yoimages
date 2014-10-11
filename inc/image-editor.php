@@ -20,30 +20,34 @@ function wprie_crop_image() {
 		if ( $has_replacement ) {
 			$replacement_path = _load_image_to_edit_path( $replacement );
 			$img_editor = wp_get_image_editor( $replacement_path );
+			$full_image_attributes = wp_get_attachment_image_src( $replacement, 'full' );
 		} else {
 			$img_editor = wp_get_image_editor( $img_path );
+			$full_image_attributes = wp_get_attachment_image_src( $req_post, 'full' );
 		}
 		if ( is_wp_error( $img_editor ) ) {
 			return false;
 		}
 		$cropped_image_sizes = wprie_get_image_sizes( $req_size );
-		$img_editor->crop( $req_x, $req_y, $req_width, $req_height, $cropped_image_sizes['width'], $cropped_image_sizes['height'], false );
+		$crop_width = min( $cropped_image_sizes['width'], $full_image_attributes[1] );
+		$crop_height = min( $cropped_image_sizes['height'], $full_image_attributes[2] );
+		$img_editor->crop( $req_x, $req_y, $req_width, $req_height, $crop_width, $crop_height, false );
 		$img_editor->set_quality( $req_quality );
 		$img_path_parts = pathinfo($img_path);
 		if ( empty( $attachment_metadata['sizes'][$req_size] ) || empty( $attachment_metadata['sizes'][$req_size]['file'] ) ) {
-			$cropped_image_filename = wprie_get_cropped_image_filename( $img_path_parts['filename'], $cropped_image_sizes['width'], $cropped_image_sizes['height'], $img_path_parts['extension'] );
+			$cropped_image_filename = wprie_get_cropped_image_filename( $img_path_parts['filename'], $crop_width, $crop_height, $img_path_parts['extension'] );
 			$attachment_metadata['sizes'][$req_size] = array(
 				'file' => $cropped_image_filename,
-				'width' => $cropped_image_sizes['width'],
-				'height' => $cropped_image_sizes['height'],
+				'width' => $crop_width,
+				'height' => $crop_height,
 				'mime-type' => $attachment_metadata['sizes']['thumbnail']['mime-type']
 			);
 		} else {
 			$cropped_image_filename = $attachment_metadata['sizes'][$req_size]['file'];
 		}
 		$img_editor->save( $img_path_parts['dirname'] . '/' . $cropped_image_filename );
-		$attachment_metadata['sizes'][$req_size]['width'] = $cropped_image_sizes['width'];
-		$attachment_metadata['sizes'][$req_size]['height'] = $cropped_image_sizes['height'];
+		$attachment_metadata['sizes'][$req_size]['width'] = $crop_width;
+		$attachment_metadata['sizes'][$req_size]['height'] = $crop_height;
 		if ( empty( $attachment_metadata['wprie_attachment_metadata']['crop'] ) ) {
 			$attachment_metadata['wprie_attachment_metadata']['crop'] = array();
 		}

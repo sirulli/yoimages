@@ -92,7 +92,9 @@ if ( $has_replacement ) {
 								} else {
 									$img_url_parts = parse_url( $image_attributes[0] );
 									$img_path_parts = pathinfo( $img_url_parts['path'] );
-									$expected_url = $img_path_parts['dirname'] . '/' . wprie_get_cropped_image_filename( $img_path_parts['filename'], $cropped_image_sizes['width'], $cropped_image_sizes['height'], $img_path_parts['extension'] );
+									$expected_crop_width = min( $cropped_image_sizes['width'], $full_image_attributes[1] );
+									$expected_crop_height = min( $cropped_image_sizes['height'], $full_image_attributes[2] );
+									$expected_url = $img_path_parts['dirname'] . '/' . wprie_get_cropped_image_filename( $img_path_parts['filename'], $expected_crop_width, $expected_crop_height, $img_path_parts['extension'] );
 									?>
 									<div class="wprie-not-existing-crop">
 										<img src="<?php echo $expected_url; ?>" style="max-width: 100%;" />
