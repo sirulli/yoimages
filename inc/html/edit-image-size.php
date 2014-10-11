@@ -63,12 +63,6 @@ if ( $has_replacement ) {
 					<div class="attachments-browser">
 						<div class="attachments">
 							<div id="wprie-cropper-container" style="max-width: <?php echo $full_image_attributes[1]; ?>px;max-height: <?php echo $full_image_attributes[2]; ?>px;">
-								<div id="wprie-cropper-replace-tools" class="imgedit-menu">
-									<div id="wprie-replace-img-btn" style="display:none;" title="<?php _e( 'Replace image source for', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?>" class="dashicons dashicons-update" data-code="f463" data-button-text="<?php _e( 'Select', WPRIE_DOMAIN ); ?>"></div>
-									<?php if ( $has_replacement ) {?>
-										<div id="wprie-restore-img-btn" title="<?php _e( 'Restore original image source for', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?>" class="dashicons dashicons-undo" data-code="f171"></div>
-									<?php } ?>
-								</div>
 								<img id="wprie-cropper" src="<?php echo $full_image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
 							</div>
 						</div>
@@ -104,6 +98,12 @@ if ( $has_replacement ) {
 								<?php } ?>
 								<h3 id="wprie-cropper-preview-title"><?php _e( 'Crop preview', WPRIE_DOMAIN ); ?></h3>
 								<div id="wprie-cropper-preview"></div>
+								<div id="wprie-replace-restore-wrapper">
+									<div id="wprie-replace-img-btn" style="display:none;" title="<?php _e( 'Replace image source for', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?>" class="button button-primary button-large"><?php _e( 'Replace', WPRIE_DOMAIN ); ?></div>
+									<?php if ( $has_replacement ) {?>
+										<div id="wprie-restore-img-btn" title="<?php _e( 'Restore original image source for', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?>" class="button button-large"><?php _e( 'Restore', WPRIE_DOMAIN ); ?></div>
+									<?php } ?>
+								</div>
 							</div>
 						</div>
 					</div>

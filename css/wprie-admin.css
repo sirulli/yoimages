@@ -36,15 +36,12 @@
 	margin-top: 20px;
 }
 
-#wprie-cropper-replace-tools {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 10;
+#wprie-replace-restore-wrapper {
+	margin-top: 24px;
 }
 
-#wprie-cropper-replace-tools.imgedit-menu {
-	min-width: 0;
+#wprie-replace-restore-wrapper #wprie-restore-img-btn {
+	margin-left: 18px;
 }
 
 .wprie-not-existing-crop img {
