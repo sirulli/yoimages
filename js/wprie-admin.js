@@ -145,7 +145,7 @@ function wprieCropImage() {
 			imgSrc = imgSrc + (imgSrc.indexOf('?') > -1 ? '&' : '?') + '_r=' + Math.floor((Math.random() * 100) + 1);
 			img.attr('src', imgSrc);
 			if (img.parents('.wprie-not-existing-crop').length) {
-				img.parents('.wprie-not-existing-crop').removeClass('wprie-not-existing-crop').find('p').hide();
+				img.parents('.wprie-not-existing-crop').removeClass('wprie-not-existing-crop').find('.message.error').hide();
 			}
 		});
 		jQuery('#wprie-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'none');

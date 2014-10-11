@@ -32,7 +32,7 @@ if ( $has_replacement ) {
 	}
 	?>
 </script>
-<?php if ( $_GET['partial'] != '1' ) { ?>
+<?php if ( ( ! isset( $_GET['partial'] ) ) || $_GET['partial'] != '1' ) { ?>
 <div id="wprie-cropper-wrapper">
 	<div class="media-modal wp-core-ui">
 		<a title="<?php _e( 'Close', WPRIE_DOMAIN ); ?>" href="javascript:wprieCancelCropImage();" class="media-modal-close">
@@ -49,6 +49,11 @@ if ( $has_replacement ) {
 						foreach ( $sizes as $size_key => $size_value ) {
 							if ( $size_value['crop'] == 1 ) {
 								$is_current_size = $size_key === $wprie_image_size;
+								if ( $is_current_size ) {
+									$is_full_image_too_small = $full_image_attributes[1] < $size_value['width'] && $full_image_attributes[2] < $size_value['height'];
+									$curr_size_width = $size_value['width'];
+									$curr_size_height = $size_value['height'];
+								}
 								$anchor_class = $is_current_size ? 'active' : '';
 								$anchor_href = wprie_get_edit_image_url( $wprie_image_id, $size_key ) . '&partial=1';
 						?>
@@ -76,7 +81,7 @@ if ( $has_replacement ) {
 								<?php
 								} else {
 								?>
-									<h3><?php _e( 'Current', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?></h3>
+									<h3><?php _e( 'Current', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?> (<?php echo $curr_size_width; ?>x<?php echo $curr_size_height; ?>)</h3>
 								<?php	
 								}
 								$image_attributes = wp_get_attachment_image_src( $wprie_image_id, $wprie_image_size );
@@ -92,7 +97,17 @@ if ( $has_replacement ) {
 									<div class="wprie-not-existing-crop">
 										<img src="<?php echo $expected_url; ?>" style="max-width: 100%;" />
 										<div class="message error">
-											<p><?php _e( 'Crop not generated yet', WPRIE_DOMAIN ); ?></p>
+											<?php
+											if ( $is_full_image_too_small ) {
+											?>
+												<p><?php _e( 'Crop cannot be generated because original image is too small, you may replace the original image for this crop format using the replace button here below', WPRIE_DOMAIN ); ?></p>
+											<?php
+											} else {
+											?>
+												<p><?php _e( 'Crop not generated yet, use the crop button here below to generate it', WPRIE_DOMAIN ); ?></p>
+											<?php
+											}
+											?>
 										</div>
 									</div>
 								<?php } ?>
@@ -127,12 +142,15 @@ if ( $has_replacement ) {
 								</select>
 							</div>
 							<div class="spinner"></div>
-							<a href="javascript:wprieCropImage();" class="button media-button button-primary button-large media-button-select"><?php _e( 'Crop', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?></a>
+							<a href="<?php echo $is_full_image_too_small ? 'javascript:;' : 'javascript:wprieCropImage();';?>"
+								class="button media-button button-primary button-large media-button-select <?php echo $is_full_image_too_small ? 'disabled' : '';?>">
+								<?php _e( 'Crop', WPRIE_DOMAIN ); ?> <?php echo $wprie_image_size; ?>
+							</a>
 						</div>
 					</div>
 				</div>	
 			</div>
-<?php if ( $_GET['partial'] != '1' ) { ?>
+<?php if ( ( ! isset( $_GET['partial'] ) ) || $_GET['partial'] != '1' ) { ?>
 		</div>
 	</div>
 	<div id="wprie-cropper-bckgr" class="media-modal-backdrop"></div>
