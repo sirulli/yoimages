@@ -29,6 +29,7 @@ function wprie_crop_image() {
 			return false;
 		}
 		$cropped_image_sizes = wprie_get_image_sizes( $req_size );
+		$is_crop_smaller = $full_image_attributes[1] < $cropped_image_sizes['width'] || $full_image_attributes[2] < $cropped_image_sizes['height'];
 		$crop_width = min( $cropped_image_sizes['width'], $full_image_attributes[1] );
 		$crop_height = min( $cropped_image_sizes['height'], $full_image_attributes[2] );
 		$img_editor->crop( $req_x, $req_y, $req_width, $req_height, $crop_width, $crop_height, false );
@@ -61,7 +62,9 @@ function wprie_crop_image() {
 			$attachment_metadata['wprie_attachment_metadata']['crop'][$req_size]['replacement'] = $replacement;
 		}
 		wp_update_attachment_metadata( $req_post, $attachment_metadata );
-		echo $cropped_image_filename;
+		status_header( 200 );
+		header( 'Content-type: application/json; charset=UTF-8' );
+		echo json_encode( array( 'filename' => $cropped_image_filename, 'smaller' => $is_crop_smaller ) );
 	}
 	die();
 }

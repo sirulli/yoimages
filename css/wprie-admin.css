@@ -36,6 +36,10 @@
 	margin-top: 20px;
 }
 
+#wprie-cropper-wrapper .message.error.wprie-crop-smaller {
+	border-left-color: #FFFF00;
+}
+
 #wprie-replace-restore-wrapper {
 	margin-top: 24px;
 }

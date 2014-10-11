@@ -88,6 +88,12 @@ if ( $has_replacement ) {
 								if ( $this_crop_exists ) {
 								?>
 									<img src="<?php echo $image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
+									<?php
+									$is_crop_smaller = $attachment_metadata['sizes'][$wprie_image_size]['width'] < $curr_size_width || $attachment_metadata['sizes'][$wprie_image_size]['height'] < $curr_size_height;
+									?>
+									<div class="message error wprie-crop-smaller" style="display:<?php echo $is_crop_smaller ? 'block' : 'none'; ?>;">
+										<p><?php printf ( __( 'This crop is smaller (%1$sx%2$s) than expected (%3$sx%4$s), you may replace the original image for this crop format using the replace button here below and then cropping it', WPRIE_DOMAIN ), $attachment_metadata['sizes'][$wprie_image_size]['width'], $attachment_metadata['sizes'][$wprie_image_size]['height'], $curr_size_width, $curr_size_height ); ?></p>
+									</div>
 								<?php
 								} else {
 									$img_url_parts = parse_url( $image_attributes[0] );

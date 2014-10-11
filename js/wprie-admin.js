@@ -139,7 +139,7 @@ function wprieCropImage() {
 	data['quality'] = jQuery('#wprie-cropper-quality').val();
 	jQuery.post(ajaxurl, data, function(response) {
 		// TODO handle errors
-		jQuery('img[src*=\'' + response + '\']').each(function() {
+		jQuery('img[src*=\'' + response.filename + '\']').each(function() {
 			var img = jQuery(this);
 			var imgSrc = img.attr('src');
 			imgSrc = imgSrc + (imgSrc.indexOf('?') > -1 ? '&' : '?') + '_r=' + Math.floor((Math.random() * 100) + 1);
@@ -148,6 +148,11 @@ function wprieCropImage() {
 				img.parents('.wprie-not-existing-crop').removeClass('wprie-not-existing-crop').find('.message.error').hide();
 			}
 		});
+		if (response.smaller) {
+			jQuery('.message.wprie-crop-smaller').show();
+		} else {
+			jQuery('.message.wprie-crop-smaller').hide();
+		}
 		jQuery('#wprie-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'none');
 	});
 
