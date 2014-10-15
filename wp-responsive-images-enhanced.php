@@ -3,7 +3,7 @@
 /**
  * Plugin Name: WP Responsive Images Enhanced
  * Plugin URI: https://github.com/fagia/wp-responsive-images-enhanced
- * Description: Adds support for showing and managing responsive images.
+ * Description: TODO Adds support for showing and managing responsive images.
  * Version: 0.0.1
  * Author: Matteo Cajani
  * Author URI: http://fagia.martjanplanet.com
