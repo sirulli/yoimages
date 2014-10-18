@@ -105,10 +105,10 @@ function yoimg_admin_load_styles_and_scripts( $hook ) {
 		} else {
 			wp_enqueue_style( 'media-views' );
 		}
-		wp_enqueue_style( 'yoimg-admin-css', YOIMG_URL . 'css/yoimg-admin.css' );
-		wp_enqueue_style( 'yoimg-cropper-css', YOIMG_URL . 'js/cropper/cropper.min.css' );
-		wp_enqueue_script( 'yoimg-cropper-js', YOIMG_URL . 'js/cropper/cropper.min.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'yoimg-admin-js', YOIMG_URL . 'js/yoimg-admin.js', array( 'yoimg-cropper-js' ), false, true );
+		wp_enqueue_style( 'yoimg-cropping-css', YOIMG_URL . 'css/img-cropping/yoimg-cropping.css' );
+		wp_enqueue_style( 'yoimg-cropper-css', YOIMG_URL . 'js/img-cropping/cropper/cropper.min.css' );
+		wp_enqueue_script( 'yoimg-cropper-js', YOIMG_URL . 'js/img-cropping/cropper/cropper.min.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'yoimg-cropping-js', YOIMG_URL . 'js/img-cropping/yoimg-cropping.js', array( 'yoimg-cropper-js' ), false, true );
 	}
 	if ( isset( $_GET['page'] ) && $_GET['page'] === 'yoimg-settings' ) {
 		wp_enqueue_script( 'yoimg-settings-js', YOIMG_URL . 'js/yoimg-settings.js', array( 'jquery' ), false, true );

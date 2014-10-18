@@ -1,9 +1,7 @@
-//TODO better js
-
 var yoimgMediaUploader;
 
 function yoimgAddEditImageAnchors() {
-	var yoimgAddEditImageAnchorsInterval = setInterval(function() {
+	setInterval(function() {
 		if (jQuery('#media-items .edit-attachment').length) {
 			jQuery('#media-items .edit-attachment').each(function(i, k) {
 				try {
@@ -24,7 +22,7 @@ function yoimgAddEditImageAnchors() {
 				}
 			});
 		}
-	}, 600);
+	}, 1000);
 }
 
 function yoimgExtendMediaLightboxTemplate(anchor1, anchor2, anchor3, anchor4) {
@@ -75,7 +73,7 @@ function yoimgInitCropImage() {
 			preview : '#yoimg-cropper-preview'
 		});
 
-		if (wp.media) { // TODO fix issue:
+		if (wp.media) {
 			jQuery('#yoimg-replace-img-btn').show().click(function() {
 				if (yoimgMediaUploader) {
 					// TODO find "the backbone way" solution for dynamic title
@@ -138,7 +136,6 @@ function yoimgCropImage() {
 	data['size'] = yoimg_image_size;
 	data['quality'] = jQuery('#yoimg-cropper-quality').val();
 	jQuery.post(ajaxurl, data, function(response) {
-		// TODO handle errors
 		jQuery('img[src*=\'' + response.filename + '\']').each(function() {
 			var img = jQuery(this);
 			var imgSrc = img.attr('src');
@@ -200,10 +197,10 @@ jQuery(document).ready(function($) {
 		});
 		return false;
 	});
-	$(document).on('click', function(e) {
-		if ($(e.target).attr('id') === 'yoimg-cropper-bckgr') {
-			yoimgCancelCropImage();
-		}
+	$(document).on('click', '#yoimg-cropper-bckgr', function(e) {
+		e.preventDefault();
+		yoimgCancelCropImage();
+		return false;
 	});
 	$(document).on('keydown', function(e) {
 		if (e.keyCode === 27) {
