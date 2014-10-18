@@ -4,7 +4,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	die ( 'No script kiddies please!' );
 }
 
-function wprie_alt_explode_expression( $expression, $attachment, $parent ) {
+function wprie_imgseo_explode_expression( $expression, $attachment, $parent ) {
 	$result = $expression;
 	$result = apply_filters( 'wprie_seo_expressions', $result, $attachment, $parent );
 	if ( empty( $result ) ) {
@@ -70,8 +70,8 @@ function wprie_seo_expression_categories( $result, $attachment, $parent ) {
 }
 add_filter('wprie_seo_expressions', 'wprie_seo_expression_categories', 10, 3);
 
-function wprie_alt_get_image_seo_title( $attachment, $parent ) {
-	$base_title = wprie_alt_explode_expression( WPRIE_ALT_IMAGE_TITLE_EXPRESSION, $attachment, $parent );
+function wprie_imgseo_get_image_title( $attachment, $parent ) {
+	$base_title = wprie_imgseo_explode_expression( WPRIE_IMGSEO_IMAGE_TITLE_EXPRESSION, $attachment, $parent );
 	$title = $base_title;
 	$count = 1;
 	$other = get_page_by_title( $title, 'OBJECT', 'attachment' );
@@ -83,8 +83,8 @@ function wprie_alt_get_image_seo_title( $attachment, $parent ) {
 	return $title;
 }
 
-function wprie_alt_get_image_seo_alt( $attachment, $parent ) {
-	$base_alt = wprie_alt_explode_expression( WPRIE_ALT_IMAGE_ALT_EXPRESSION, $attachment, $parent );
+function wprie_imgseo_get_image_alt( $attachment, $parent ) {
+	$base_alt = wprie_imgseo_explode_expression( WPRIE_IMGSEO_IMAGE_ALT_EXPRESSION, $attachment, $parent );
 	$alt = $base_alt;
 	$count = 1;
 	$args = array(
@@ -108,7 +108,7 @@ function wprie_alt_get_image_seo_alt( $attachment, $parent ) {
 	return $alt;
 }
 
-function wprie_alt_get_image_seo_filename( $attachment, $parent ) {
-	$filename = wprie_alt_explode_expression( WPRIE_ALT_IMAGE_FILENAME_EXPRESSION, $attachment, $parent );
+function wprie_imgseo_get_image_filename( $attachment, $parent ) {
+	$filename = wprie_imgseo_explode_expression( WPRIE_IMGSEO_IMAGE_FILENAME_EXPRESSION, $attachment, $parent );
 	return $filename;
 }

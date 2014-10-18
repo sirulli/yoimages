@@ -38,30 +38,30 @@ if ( is_admin() ) {
 	/* Defaults */
 	define ( 'WPRIE_DEFAULT_CROP_ENABLED', TRUE );
 	define ( 'WPRIE_DEFAULT_CROP_QUALITIES', serialize( array( 100, 80, 60 ) ) );
-	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_TITLE', TRUE );
-	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT', TRUE );
-	define ( 'WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME', TRUE );
+	define ( 'WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_TITLE', TRUE );
+	define ( 'WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_ALT', TRUE );
+	define ( 'WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_FILENAME', TRUE );
 	define ( 'WPRIE_TITLE_EXPRESSION', __( '[title]', WPRIE_DOMAIN ) );
 	define ( 'WPRIE_POST_TYPE_EXPRESSION', __( '[type]', WPRIE_DOMAIN ) );
 	define ( 'WPRIE_SITE_NAME_EXPRESSION', __( '[site_name]', WPRIE_DOMAIN ) );
 	define ( 'WPRIE_TAGS_EXPRESSION', __( '[tags]', WPRIE_DOMAIN ) );
 	define ( 'WPRIE_CATEGORIES_EXPRESSION', __( '[categories]', WPRIE_DOMAIN ) );
-	define ( 'WPRIE_DEFAULT_ALT_IMAGE_TITLE_EXPRESSION', WPRIE_TITLE_EXPRESSION );
-	define ( 'WPRIE_DEFAULT_ALT_IMAGE_ALT_EXPRESSION', WPRIE_TITLE_EXPRESSION );
-	define ( 'WPRIE_DEFAULT_ALT_IMAGE_FILENAME_EXPRESSION', WPRIE_TITLE_EXPRESSION );
+	define ( 'WPRIE_DEFAULT_IMGSEO_IMAGE_TITLE_EXPRESSION', WPRIE_TITLE_EXPRESSION );
+	define ( 'WPRIE_DEFAULT_IMGSEO_IMAGE_ALT_EXPRESSION', WPRIE_TITLE_EXPRESSION );
+	define ( 'WPRIE_DEFAULT_IMGSEO_IMAGE_FILENAME_EXPRESSION', WPRIE_TITLE_EXPRESSION );
 	
 	$wprie_settings = get_option( 'wprie_settings' );
 	
 	define ( 'WPRIE_CROP_ENABLED', $wprie_settings && isset( $wprie_settings['cropping_is_active'] ) ? $wprie_settings['cropping_is_active'] : WPRIE_DEFAULT_CROP_ENABLED );
 	
-	define ( 'WPRIE_ALT_CHANGE_IMAGE_TITLE', $wprie_settings && isset( $wprie_settings['alt_change_image_title'] ) ? $wprie_settings['alt_change_image_title'] : WPRIE_DEFAULT_ALT_CHANGE_IMAGE_TITLE );
-	define ( 'WPRIE_ALT_CHANGE_IMAGE_ALT', $wprie_settings && isset( $wprie_settings['alt_change_image_alt'] ) ? $wprie_settings['alt_change_image_alt'] : WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT );
-	define ( 'WPRIE_ALT_CHANGE_IMAGE_FILENAME', $wprie_settings && isset( $wprie_settings['alt_change_image_filename'] ) ? $wprie_settings['alt_change_image_filename'] : WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME );
-	define ( 'WPRIE_ALT_ENABLED', WPRIE_ALT_CHANGE_IMAGE_TITLE || WPRIE_ALT_CHANGE_IMAGE_ALT || WPRIE_ALT_CHANGE_IMAGE_FILENAME );
+	define ( 'WPRIE_IMGSEO_CHANGE_IMAGE_TITLE', $wprie_settings && isset( $wprie_settings['imgseo_change_image_title'] ) ? $wprie_settings['imgseo_change_image_title'] : WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_TITLE );
+	define ( 'WPRIE_IMGSEO_CHANGE_IMAGE_ALT', $wprie_settings && isset( $wprie_settings['imgseo_change_image_alt'] ) ? $wprie_settings['imgseo_change_image_alt'] : WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_ALT );
+	define ( 'WPRIE_IMGSEO_CHANGE_IMAGE_FILENAME', $wprie_settings && isset( $wprie_settings['imgseo_change_image_filename'] ) ? $wprie_settings['imgseo_change_image_filename'] : WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_FILENAME );
+	define ( 'WPRIE_IMGSEO_ENABLED', WPRIE_IMGSEO_CHANGE_IMAGE_TITLE || WPRIE_IMGSEO_CHANGE_IMAGE_ALT || WPRIE_IMGSEO_CHANGE_IMAGE_FILENAME );
 	
-	define ( 'WPRIE_ALT_IMAGE_TITLE_EXPRESSION', $wprie_settings && isset( $wprie_settings['alt_image_title_expression'] ) ? $wprie_settings['alt_image_title_expression'] : WPRIE_DEFAULT_ALT_IMAGE_TITLE_EXPRESSION );
-	define ( 'WPRIE_ALT_IMAGE_ALT_EXPRESSION', $wprie_settings && isset( $wprie_settings['alt_image_alt_expression'] ) ? $wprie_settings['alt_image_alt_expression'] : WPRIE_DEFAULT_ALT_IMAGE_ALT_EXPRESSION );
-	define ( 'WPRIE_ALT_IMAGE_FILENAME_EXPRESSION', $wprie_settings && isset( $wprie_settings['alt_image_filename_expression'] ) ? $wprie_settings['alt_image_filename_expression'] : WPRIE_DEFAULT_ALT_IMAGE_FILENAME_EXPRESSION );
+	define ( 'WPRIE_IMGSEO_IMAGE_TITLE_EXPRESSION', $wprie_settings && isset( $wprie_settings['imgseo_image_title_expression'] ) ? $wprie_settings['imgseo_image_title_expression'] : WPRIE_DEFAULT_IMGSEO_IMAGE_TITLE_EXPRESSION );
+	define ( 'WPRIE_IMGSEO_IMAGE_ALT_EXPRESSION', $wprie_settings && isset( $wprie_settings['imgseo_image_alt_expression'] ) ? $wprie_settings['imgseo_image_alt_expression'] : WPRIE_DEFAULT_IMGSEO_IMAGE_ALT_EXPRESSION );
+	define ( 'WPRIE_IMGSEO_IMAGE_FILENAME_EXPRESSION', $wprie_settings && isset( $wprie_settings['imgseo_image_filename_expression'] ) ? $wprie_settings['imgseo_image_filename_expression'] : WPRIE_DEFAULT_IMGSEO_IMAGE_FILENAME_EXPRESSION );
 	
 	define ( 'WPRIE_PATH', dirname ( __FILE__ ) . '/' );
 	define ( 'WPRIE_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );
@@ -78,10 +78,10 @@ if ( is_admin() ) {
 		require_once (WPRIE_PATH . 'inc/img-cropping/extend-admin-options-media.php');
 	}
 
-	if ( WPRIE_ALT_ENABLED ) {
-		require_once (WPRIE_PATH . 'inc/alt/commons.php');
-		require_once (WPRIE_PATH . 'inc/alt/extend-attachment-uploading.php');
-		require_once (WPRIE_PATH . 'inc/alt/extend-post-saving.php');
+	if ( WPRIE_IMGSEO_ENABLED ) {
+		require_once (WPRIE_PATH . 'inc/img-seo/commons.php');
+		require_once (WPRIE_PATH . 'inc/img-seo/extend-attachment-uploading.php');
+		require_once (WPRIE_PATH . 'inc/img-seo/extend-post-saving.php');
 	}
 	
 }

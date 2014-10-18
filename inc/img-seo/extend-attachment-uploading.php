@@ -17,18 +17,18 @@ function wprie_attachment_added_to_post_or_page( $attachment_id ) {
 					$attachment_path = get_attached_file( $attachment_id );
 					$attachment_path_info = pathinfo( $attachment_path );
 					
-					if ( WPRIE_ALT_CHANGE_IMAGE_TITLE ) {
-						$attachment->post_title = wprie_alt_get_image_seo_title( $attachment, $post_parent );
-						update_post_meta( $attachment_id, 'wprie_image_seo_title_updated', 'TRUE' );
+					if ( WPRIE_IMGSEO_CHANGE_IMAGE_TITLE ) {
+						$attachment->post_title = wprie_imgseo_get_image_title( $attachment, $post_parent );
+						update_post_meta( $attachment_id, 'wprie_imgseo_title_updated', 'TRUE' );
 					}
 					
-					if ( WPRIE_ALT_CHANGE_IMAGE_ALT ) {
-						update_post_meta( $attachment_id, '_wp_attachment_image_alt', wprie_alt_get_image_seo_alt( $attachment, $post_parent ) );
-						update_post_meta( $attachment_id, 'wprie_image_seo_alt_updated', 'TRUE' );
+					if ( WPRIE_IMGSEO_CHANGE_IMAGE_ALT ) {
+						update_post_meta( $attachment_id, '_wp_attachment_image_alt', wprie_imgseo_get_image_alt( $attachment, $post_parent ) );
+						update_post_meta( $attachment_id, 'wprie_imgseo_alt_updated', 'TRUE' );
 					}
 					
-					if ( WPRIE_ALT_CHANGE_IMAGE_FILENAME ) {
-						$post_parent_slug = sanitize_title( wprie_alt_get_image_seo_filename( $attachment, $post_parent ) );
+					if ( WPRIE_IMGSEO_CHANGE_IMAGE_FILENAME ) {
+						$post_parent_slug = sanitize_title( wprie_imgseo_get_image_filename( $attachment, $post_parent ) );
 						$attachment->post_name = wp_unique_post_slug( $post_parent_slug, $attachment_id, $attachment->post_status, $attachment->post_type, $post_parent_id );
 						$attachment_new_path = $attachment_path_info['dirname'] . '/' . $attachment->post_name . '.' . $attachment_path_info['extension'];
 						$count = 0;
@@ -56,7 +56,7 @@ add_action('add_attachment', 'wprie_attachment_added');
 
 function wprie_update_attachment_metadata( $attachment_metadata, $attachment_id ) {
 	$wprie_tmp_attachment_metadata = get_post_meta( $attachment_id, 'wprie_tmp_attachment_metadata' );
-	if ( WPRIE_ALT_CHANGE_IMAGE_FILENAME && wp_attachment_is_image( $attachment_id ) && ! empty( $wprie_tmp_attachment_metadata ) ) {
+	if ( WPRIE_IMGSEO_CHANGE_IMAGE_FILENAME && wp_attachment_is_image( $attachment_id ) && ! empty( $wprie_tmp_attachment_metadata ) ) {
 		global $wpdb;
 		$wp_attachment_image_src = wp_get_attachment_image_src( $attachment_id );
 		$wpdb->update( $wpdb->posts, array( 'guid' => $wp_attachment_image_src[0] ), array( 'ID' => $attachment_id ) );

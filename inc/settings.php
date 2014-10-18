@@ -48,13 +48,13 @@ class WprieSettingsPage {
 		add_settings_field( 'cropping_is_active', __( 'Active', WPRIE_DOMAIN ), array( $this, 'cropping_is_active_callback' ), 'wprie-settings', 'wprie_crop_options_section' );
 		add_settings_field( 'crop_qualities', __( 'Crop qualities', WPRIE_DOMAIN), array( $this, 'crop_qualities_callback' ), 'wprie-settings', 'wprie_crop_options_section' );
 		
-		add_settings_section( 'wprie_alt_options_section', __( 'SEO for images', WPRIE_DOMAIN ), array( $this, 'print_alt_options_section_info' ), 'wprie-settings' );
-		add_settings_field( 'alt_change_image_title', __( 'Change image title', WPRIE_DOMAIN ), array( $this, 'alt_change_image_title_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
-		add_settings_field( 'alt_image_title_expression', __( 'Image title expression', WPRIE_DOMAIN), array( $this, 'alt_image_title_expression_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
-		add_settings_field( 'alt_change_image_alt', __( 'Change image alt attribute', WPRIE_DOMAIN ), array( $this, 'alt_change_image_alt_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
-		add_settings_field( 'alt_image_alt_expression', __( 'Image alt expression', WPRIE_DOMAIN), array( $this, 'alt_image_alt_expression_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
-		add_settings_field( 'alt_change_image_filename', __( 'Change image file name', WPRIE_DOMAIN ), array( $this, 'alt_change_image_filename_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
-		add_settings_field( 'alt_image_filename_expression', __( 'Image file name expression', WPRIE_DOMAIN), array( $this, 'alt_image_filename_expression_callback' ), 'wprie-settings', 'wprie_alt_options_section' );
+		add_settings_section( 'wprie_imgseo_options_section', __( 'SEO for images', WPRIE_DOMAIN ), array( $this, 'print_imgseo_options_section_info' ), 'wprie-settings' );
+		add_settings_field( 'imgseo_change_image_title', __( 'Change image title', WPRIE_DOMAIN ), array( $this, 'imgseo_change_image_title_callback' ), 'wprie-settings', 'wprie_imgseo_options_section' );
+		add_settings_field( 'imgseo_image_title_expression', __( 'Image title expression', WPRIE_DOMAIN), array( $this, 'imgseo_image_title_expression_callback' ), 'wprie-settings', 'wprie_imgseo_options_section' );
+		add_settings_field( 'imgseo_change_image_alt', __( 'Change image alt attribute', WPRIE_DOMAIN ), array( $this, 'imgseo_change_image_alt_callback' ), 'wprie-settings', 'wprie_imgseo_options_section' );
+		add_settings_field( 'imgseo_image_alt_expression', __( 'Image alt expression', WPRIE_DOMAIN), array( $this, 'imgseo_image_alt_expression_callback' ), 'wprie-settings', 'wprie_imgseo_options_section' );
+		add_settings_field( 'imgseo_change_image_filename', __( 'Change image file name', WPRIE_DOMAIN ), array( $this, 'imgseo_change_image_filename_callback' ), 'wprie-settings', 'wprie_imgseo_options_section' );
+		add_settings_field( 'imgseo_image_filename_expression', __( 'Image file name expression', WPRIE_DOMAIN), array( $this, 'imgseo_image_filename_expression_callback' ), 'wprie-settings', 'wprie_imgseo_options_section' );
 		
 	}
 	
@@ -62,7 +62,7 @@ class WprieSettingsPage {
 		print __('Enter your cropping settings here below', WPRIE_DOMAIN );
 	}
 
-	public function print_alt_options_section_info() {
+	public function print_imgseo_options_section_info() {
 		print __('Enter your images SEO settings here below', WPRIE_DOMAIN );
 		$supported_expressions = array();
 		printf( '<p>' .
@@ -87,51 +87,51 @@ class WprieSettingsPage {
 		);
 	}
 
-	public function alt_change_image_title_callback() {
+	public function imgseo_change_image_title_callback() {
 		printf(
-			'<input type="checkbox" id="alt_change_image_title" name="wprie_settings[alt_change_image_title]" value="TRUE" %s />
-			<p class="description">' . __( 'Lorem ipsum alt_change_image_title', WPRIE_DOMAIN ) . '</p>',
-			$this->options['alt_change_image_title'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_TITLE && ! isset( $this->options['alt_change_image_title'] ) ? 'checked="checked"' : '' )
+			'<input type="checkbox" id="imgseo_change_image_title" name="wprie_settings[imgseo_change_image_title]" value="TRUE" %s />
+			<p class="description">' . __( 'Lorem ipsum imgseo_change_image_title', WPRIE_DOMAIN ) . '</p>',
+			$this->options['imgseo_change_image_title'] ? 'checked="checked"' : ( WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_TITLE && ! isset( $this->options['imgseo_change_image_title'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
-	public function alt_image_title_expression_callback() {
+	public function imgseo_image_title_expression_callback() {
 		printf(
-		'<input type="text" id="alt_image_title_expression" name="wprie_settings[alt_image_title_expression]" value="%s" class="alt_change_image_title-dep" />
-			<p class="description">' . __( 'Lorem ipsum alt_image_title_expression', WPRIE_DOMAIN ) . '</p>',
-				! empty( $this->options['alt_image_title_expression'] ) ? esc_attr( $this->options['alt_image_title_expression'] ) : WPRIE_ALT_IMAGE_TITLE_EXPRESSION
+		'<input type="text" id="imgseo_image_title_expression" name="wprie_settings[imgseo_image_title_expression]" value="%s" class="imgseo_change_image_title-dep" />
+			<p class="description">' . __( 'Lorem ipsum imgseo_image_title_expression', WPRIE_DOMAIN ) . '</p>',
+				! empty( $this->options['imgseo_image_title_expression'] ) ? esc_attr( $this->options['imgseo_image_title_expression'] ) : WPRIE_IMGSEO_IMAGE_TITLE_EXPRESSION
 		);
 	}
 
-	public function alt_change_image_alt_callback() {
+	public function imgseo_change_image_alt_callback() {
 		printf(
-			'<input type="checkbox" id="alt_change_image_alt" name="wprie_settings[alt_change_image_alt]" value="TRUE" %s />
-			<p class="description">' . __( 'Lorem ipsum alt_change_image_alt', WPRIE_DOMAIN ) . '</p>',
-			$this->options['alt_change_image_alt'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_ALT && ! isset( $this->options['alt_change_image_alt'] ) ? 'checked="checked"' : '' )
+			'<input type="checkbox" id="imgseo_change_image_alt" name="wprie_settings[imgseo_change_image_alt]" value="TRUE" %s />
+			<p class="description">' . __( 'Lorem ipsum imgseo_change_image_alt', WPRIE_DOMAIN ) . '</p>',
+			$this->options['imgseo_change_image_alt'] ? 'checked="checked"' : ( WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_ALT && ! isset( $this->options['imgseo_change_image_alt'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
-	public function alt_image_alt_expression_callback() {
+	public function imgseo_image_alt_expression_callback() {
 		printf(
-		'<input type="text" id="alt_image_alt_expression" name="wprie_settings[alt_image_alt_expression]" value="%s" class="alt_change_image_alt-dep" />
-			<p class="description">' . __( 'Lorem ipsum alt_image_alt_expression', WPRIE_DOMAIN ) . '</p>',
-				! empty( $this->options['alt_image_alt_expression'] ) ? esc_attr( $this->options['alt_image_alt_expression'] ) : WPRIE_ALT_IMAGE_ALT_EXPRESSION
+		'<input type="text" id="imgseo_image_alt_expression" name="wprie_settings[imgseo_image_alt_expression]" value="%s" class="imgseo_change_image_alt-dep" />
+			<p class="description">' . __( 'Lorem ipsum imgseo_image_alt_expression', WPRIE_DOMAIN ) . '</p>',
+				! empty( $this->options['imgseo_image_alt_expression'] ) ? esc_attr( $this->options['imgseo_image_alt_expression'] ) : WPRIE_IMGSEO_IMAGE_ALT_EXPRESSION
 		);
 	}
 
-	public function alt_change_image_filename_callback() {
+	public function imgseo_change_image_filename_callback() {
 		printf(
-			'<input type="checkbox" id="alt_change_image_filename" name="wprie_settings[alt_change_image_filename]" value="TRUE" %s />
-			<p class="description">' . __( 'Lorem ipsum alt_change_image_filename', WPRIE_DOMAIN ) . '</p>',
-			$this->options['alt_change_image_filename'] ? 'checked="checked"' : ( WPRIE_DEFAULT_ALT_CHANGE_IMAGE_FILENAME && ! isset( $this->options['alt_change_image_filename'] ) ? 'checked="checked"' : '' )
+			'<input type="checkbox" id="imgseo_change_image_filename" name="wprie_settings[imgseo_change_image_filename]" value="TRUE" %s />
+			<p class="description">' . __( 'Lorem ipsum imgseo_change_image_filename', WPRIE_DOMAIN ) . '</p>',
+			$this->options['imgseo_change_image_filename'] ? 'checked="checked"' : ( WPRIE_DEFAULT_IMGSEO_CHANGE_IMAGE_FILENAME && ! isset( $this->options['imgseo_change_image_filename'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
-	public function alt_image_filename_expression_callback() {
+	public function imgseo_image_filename_expression_callback() {
 		printf(
-		'<input type="text" id="alt_image_filename_expression" name="wprie_settings[alt_image_filename_expression]" value="%s" class="alt_change_image_filename-dep" />
-			<p class="description">' . __( 'Lorem ipsum alt_image_filename_expression', WPRIE_DOMAIN ) . '</p>',
-				! empty( $this->options['alt_image_filename_expression'] ) ? esc_attr( $this->options['alt_image_filename_expression'] ) : WPRIE_ALT_IMAGE_FILENAME_EXPRESSION
+		'<input type="text" id="imgseo_image_filename_expression" name="wprie_settings[imgseo_image_filename_expression]" value="%s" class="imgseo_change_image_filename-dep" />
+			<p class="description">' . __( 'Lorem ipsum imgseo_image_filename_expression', WPRIE_DOMAIN ) . '</p>',
+				! empty( $this->options['imgseo_image_filename_expression'] ) ? esc_attr( $this->options['imgseo_image_filename_expression'] ) : WPRIE_IMGSEO_IMAGE_FILENAME_EXPRESSION
 		);
 	}
 
@@ -167,38 +167,38 @@ class WprieSettingsPage {
 		} else {
 			$new_input['crop_qualities'] = unserialize( WPRIE_DEFAULT_CROP_QUALITIES );
 		}
-		if( $input['alt_change_image_title'] === 'TRUE' || $input['alt_change_image_title'] === TRUE ) {
-			$new_input['alt_change_image_title'] = TRUE;
+		if( $input['imgseo_change_image_title'] === 'TRUE' || $input['imgseo_change_image_title'] === TRUE ) {
+			$new_input['imgseo_change_image_title'] = TRUE;
 		} else {
-			$new_input['alt_change_image_title'] = FALSE;
+			$new_input['imgseo_change_image_title'] = FALSE;
 		}
-		if( $input['alt_change_image_alt'] === 'TRUE' || $input['alt_change_image_alt'] === TRUE ) {
-			$new_input['alt_change_image_alt'] = TRUE;
+		if( $input['imgseo_change_image_alt'] === 'TRUE' || $input['imgseo_change_image_alt'] === TRUE ) {
+			$new_input['imgseo_change_image_alt'] = TRUE;
 		} else {
-			$new_input['alt_change_image_alt'] = FALSE;
+			$new_input['imgseo_change_image_alt'] = FALSE;
 		}
-		if( $input['alt_change_image_filename'] === 'TRUE' || $input['alt_change_image_filename'] === TRUE ) {
-			$new_input['alt_change_image_filename'] = TRUE;
+		if( $input['imgseo_change_image_filename'] === 'TRUE' || $input['imgseo_change_image_filename'] === TRUE ) {
+			$new_input['imgseo_change_image_filename'] = TRUE;
 		} else {
-			$new_input['alt_change_image_filename'] = FALSE;
+			$new_input['imgseo_change_image_filename'] = FALSE;
 		}
-		if( isset( $input['alt_image_title_expression'] ) && ! empty( $input['alt_image_title_expression'] ) ) {
-			$new_input['alt_image_title_expression'] = sanitize_text_field( $input['alt_image_title_expression'] );
+		if( isset( $input['imgseo_image_title_expression'] ) && ! empty( $input['imgseo_image_title_expression'] ) ) {
+			$new_input['imgseo_image_title_expression'] = sanitize_text_field( $input['imgseo_image_title_expression'] );
 		} else {
-			add_settings_error( 'wprie_crop_options_group', 'alt_image_title_expression', __( 'alt_image_title_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_ALT_IMAGE_TITLE_EXPRESSION, 'error' );
-			$new_input['alt_image_title_expression'] = WPRIE_DEFAULT_ALT_IMAGE_TITLE_EXPRESSION;
+			add_settings_error( 'wprie_crop_options_group', 'imgseo_image_title_expression', __( 'imgseo_image_title_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_IMGSEO_IMAGE_TITLE_EXPRESSION, 'error' );
+			$new_input['imgseo_image_title_expression'] = WPRIE_DEFAULT_IMGSEO_IMAGE_TITLE_EXPRESSION;
 		}
-		if( isset( $input['alt_image_alt_expression'] ) && ! empty( $input['alt_image_alt_expression'] ) ) {
-			$new_input['alt_image_alt_expression'] = sanitize_text_field( $input['alt_image_alt_expression'] );
+		if( isset( $input['imgseo_image_alt_expression'] ) && ! empty( $input['imgseo_image_alt_expression'] ) ) {
+			$new_input['imgseo_image_alt_expression'] = sanitize_text_field( $input['imgseo_image_alt_expression'] );
 		} else {
-			add_settings_error( 'wprie_crop_options_group', 'alt_image_alt_expression', __( 'alt_image_alt_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_ALT_IMAGE_ALT_EXPRESSION, 'error' );
-			$new_input['alt_image_alt_expression'] = WPRIE_DEFAULT_ALT_IMAGE_ALT_EXPRESSION;
+			add_settings_error( 'wprie_crop_options_group', 'imgseo_image_alt_expression', __( 'imgseo_image_alt_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_IMGSEO_IMAGE_ALT_EXPRESSION, 'error' );
+			$new_input['imgseo_image_alt_expression'] = WPRIE_DEFAULT_IMGSEO_IMAGE_ALT_EXPRESSION;
 		}
-		if( isset( $input['alt_image_filename_expression'] ) && ! empty( $input['alt_image_filename_expression'] ) ) {
-			$new_input['alt_image_filename_expression'] = sanitize_text_field( $input['alt_image_filename_expression'] );
+		if( isset( $input['imgseo_image_filename_expression'] ) && ! empty( $input['imgseo_image_filename_expression'] ) ) {
+			$new_input['imgseo_image_filename_expression'] = sanitize_text_field( $input['imgseo_image_filename_expression'] );
 		} else {
-			add_settings_error( 'wprie_crop_options_group', 'alt_image_filename_expression', __( 'alt_image_filename_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_ALT_IMAGE_FILENAME_EXPRESSION, 'error' );
-			$new_input['alt_image_filename_expression'] = WPRIE_DEFAULT_ALT_IMAGE_FILENAME_EXPRESSION;
+			add_settings_error( 'wprie_crop_options_group', 'imgseo_image_filename_expression', __( 'imgseo_image_filename_expression is not valid, using default:', WPRIE_DOMAIN ) . ' ' . WPRIE_DEFAULT_IMGSEO_IMAGE_FILENAME_EXPRESSION, 'error' );
+			$new_input['imgseo_image_filename_expression'] = WPRIE_DEFAULT_IMGSEO_IMAGE_FILENAME_EXPRESSION;
 		}
 		return $new_input;
 	}
