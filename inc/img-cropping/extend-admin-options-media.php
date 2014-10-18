@@ -6,7 +6,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 
 function wprie_get_custom_sizes_table_rows() {
 	if ( current_user_can( 'manage_options' ) ) {
-		include (WPRIE_PATH . 'inc/html/custom-sizes-table-rows.php');
+		include (WPRIE_PATH . 'inc/img-cropping/html/custom-sizes-table-rows.php');
 	}
 	die();
 }
