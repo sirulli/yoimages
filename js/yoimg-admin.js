@@ -1,18 +1,18 @@
 //TODO better js
 
-var wprieMediaUploader;
+var yoimgMediaUploader;
 
-function wprieAddEditImageAnchors() {
-	var wprieAddEditImageAnchorsInterval = setInterval(function() {
+function yoimgAddEditImageAnchors() {
+	var yoimgAddEditImageAnchorsInterval = setInterval(function() {
 		if (jQuery('#media-items .edit-attachment').length) {
 			jQuery('#media-items .edit-attachment').each(function(i, k) {
 				try {
 					var currEl = jQuery(this);
 					var mRegexp = /\?post=([0-9]+)/;
 					var match = mRegexp.exec(currEl.attr('href'));
-					if (!currEl.parent().find('.wprie').length && currEl.parent().find('.pinkynail').attr('src').match(/upload/g)) {
+					if (!currEl.parent().find('.yoimg').length && currEl.parent().find('.pinkynail').attr('src').match(/upload/g)) {
 						var data = {
-							'action' : 'wprie_get_edit_image_anchor',
+							'action' : 'yoimg_get_edit_image_anchor',
 							'post' : match[1]
 						};
 						jQuery.post(ajaxurl, data, function(response) {
@@ -27,7 +27,7 @@ function wprieAddEditImageAnchors() {
 	}, 600);
 }
 
-function wprieExtendMediaLightboxTemplate(anchor1, anchor2, anchor3, anchor4) {
+function yoimgExtendMediaLightboxTemplate(anchor1, anchor2, anchor3, anchor4) {
 	var attachmentDetailsTmpl = jQuery('#tmpl-attachment-details').text();
 	attachmentDetailsTmpl = attachmentDetailsTmpl.replace(/(<a class="edit-attachment"[^>]+[^<]+<\/a>)/, '\n$1' + anchor1);
 	jQuery('#tmpl-attachment-details').text(attachmentDetailsTmpl);
@@ -40,52 +40,52 @@ function wprieExtendMediaLightboxTemplate(anchor1, anchor2, anchor3, anchor4) {
 	jQuery('#tmpl-image-details').text(imageDetailsTmpl);
 }
 
-function wprieInitCropImage() {
-	if (typeof wprie_cropper_aspect_ratio !== 'undefined') {
+function yoimgInitCropImage() {
+	if (typeof yoimg_cropper_aspect_ratio !== 'undefined') {
 		function adaptCropPreviewWidth() {
-			var width = Math.min(jQuery('#wprie-cropper-preview-title').width(), wprie_cropper_min_width);
-			jQuery('#wprie-cropper-preview').css({
-				'height' : (width / wprie_cropper_aspect_ratio) + 'px',
+			var width = Math.min(jQuery('#yoimg-cropper-preview-title').width(), yoimg_cropper_min_width);
+			jQuery('#yoimg-cropper-preview').css({
+				'height' : (width / yoimg_cropper_aspect_ratio) + 'px',
 				'width' : width + 'px'
 			});
 		}
 		jQuery(window).resize(adaptCropPreviewWidth);
 		adaptCropPreviewWidth();
 		var cropperData;
-		if (typeof wprie_prev_crop_x !== 'undefined') {
+		if (typeof yoimg_prev_crop_x !== 'undefined') {
 			cropperData = {
-				x : wprie_prev_crop_x,
-				y : wprie_prev_crop_y,
-				width : wprie_prev_crop_width,
-				height : wprie_prev_crop_height
+				x : yoimg_prev_crop_x,
+				y : yoimg_prev_crop_y,
+				width : yoimg_prev_crop_width,
+				height : yoimg_prev_crop_height
 			};
 		} else {
 			cropperData = {};
 		}
-		jQuery('#wprie-cropper-container').css({
-			'max-width' : jQuery('#wprie-cropper-wrapper .attachments').width() + 'px',
-			'max-height' : jQuery('#wprie-cropper-wrapper .attachments').height() + 'px'
+		jQuery('#yoimg-cropper-container').css({
+			'max-width' : jQuery('#yoimg-cropper-wrapper .attachments').width() + 'px',
+			'max-height' : jQuery('#yoimg-cropper-wrapper .attachments').height() + 'px'
 		});
-		jQuery('#wprie-cropper').cropper({
-			aspectRatio : wprie_cropper_aspect_ratio,
-			minWidth : wprie_cropper_min_width,
-			minHeight : wprie_cropper_min_height,
+		jQuery('#yoimg-cropper').cropper({
+			aspectRatio : yoimg_cropper_aspect_ratio,
+			minWidth : yoimg_cropper_min_width,
+			minHeight : yoimg_cropper_min_height,
 			modal : true,
 			data : cropperData,
-			preview : '#wprie-cropper-preview'
+			preview : '#yoimg-cropper-preview'
 		});
 
 		if (wp.media) { // TODO fix issue:
-			jQuery('#wprie-replace-img-btn').show().click(function() {
-				if (wprieMediaUploader) {
+			jQuery('#yoimg-replace-img-btn').show().click(function() {
+				if (yoimgMediaUploader) {
 					// TODO find "the backbone way" solution for dynamic title
-					jQuery('#wprie-replace-media-uploader .media-frame-title h1').text(jQuery(this).attr('title'));
-					wprieMediaUploader.open();
+					jQuery('#yoimg-replace-media-uploader .media-frame-title h1').text(jQuery(this).attr('title'));
+					yoimgMediaUploader.open();
 					return;
 				}
 				var el = jQuery(this);
-				wprieMediaUploader = wp.media({
-					id : 'wprie-replace-media-uploader',
+				yoimgMediaUploader = wp.media({
+					id : 'yoimg-replace-media-uploader',
 					title : el.attr('title'),
 					multiple : false,
 					button : {
@@ -95,48 +95,48 @@ function wprieInitCropImage() {
 						type : 'image'
 					}
 				});
-				wprieMediaUploader.on('select', function() {
-					attachment = wprieMediaUploader.state().get('selection').first().toJSON();
+				yoimgMediaUploader.on('select', function() {
+					attachment = yoimgMediaUploader.state().get('selection').first().toJSON();
 					var data = {
-						'action' : 'wprie_replace_image_for_size',
-						'image' : wprie_image_id,
-						'size' : wprie_image_size,
+						'action' : 'yoimg_replace_image_for_size',
+						'image' : yoimg_image_id,
+						'size' : yoimg_image_size,
 						'replacement' : attachment.id
 					};
 					jQuery.post(ajaxurl, data, function(response) {
-						jQuery('#wprie-cropper-wrapper .wprie-thickbox-partial.active').click();
+						jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active').click();
 					});
 
 				});
-				wprieMediaUploader.open();
-				jQuery('#wprie-replace-media-uploader').parents('.media-modal.wp-core-ui').css('z-index', '17000002');
+				yoimgMediaUploader.open();
+				jQuery('#yoimg-replace-media-uploader').parents('.media-modal.wp-core-ui').css('z-index', '17000002');
 			});
 		}
-		jQuery('#wprie-restore-img-btn').click(function() {
+		jQuery('#yoimg-restore-img-btn').click(function() {
 			var data = {
-				'action' : 'wprie_restore_original_image_for_size',
-				'image' : wprie_image_id,
-				'size' : wprie_image_size
+				'action' : 'yoimg_restore_original_image_for_size',
+				'image' : yoimg_image_id,
+				'size' : yoimg_image_size
 			};
 			jQuery.post(ajaxurl, data, function(response) {
-				jQuery('#wprie-cropper-wrapper .wprie-thickbox-partial.active').click();
+				jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active').click();
 			});
 		});
 
 	}
 }
 
-function wprieCancelCropImage() {
-	jQuery('#wprie-cropper-wrapper').remove();
+function yoimgCancelCropImage() {
+	jQuery('#yoimg-cropper-wrapper').remove();
 }
 
-function wprieCropImage() {
-	jQuery('#wprie-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'inline-block');
-	var data = jQuery('#wprie-cropper').cropper('getData');
-	data['action'] = 'wprie_crop_image';
-	data['post'] = wprie_image_id;
-	data['size'] = wprie_image_size;
-	data['quality'] = jQuery('#wprie-cropper-quality').val();
+function yoimgCropImage() {
+	jQuery('#yoimg-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'inline-block');
+	var data = jQuery('#yoimg-cropper').cropper('getData');
+	data['action'] = 'yoimg_crop_image';
+	data['post'] = yoimg_image_id;
+	data['size'] = yoimg_image_size;
+	data['quality'] = jQuery('#yoimg-cropper-quality').val();
 	jQuery.post(ajaxurl, data, function(response) {
 		// TODO handle errors
 		jQuery('img[src*=\'' + response.filename + '\']').each(function() {
@@ -144,21 +144,21 @@ function wprieCropImage() {
 			var imgSrc = img.attr('src');
 			imgSrc = imgSrc + (imgSrc.indexOf('?') > -1 ? '&' : '?') + '_r=' + Math.floor((Math.random() * 100) + 1);
 			img.attr('src', imgSrc);
-			if (img.parents('.wprie-not-existing-crop').length) {
-				img.parents('.wprie-not-existing-crop').removeClass('wprie-not-existing-crop').find('.message.error').hide();
+			if (img.parents('.yoimg-not-existing-crop').length) {
+				img.parents('.yoimg-not-existing-crop').removeClass('yoimg-not-existing-crop').find('.message.error').hide();
 			}
 		});
 		if (response.smaller) {
-			jQuery('.message.wprie-crop-smaller').show();
+			jQuery('.message.yoimg-crop-smaller').show();
 		} else {
-			jQuery('.message.wprie-crop-smaller').hide();
+			jQuery('.message.yoimg-crop-smaller').hide();
 		}
-		jQuery('#wprie-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'none');
+		jQuery('#yoimg-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'none');
 	});
 
 }
 
-function wprieGetUrlVars() {
+function yoimgGetUrlVars() {
 	var vars = [], hash;
 	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
 	for (var i = 0; i < hashes.length; i++) {
@@ -172,11 +172,11 @@ function wprieGetUrlVars() {
 jQuery(document).ready(function($) {
 
 	if ($('body.post-type-attachment').length) {
-		var currPostId = wprieGetUrlVars()['post'];
+		var currPostId = yoimgGetUrlVars()['post'];
 		var editImageBtn = $('#imgedit-open-btn-' + currPostId);
 		if (editImageBtn.length) {
 			var data = {
-				'action' : 'wprie_get_edit_image_anchor',
+				'action' : 'yoimg_get_edit_image_anchor',
 				'post' : currPostId,
 				'classes' : 'button'
 			};
@@ -186,14 +186,14 @@ jQuery(document).ready(function($) {
 		}
 	}
 
-	wprieAddEditImageAnchors();
+	yoimgAddEditImageAnchors();
 
-	$(document).on('click', 'a.wprie-thickbox', function(e) {
+	$(document).on('click', 'a.yoimg-thickbox', function(e) {
 		e.preventDefault();
 		var currEl = $(this);
 		$.get(currEl.attr('href'), function(data) {
-			if (currEl.hasClass('wprie-thickbox-partial')) {
-				$('#wprie-cropper-wrapper .media-modal-content').empty().append(data);
+			if (currEl.hasClass('yoimg-thickbox-partial')) {
+				$('#yoimg-cropper-wrapper .media-modal-content').empty().append(data);
 			} else {
 				$('body').append(data);
 			}
@@ -201,20 +201,20 @@ jQuery(document).ready(function($) {
 		return false;
 	});
 	$(document).on('click', function(e) {
-		if ($(e.target).attr('id') === 'wprie-cropper-bckgr') {
-			wprieCancelCropImage();
+		if ($(e.target).attr('id') === 'yoimg-cropper-bckgr') {
+			yoimgCancelCropImage();
 		}
 	});
 	$(document).on('keydown', function(e) {
 		if (e.keyCode === 27) {
-			wprieCancelCropImage();
+			yoimgCancelCropImage();
 			return false;
 		}
 	});
 
 	if ($('input#large_size_h').length) {
 		var data = {
-			'action' : 'wprie_get_custom_sizes_table_rows'
+			'action' : 'yoimg_get_custom_sizes_table_rows'
 		};
 		$.post(ajaxurl, data, function(response) {
 			$('input#large_size_h').parents('table.form-table').after(response);

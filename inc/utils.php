@@ -4,29 +4,29 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	die ( 'No script kiddies please!' );
 }
 
-function wprie_get_cropped_image_filename( $filename, $width, $height, $extension ) {
+function yoimg_get_cropped_image_filename( $filename, $width, $height, $extension ) {
 	return $filename . '-' . $width . 'x' . $height . '.' . $extension;
 }
 
-function wprie_get_edit_image_url( $id, $size ) {
-	return admin_url( 'admin-ajax.php' ) . '?action=wprie_edit_thumbnails_page&post=' . $id . '&size=' . $size;
+function yoimg_get_edit_image_url( $id, $size ) {
+	return admin_url( 'admin-ajax.php' ) . '?action=yoimg_edit_thumbnails_page&post=' . $id . '&size=' . $size;
 }
 
-function wprie_get_edit_image_anchor( $id, $size = 'thumbnail', $styles = '', $classes = '' ) {
+function yoimg_get_edit_image_anchor( $id, $size = 'thumbnail', $styles = '', $classes = '' ) {
 	add_thickbox();
-	$edit_crops_url = wprie_get_edit_image_url( $id, $size );
-	return '<a class="wprie-thickbox wprie ' . $classes . '" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '">' . __( 'Edit cropped formats', WPRIE_DOMAIN ) . '</a>';
+	$edit_crops_url = yoimg_get_edit_image_url( $id, $size );
+	return '<a class="yoimg-thickbox yoimg ' . $classes . '" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', YOIMG_DOMAIN ) . '">' . __( 'Edit cropped formats', YOIMG_DOMAIN ) . '</a>';
 }
 
-function wprie_get_edit_image_anchor_ajax() {
+function yoimg_get_edit_image_anchor_ajax() {
 	$classes = empty( $_POST['classes'] ) ? 'edit-attachment' : esc_html( $_POST['classes'] );
-	echo wprie_get_edit_image_anchor( esc_html( $_POST['post'] ), 'thumbnail', 'margin-right:10px;', $classes );
+	echo yoimg_get_edit_image_anchor( esc_html( $_POST['post'] ), 'thumbnail', 'margin-right:10px;', $classes );
 	die();
 }
 
-add_action( 'wp_ajax_wprie_get_edit_image_anchor', 'wprie_get_edit_image_anchor_ajax' );
+add_action( 'wp_ajax_yoimg_get_edit_image_anchor', 'yoimg_get_edit_image_anchor_ajax' );
 
-function wprie_get_image_sizes( $size = '' ) {
+function yoimg_get_image_sizes( $size = '' ) {
 	global $_wp_additional_image_sizes;
 	$sizes = array ();
 	$get_intermediate_image_sizes = get_intermediate_image_sizes ();
@@ -57,7 +57,7 @@ function wprie_get_image_sizes( $size = '' ) {
 	return $sizes;
 }
 
-function wprie_log( $message ) {
+function yoimg_log( $message ) {
 	if( WP_DEBUG === true ){
 		if( is_array( $message ) || is_object( $message ) ){
 			error_log( print_r( $message, true ) );
