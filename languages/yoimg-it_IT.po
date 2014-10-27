@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: YoImages\n"
+"POT-Creation-Date: 2014-10-23 23:45+0100\n"
+"PO-Revision-Date: 2014-10-27 09:43+0100\n"
+"Last-Translator: Matteo Cajani <matteo.cajani@gmail.com>\n"
+"Language-Team: Sirulli <matteo.cajani@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Language: italian\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../wp-responsive-images-enhanced.php:45
+msgid "[title]"
+msgstr ""
+
+#: ../wp-responsive-images-enhanced.php:46
+msgid "[type]"
+msgstr ""
+
+#: ../wp-responsive-images-enhanced.php:47
+msgid "[site_name]"
+msgstr ""
+
+#: ../wp-responsive-images-enhanced.php:48
+msgid "[tags]"
+msgstr ""
+
+#: ../wp-responsive-images-enhanced.php:49
+msgid "[categories]"
+msgstr ""
+
+#: ../inc/utils.php:18
+msgid "Edit cropped formats"
+msgstr ""
+
+#: ../inc/settings.php:22 ../inc/settings.php:32
+msgid "YoImages settings"
+msgstr ""
+
+#: ../inc/settings.php:27
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: ../inc/settings.php:47
+msgid "Cropping"
+msgstr ""
+
+#: ../inc/settings.php:48
+msgid "Active"
+msgstr ""
+
+#: ../inc/settings.php:49
+msgid "Crop qualities"
+msgstr ""
+
+#: ../inc/settings.php:51
+msgid "SEO for images"
+msgstr ""
+
+#: ../inc/settings.php:52
+msgid "Change image title"
+msgstr ""
+
+#: ../inc/settings.php:53
+msgid "Image title expression"
+msgstr ""
+
+#: ../inc/settings.php:54
+msgid "Change image alt attribute"
+msgstr ""
+
+#: ../inc/settings.php:55
+msgid "Image alt expression"
+msgstr ""
+
+#: ../inc/settings.php:56
+msgid "Change image file name"
+msgstr ""
+
+#: ../inc/settings.php:57
+msgid "Image file name expression"
+msgstr ""
+
+#: ../inc/settings.php:62
+msgid "Enter your cropping settings here below"
+msgstr ""
+
+#: ../inc/settings.php:66
+msgid "Enter your images SEO settings here below"
+msgstr ""
+
+#: ../inc/settings.php:69
+msgid "Supported expressions:"
+msgstr ""
+
+#: ../inc/settings.php:77
+msgid "Lorem ipsum cropping_is_active"
+msgstr ""
+
+#: ../inc/settings.php:85
+msgid "Comma separated list of crop quality values"
+msgstr ""
+
+#: ../inc/settings.php:93
+msgid "Lorem ipsum imgseo_change_image_title"
+msgstr ""
+
+#: ../inc/settings.php:101
+msgid "Lorem ipsum imgseo_image_title_expression"
+msgstr ""
+
+#: ../inc/settings.php:109
+msgid "Lorem ipsum imgseo_change_image_alt"
+msgstr ""
+
+#: ../inc/settings.php:117
+msgid "Lorem ipsum imgseo_image_alt_expression"
+msgstr ""
+
+#: ../inc/settings.php:125
+msgid "Lorem ipsum imgseo_change_image_filename"
+msgstr ""
+
+#: ../inc/settings.php:133
+msgid "Lorem ipsum imgseo_image_filename_expression"
+msgstr ""
+
+#: ../inc/settings.php:160
+msgid "Crop qualities value is not valid, using default:"
+msgstr ""
+
+#: ../inc/settings.php:188
+msgid "imgseo_image_title_expression is not valid, using default:"
+msgstr ""
+
+#: ../inc/settings.php:194
+msgid "imgseo_image_alt_expression is not valid, using default:"
+msgstr ""
+
+#: ../inc/settings.php:200
+msgid "imgseo_image_filename_expression is not valid, using default:"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:38
+msgid "Close"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:44
+msgid "Edit cropped formats from full image"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:80
+#: ../inc/img-cropping/html/edit-image-size.php:84
+msgid "Current"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:95
+#, php-format
+msgid ""
+"This crop is smaller (%1$sx%2$s) than expected (%3$sx%4$s), you may replace "
+"the original image for this crop format using the replace button here below "
+"and then cropping it"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:111
+msgid ""
+"Crop cannot be generated because original image is too small, you may "
+"replace the original image for this crop format using the replace button "
+"here below"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:115
+msgid "Crop not generated yet, use the crop button here below to generate it"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:122
+msgid "Crop preview"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:125
+msgid "Replace image source for"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:125
+msgid "Replace"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:127
+msgid "Restore original image source for"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:127
+msgid "Restore"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:138
+msgid "Crop quality"
+msgstr ""
+
+#: ../inc/img-cropping/html/edit-image-size.php:155
+msgid "Crop"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:9
+msgid "Current theme defined sizes"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:14
+msgid "The sizes listed below are the crop and resize formats defined by "
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:32
+msgid "Width"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:33
+msgid "Height"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:35
+msgid "Max Width"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:36
+msgid "Max Height"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:42
+msgid "Type:"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:45
+msgid "Hard cropped"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:49
+msgid "Resized"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:66
+msgid "Hard cropped image"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:66
+msgid ""
+"this image format contains only a part of the original image, it has fixed "
+"width and height so that the image ratio is fixed too, e.g. thumbnail in "
+"listings are cropped"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:73
+msgid "Resized image"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:73
+msgid ""
+"this image format is not cropped but instead it is resized to fit the "
+"maximum available space, either in width or height, therefore this image "
+"ratio is not fixed"
+msgstr ""
+
+#: ../inc/img-cropping/html/custom-sizes-table-rows.php:88
+msgid ""
+"doesn't define any additional image size using the standard Wordpress "
+"functions (<a href=\"http://codex.wordpress.org/Function_Reference/"
+"add_image_size\" target=\"_blank\">add_image_size</a> and <a href=\"http://"
+"codex.wordpress.org/Function_Reference/set_post_thumbnail_size\" target="
+"\"_blank\">set_post_thumbnail_size</a>)"
+msgstr ""

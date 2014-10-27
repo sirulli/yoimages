@@ -8,6 +8,7 @@
  * Author: Matteo Cajani
  * Author URI: http://fagia.martjanplanet.com
  * License: GPL2
+ * Text Domain: yoimg
 **/
 
 /**
@@ -34,6 +35,8 @@ if (! defined ( 'ABSPATH' )) {
 if ( is_admin() ) {
 	
 	define ( 'YOIMG_DOMAIN', 'yoimg' );
+
+	load_plugin_textdomain( YOIMG_DOMAIN, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	
 	/* Defaults */
 	define ( 'YOIMG_DEFAULT_CROP_ENABLED', TRUE );
