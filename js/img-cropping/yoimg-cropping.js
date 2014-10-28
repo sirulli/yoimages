@@ -102,6 +102,7 @@ function yoimgInitCropImage() {
 						'replacement' : attachment.id
 					};
 					jQuery.post(ajaxurl, data, function(response) {
+						yoimgCropImage();
 						jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active').click();
 					});
 
@@ -117,6 +118,7 @@ function yoimgInitCropImage() {
 				'size' : yoimg_image_size
 			};
 			jQuery.post(ajaxurl, data, function(response) {
+				yoimgCropImage();
 				jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active').click();
 			});
 		});
