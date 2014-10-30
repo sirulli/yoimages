@@ -69,6 +69,12 @@ if ( $has_replacement ) {
 						<div class="attachments">
 							<div id="yoimg-cropper-container" style="max-width: <?php echo $full_image_attributes[1]; ?>px;max-height: <?php echo $full_image_attributes[2]; ?>px;">
 								<img id="yoimg-cropper" src="<?php echo $full_image_attributes[0] . '?' . mt_rand( 1000, 9999 ); ?>" style="max-width: 100%;" />
+								<div id="yoimg-replace-restore-wrapper">
+									<div id="yoimg-replace-img-btn" style="display:none;" title="<?php _e( 'Replace image source for', YOIMG_DOMAIN ); ?> <?php echo $yoimg_image_size; ?>" class="button button-primary button-large"><?php _e( 'Replace', YOIMG_DOMAIN ); ?></div>
+									<?php if ( $has_replacement ) {?>
+										<div id="yoimg-restore-img-btn" title="<?php _e( 'Restore original image source for', YOIMG_DOMAIN ); ?> <?php echo $yoimg_image_size; ?>" class="button button-large"><?php _e( 'Restore', YOIMG_DOMAIN ); ?></div>
+									<?php } ?>
+								</div>
 							</div>
 						</div>
 						<div class="media-sidebar">
@@ -121,39 +127,29 @@ if ( $has_replacement ) {
 								<?php } ?>
 								<h3 id="yoimg-cropper-preview-title"><?php _e( 'Crop preview', YOIMG_DOMAIN ); ?></h3>
 								<div id="yoimg-cropper-preview"></div>
-								<div id="yoimg-replace-restore-wrapper">
-									<div id="yoimg-replace-img-btn" style="display:none;" title="<?php _e( 'Replace image source for', YOIMG_DOMAIN ); ?> <?php echo $yoimg_image_size; ?>" class="button button-primary button-large"><?php _e( 'Replace', YOIMG_DOMAIN ); ?></div>
-									<?php if ( $has_replacement ) {?>
-										<div id="yoimg-restore-img-btn" title="<?php _e( 'Restore original image source for', YOIMG_DOMAIN ); ?> <?php echo $yoimg_image_size; ?>" class="button button-large"><?php _e( 'Restore', YOIMG_DOMAIN ); ?></div>
-									<?php } ?>
+								<div class="yoimg-cropper-quality-wrapper">
+									<label for="yoimg-cropper-quality"><?php _e( 'Crop quality', YOIMG_DOMAIN ); ?>:</label>
+									<select name="quality" id="yoimg-cropper-quality">
+									
+										<?php
+										$yoimg_settings = get_option( 'yoimg_settings' );
+										$crop_qualities = $yoimg_settings && isset( $yoimg_settings['crop_qualities'] ) ? $yoimg_settings['crop_qualities'] : unserialize( YOIMG_DEFAULT_CROP_QUALITIES );
+										foreach ($crop_qualities AS $index => $value) {
+										?>
+											<option value="<?php echo $value; ?>"><?php echo $value; ?>%</option>
+										<?php
+										}
+										?>
+									</select>
+								</div>
+								<div class="yoimg-crop-now-wrapper">
+									<a href="<?php echo $is_full_image_too_small ? 'javascript:;' : 'javascript:yoimgCropImage();';?>"
+											class="button media-button button-primary button-large media-button-select <?php echo $is_full_image_too_small ? 'disabled' : '';?>">
+										<?php _e( 'Crop', YOIMG_DOMAIN ); ?> <?php echo $yoimg_image_size; ?>
+									</a>
+									<span class="spinner"></span>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="media-frame-toolbar">
-	        		<div class="media-toolbar">
-						<div class="media-toolbar-primary">
-							<div class="yoimg-cropper-quality-wrapper">
-								<label for="yoimg-cropper-quality"><?php _e( 'Crop quality', YOIMG_DOMAIN ); ?>:</label>
-								<select name="quality" id="yoimg-cropper-quality">
-								
-									<?php
-									$yoimg_settings = get_option( 'yoimg_settings' );
-									$crop_qualities = $yoimg_settings && isset( $yoimg_settings['crop_qualities'] ) ? $yoimg_settings['crop_qualities'] : unserialize( YOIMG_DEFAULT_CROP_QUALITIES );
-									foreach ($crop_qualities AS $index => $value) {
-									?>
-										<option value="<?php echo $value; ?>"><?php echo $value; ?>%</option>
-									<?php
-									}
-									?>
-								</select>
-							</div>
-							<div class="spinner"></div>
-							<a href="<?php echo $is_full_image_too_small ? 'javascript:;' : 'javascript:yoimgCropImage();';?>"
-								class="button media-button button-primary button-large media-button-select <?php echo $is_full_image_too_small ? 'disabled' : '';?>">
-								<?php _e( 'Crop', YOIMG_DOMAIN ); ?> <?php echo $yoimg_image_size; ?>
-							</a>
 						</div>
 					</div>
 				</div>	

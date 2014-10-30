@@ -47,8 +47,8 @@ function yoimgInitCropImage() {
 				'width' : width + 'px'
 			});
 		}
-		jQuery(window).resize(adaptCropPreviewWidth);
 		adaptCropPreviewWidth();
+		jQuery(window).resize(adaptCropPreviewWidth);
 		var cropperData;
 		if (typeof yoimg_prev_crop_x !== 'undefined') {
 			cropperData = {
@@ -71,6 +71,13 @@ function yoimgInitCropImage() {
 			modal : true,
 			data : cropperData,
 			preview : '#yoimg-cropper-preview'
+		});
+
+		function positionReplaceRestoreWrapper() {
+			jQuery('#yoimg-replace-restore-wrapper').appendTo('#yoimg-cropper-wrapper .cropper-container');
+		}
+		jQuery(window).on('built.cropper', function() {
+			setTimeout(positionReplaceRestoreWrapper, 100);
 		});
 
 		if (wp.media) {
@@ -122,7 +129,7 @@ function yoimgInitCropImage() {
 				jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active').click();
 			});
 		});
-
+		setTimeout(adaptCropPreviewWidth, 100);
 	}
 }
 
@@ -131,7 +138,7 @@ function yoimgCancelCropImage() {
 }
 
 function yoimgCropImage() {
-	jQuery('#yoimg-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'inline-block');
+	jQuery('#yoimg-cropper-wrapper .spinner').css('display', 'inline-block');
 	var data = jQuery('#yoimg-cropper').cropper('getData');
 	data['action'] = 'yoimg_crop_image';
 	data['post'] = yoimg_image_id;
@@ -152,7 +159,7 @@ function yoimgCropImage() {
 		} else {
 			jQuery('.message.yoimg-crop-smaller').hide();
 		}
-		jQuery('#yoimg-cropper-wrapper .media-toolbar-primary .spinner').css('display', 'none');
+		jQuery('#yoimg-cropper-wrapper .spinner').css('display', 'none');
 	});
 
 }
