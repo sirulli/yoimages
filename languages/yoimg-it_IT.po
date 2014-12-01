@@ -1,172 +1,193 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: YoImages\n"
-"POT-Creation-Date: 2014-10-23 23:45+0100\n"
-"PO-Revision-Date: 2014-10-27 09:43+0100\n"
-"Last-Translator: Matteo Cajani <matteo.cajani@gmail.com>\n"
-"Language-Team: Sirulli <matteo.cajani@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"Language: italian\n"
-"X-Poedit-SearchPath-0: ..\n"
+"Project-Id-Version: Plugin\n"
+"Language: it\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Matteo Cajani <matteo.cajani@gmail.com>\n"
+"Language-Team: \n"
 
 #: ../wp-responsive-images-enhanced.php:45
 msgid "[title]"
-msgstr ""
+msgstr "[titolo]"
 
 #: ../wp-responsive-images-enhanced.php:46
 msgid "[type]"
-msgstr ""
+msgstr "[tipofile]"
 
 #: ../wp-responsive-images-enhanced.php:47
 msgid "[site_name]"
-msgstr ""
+msgstr "[nome_sito]"
 
 #: ../wp-responsive-images-enhanced.php:48
 msgid "[tags]"
-msgstr ""
+msgstr "[tags]"
 
 #: ../wp-responsive-images-enhanced.php:49
 msgid "[categories]"
-msgstr ""
+msgstr "[categorie]"
 
 #: ../inc/utils.php:18
 msgid "Edit cropped formats"
-msgstr ""
+msgstr "Modifica i crop"
 
 #: ../inc/settings.php:22 ../inc/settings.php:32
 msgid "YoImages settings"
-msgstr ""
+msgstr "Impostazioni di YoImages"
 
 #: ../inc/settings.php:27
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
+msgstr "Non hai permessi sufficienti per accedere a questa pagina"
 
+#. Ma la spunta che abilita il crop praticamente abilita il plugin? cioè potrei usarlo solo per la parte SEO?
 #: ../inc/settings.php:47
 msgid "Cropping"
-msgstr ""
+msgstr "Ritaglio (Crop)"
 
 #: ../inc/settings.php:48
 msgid "Active"
-msgstr ""
+msgstr "Abilitato"
 
 #: ../inc/settings.php:49
 msgid "Crop qualities"
-msgstr ""
+msgstr "Qualità del crop"
 
 #: ../inc/settings.php:51
 msgid "SEO for images"
-msgstr ""
+msgstr "SEO per le immagini"
 
 #: ../inc/settings.php:52
 msgid "Change image title"
-msgstr ""
+msgstr "Attiva la sostituzione del titolo dell'immagine"
 
 #: ../inc/settings.php:53
 msgid "Image title expression"
-msgstr ""
+msgstr "Composizione del titolo dell'immagine"
 
 #: ../inc/settings.php:54
 msgid "Change image alt attribute"
-msgstr ""
+msgstr "Attiva sostituzione del campo alt dell'immagine"
 
 #: ../inc/settings.php:55
 msgid "Image alt expression"
-msgstr ""
+msgstr "Composizione dell'alt dell'immagine"
 
 #: ../inc/settings.php:56
 msgid "Change image file name"
-msgstr ""
+msgstr "Attiva la sostituzione del nome file dell'immagine"
 
 #: ../inc/settings.php:57
 msgid "Image file name expression"
-msgstr ""
+msgstr "Composizione del nome file dell'immagine"
 
 #: ../inc/settings.php:62
 msgid "Enter your cropping settings here below"
-msgstr ""
+msgstr "Modifica qui le impostazioni di crop"
 
 #: ../inc/settings.php:66
 msgid "Enter your images SEO settings here below"
-msgstr ""
+msgstr "Modifica qui le impostazioni SEO per le immagini"
 
 #: ../inc/settings.php:69
 msgid "Supported expressions:"
-msgstr ""
+msgstr "Espressioni supportate"
 
 #: ../inc/settings.php:77
 msgid "Lorem ipsum cropping_is_active"
-msgstr ""
+msgstr "se flaggato il crop è abilitato"
 
 #: ../inc/settings.php:85
 msgid "Comma separated list of crop quality values"
 msgstr ""
+"Indica con valori separati da virgola la qualità di compressione (da 100 "
+"migliore a 50 media)"
 
 #: ../inc/settings.php:93
 msgid "Lorem ipsum imgseo_change_image_title"
 msgstr ""
+"se flaggato il titolo dell'immagine viene sostituito come indicato nel campo "
+"successivo"
 
 #: ../inc/settings.php:101
 msgid "Lorem ipsum imgseo_image_title_expression"
 msgstr ""
+"espressione usata per popolare il campo titolo, i valori accettati sono: "
+"[titolo], [tipofile], [tags], [categorie], [nome_sito]"
 
 #: ../inc/settings.php:109
 msgid "Lorem ipsum imgseo_change_image_alt"
 msgstr ""
+"se flaggato l'alt dell'immagine viene sostituito come indicato nel campo "
+"successivo"
 
 #: ../inc/settings.php:117
 msgid "Lorem ipsum imgseo_image_alt_expression"
 msgstr ""
+"espressione usata per popolare il campo alt, i valori accettati sono: "
+"[titolo], [tipofile], [tags], [categorie], [nome_sito]"
 
 #: ../inc/settings.php:125
 msgid "Lorem ipsum imgseo_change_image_filename"
 msgstr ""
+"se flaggato il nome file dell'immagine viene sostituito come indicato nel "
+"campo successivo"
 
 #: ../inc/settings.php:133
 msgid "Lorem ipsum imgseo_image_filename_expression"
 msgstr ""
+"espressione usata per popolare il nome file, i valori accettati sono: "
+"[titolo], [tipofile], [tags], [categorie], [nome_sito]"
 
 #: ../inc/settings.php:160
 msgid "Crop qualities value is not valid, using default:"
 msgstr ""
+"I valori indicati per la qualità non sono validi, verranno usati quelli di "
+"default"
 
 #: ../inc/settings.php:188
 msgid "imgseo_image_title_expression is not valid, using default:"
 msgstr ""
+"l'espressione usata per popolare il titolo non è valida, verrà usata quella "
+"di default:"
 
 #: ../inc/settings.php:194
 msgid "imgseo_image_alt_expression is not valid, using default:"
 msgstr ""
+"l'espressione usata per popolare l'alt non è valida, verrà usata quella di "
+"default:"
 
 #: ../inc/settings.php:200
 msgid "imgseo_image_filename_expression is not valid, using default:"
 msgstr ""
+"l'espressione usata per popolare il nome file non è valida, verrà usata "
+"quella di default:"
 
 #: ../inc/img-cropping/html/edit-image-size.php:38
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
+#. context? non sono riuscita a trovarla..
 #: ../inc/img-cropping/html/edit-image-size.php:44
 msgid "Edit cropped formats from full image"
-msgstr ""
+msgstr "Modifica i formati di crop dall'originale"
 
 #: ../inc/img-cropping/html/edit-image-size.php:80
 #: ../inc/img-cropping/html/edit-image-size.php:84
 msgid "Current"
-msgstr ""
+msgstr "Attuale"
 
 #: ../inc/img-cropping/html/edit-image-size.php:95
-#, php-format
 msgid ""
 "This crop is smaller (%1$sx%2$s) than expected (%3$sx%4$s), you may replace "
 "the original image for this crop format using the replace button here below "
 "and then cropping it"
 msgstr ""
+"Questo crop è più piccolo (%1$sx%2$s) di quello che serve (%3$sx%4$s), prova "
+"a sostituire l'immagine originale cliccando sul bottone sostituisci qui sotto"
 
 #: ../inc/img-cropping/html/edit-image-size.php:111
 msgid ""
@@ -174,78 +195,87 @@ msgid ""
 "replace the original image for this crop format using the replace button "
 "here below"
 msgstr ""
+"Non è stato possibile generare il crop perché l'immagine originale è troppo "
+"piccola, verrà usata l'immagine nelle sue dimensioni attuali, ti consigliamo "
+"di sostituire l'immagine originale cliccando sul bottone sostituisci qui "
+"sotto"
 
 #: ../inc/img-cropping/html/edit-image-size.php:115
 msgid "Crop not generated yet, use the crop button here below to generate it"
 msgstr ""
+"Il crop non è ancora stato generato, usa il bottone crop qui sotto per "
+"generarlo"
 
 #: ../inc/img-cropping/html/edit-image-size.php:122
 msgid "Crop preview"
-msgstr ""
+msgstr "Anteprima del crop"
 
 #: ../inc/img-cropping/html/edit-image-size.php:125
 msgid "Replace image source for"
-msgstr ""
+msgstr "Sostituisci l'immagine per "
 
 #: ../inc/img-cropping/html/edit-image-size.php:125
 msgid "Replace"
-msgstr ""
+msgstr "Sostituisci"
 
 #: ../inc/img-cropping/html/edit-image-size.php:127
 msgid "Restore original image source for"
-msgstr ""
+msgstr "Ripristina l'immagine per "
 
 #: ../inc/img-cropping/html/edit-image-size.php:127
 msgid "Restore"
-msgstr ""
+msgstr "Ripristina"
 
 #: ../inc/img-cropping/html/edit-image-size.php:138
 msgid "Crop quality"
-msgstr ""
+msgstr "Qualità del crop"
 
 #: ../inc/img-cropping/html/edit-image-size.php:155
 msgid "Crop"
-msgstr ""
+msgstr "Crop"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:9
 msgid "Current theme defined sizes"
-msgstr ""
+msgstr "Il tema in uso imposta le dimensioni"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:14
 msgid "The sizes listed below are the crop and resize formats defined by "
-msgstr ""
+msgstr "Le dimensioni qui sotto sono i crop e i resize impostati dal tema "
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:32
 msgid "Width"
-msgstr ""
+msgstr "Larghezza"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:33
 msgid "Height"
-msgstr ""
+msgstr "Altezza"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:35
 msgid "Max Width"
-msgstr ""
+msgstr "Larghezza massima"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:36
 msgid "Max Height"
-msgstr ""
+msgstr "Altezza massima"
 
+#. Anche questo non lo trovo...
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:42
 msgid "Type:"
-msgstr ""
+msgstr "Type:"
 
+#. non trovato
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:45
 msgid "Hard cropped"
-msgstr ""
+msgstr "Hard cropped"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:49
 msgid "Resized"
-msgstr ""
+msgstr "Ridimensionato"
 
+#. non trovato
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:66
 msgid "Hard cropped image"
-msgstr ""
+msgstr "Hard cropped image"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:66
 msgid ""
@@ -253,10 +283,14 @@ msgid ""
 "width and height so that the image ratio is fixed too, e.g. thumbnail in "
 "listings are cropped"
 msgstr ""
+"Il formato di questa immagine contiene solo una parte dell'immagine "
+"originale che è stata ritagliata e ha larghezza e altezza fisse così che "
+"anche il rapporto sia fisso, per esempio di solito le thumbnail nei listati "
+"sono croppate"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:73
 msgid "Resized image"
-msgstr ""
+msgstr "Immagine ridimensionata"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:73
 msgid ""
@@ -264,6 +298,9 @@ msgid ""
 "maximum available space, either in width or height, therefore this image "
 "ratio is not fixed"
 msgstr ""
+"Il formato di questa immagine non è croppato ma ridimensionato per adattarsi "
+"al massimo allo spazio disponibile, o in larghezza o in altezza, perciò il "
+"rapporto di questa immagine non è fisso"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:88
 msgid ""
@@ -273,3 +310,9 @@ msgid ""
 "codex.wordpress.org/Function_Reference/set_post_thumbnail_size\" target="
 "\"_blank\">set_post_thumbnail_size</a>)"
 msgstr ""
+"Non vengono definite altre misure di crop delle immagini usando la funziona "
+"standard di Wordpress  (<a href=\"http://codex.wordpress.org/"
+"Function_Reference/add_image_size\" target=\"_blank\">aggiungere misure di "
+"crop per le immagini</a> e <a href=\"http://codex.wordpress.org/"
+"Function_Reference/set_post_thumbnail_size\" target=\"_blank\">imposta le "
+"dimensioni della miniatura</a>) "
