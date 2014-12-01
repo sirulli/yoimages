@@ -3,7 +3,7 @@
 /**
  * Plugin Name: YoImages
  * Plugin URI: https://github.com/fagia/wp-responsive-images-enhanced
- * Description: TODO Adds support for showing and managing responsive images.
+ * Description: Better image handling capabilities for Wordpress.
  * Version: 0.0.1
  * Author: Matteo Cajani
  * Author URI: http://fagia.martjanplanet.com
