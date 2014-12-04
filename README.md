@@ -7,7 +7,6 @@ YoImages adds functional enhancements to the Wordpress admin interface:
 - image SEO hooks
 
 
-
 ##Image cropping tools
 
 
@@ -32,3 +31,5 @@ You are free to define metadata values by using fixed texts and the following va
 [todo video]
 
 Each image SEO hook can be enabled or disabled individually.  [todo video]
+
+Translations: Italian, German
