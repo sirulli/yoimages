@@ -1,6 +1,6 @@
 #YoImages
 
-Better image handling capabilities for Wordpress. All you need to handle your images in Wordpress in one plugin. No more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading. 
+Better image handling capabilities for Wordpress. All you need to handle your images in Wordpress in one plugin. No more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading. Images are important for SEO but are never optimized enough. With YoImages you can automatically optimize images for Search Engines.
 
 YoImages adds functional enhancements to the Wordpress admin interface:
 - image cropping tools
