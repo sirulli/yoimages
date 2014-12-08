@@ -6,7 +6,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 
 $sizes = yoimg_get_image_sizes ();
 ?>
-<h3 class="title"><?php _e( 'Current theme defined sizes', YOIMG_DOMAIN ); ?></h3>
+<h3 class="title"><?php _e( 'Image sizes are defined by the current theme', YOIMG_DOMAIN ); ?></h3>
 <?php
 if ( count($sizes ) > 3 ) {
 ?>

@@ -58,7 +58,7 @@ if ( $has_replacement ) {
 		<div class="media-modal-content">
 <?php } ?>
 	    	<div class="media-frame wp-core-ui">	
-				<div class="media-frame-title"><h1><?php _e( 'Edit cropped formats from full image', YOIMG_DOMAIN ); ?> (<?php echo $full_image_attributes[1]; ?>x<?php echo $full_image_attributes[2]; ?>)</h1></div>
+				<div class="media-frame-title"><h1><?php _e( 'Edit crop formats from full image', YOIMG_DOMAIN ); ?> (<?php echo $full_image_attributes[1]; ?>x<?php echo $full_image_attributes[2]; ?>)</h1></div>
 				<div class="media-frame-router">
 					<div class="media-router">
 						<?php
@@ -131,7 +131,7 @@ if ( $has_replacement ) {
 											<?php
 											if ( $is_full_image_too_small ) {
 											?>
-												<p><?php _e( 'Crop cannot be generated because original image is too small, you may replace the original image for this crop format using the replace button here below', YOIMG_DOMAIN ); ?></p>
+												<p><?php _e( 'Crop cannot be generated because original image is too small, actual image size will be used, but you may want to replace the original image for this crop format using the replace button here below', YOIMG_DOMAIN ); ?></p>
 											<?php
 											} else {
 											?>

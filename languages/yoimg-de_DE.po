@@ -32,7 +32,7 @@ msgid "[categories]"
 msgstr "[Kategorien]"
 
 #: ../inc/utils.php:18
-msgid "Edit cropped formats"
+msgid "Edit crop formats"
 msgstr "Bild Ausschneiden"
 
 #: ../inc/settings.php:22 ../inc/settings.php:32
@@ -44,11 +44,11 @@ msgid "You do not have sufficient permissions to access this page."
 msgstr "Sie haben keine Rechte diese Seite zu sehen."
 
 #: ../inc/settings.php:47
-msgid "Cropping"
+msgid "Crop settings"
 msgstr "Ausschnitt"
 
 #: ../inc/settings.php:48
-msgid "Active"
+msgid "Enable"
 msgstr "Einschalten"
 
 #: ../inc/settings.php:49
@@ -96,57 +96,57 @@ msgid "Supported expressions:"
 msgstr "benutzbar Formel"
 
 #: ../inc/settings.php:77
-msgid "Lorem ipsum cropping_is_active"
+msgid "If checked cropping is active"
 msgstr "Wenn auswählt Ausschnitt ist einschaltet"
 
 #: ../inc/settings.php:85
-msgid "Comma separated list of crop quality values"
+msgid "Comma separated list of crop quality values (100 best to 50 medium)"
 msgstr "Ausschnitt Qualität Werte"
 
 #: ../inc/settings.php:93
-msgid "Lorem ipsum imgseo_change_image_title"
+msgid "If checked title will be replaced with the expression here below"
 msgstr "Wenn auswählt Bild Titel mit Title Formel hinstellen wird"
 
 #: ../inc/settings.php:101
-msgid "Lorem ipsum imgseo_image_title_expression"
-msgstr ""
-"Formel benutzt um Bild Titel zu hinstellen, verfügbar Werte sind: [Titel]"
-"[Tags][web_site_Name][Typ][Kategorien]"
+msgid ""
+"expression used to replace the title, accepted values are: [title], [type], "
+"[tags], [categories], [site_name]"
+msgstr "Formel benutzt um Bild Titel zu hinstellen, verfügbar Werte sind:"
 
 #: ../inc/settings.php:109
-msgid "Lorem ipsum imgseo_change_image_alt"
+msgid "If checked alt will be replaced with the expression here below"
 msgstr "Wenn auswählt Bild alt mit alt Formel hinstellen wird"
 
 #: ../inc/settings.php:117
-msgid "Lorem ipsum imgseo_image_alt_expression"
-msgstr ""
-"Formel benutzt um Bild alt zu hinstellen, verfügbar Werte sind: [Titel][Tags]"
-"[web_site_Name][Typ][Kategorien]"
+msgid ""
+"expression used to replace the alt, accepted values are: [title], [type], "
+"[tags], [categories], [site_name]"
+msgstr "Formel benutzt um Bild alt zu hinstellen, verfügbar Werte sind:"
 
 #: ../inc/settings.php:125
-msgid "Lorem ipsum imgseo_change_image_filename"
+msgid "If checked the filename will be replaced with the expression here below"
 msgstr "Wenn auswählt Bild Feile Name mit Feile Name Formel hinstellen wird"
 
 #: ../inc/settings.php:133
-msgid "Lorem ipsum imgseo_image_filename_expression"
-msgstr ""
-"Formel benutzt um Bild Feile Name zu hinstellen, verfügbar Werte sind: "
-"[Titel][Tags][web_site_Name][Typ][Kategorien]"
+msgid ""
+"expression used to replace the filename, accepted values are: [title], "
+"[type], [tags], [categories], [site_name]"
+msgstr "Formel benutzt um Bild Feile Name zu hinstellen, verfügbar Werte sind:"
 
 #: ../inc/settings.php:160
 msgid "Crop qualities value is not valid, using default:"
 msgstr "Ausschnitt Qualität Werte nicht gültig, standard wird benutzen sein "
 
 #: ../inc/settings.php:188
-msgid "imgseo_image_title_expression is not valid, using default:"
+msgid "title expression is not valid, using default:"
 msgstr "Titel Formel nicht gültig, standard wird benutzen"
 
 #: ../inc/settings.php:194
-msgid "imgseo_image_alt_expression is not valid, using default:"
+msgid "alt expression is not valid, using default:"
 msgstr "Alt Formel nicht gültig, standard wird benutzen"
 
 #: ../inc/settings.php:200
-msgid "imgseo_image_filename_expression is not valid, using default:"
+msgid "filename expression is not valid, using default:"
 msgstr "File Name Formel nicht gültig, standard wird benutzen"
 
 #: ../inc/img-cropping/html/edit-image-size.php:38
@@ -154,7 +154,7 @@ msgid "Close"
 msgstr "beenden"
 
 #: ../inc/img-cropping/html/edit-image-size.php:44
-msgid "Edit cropped formats from full image"
+msgid "Edit crop formats from full image"
 msgstr "Ausschnitt von Ursprünglichen Größe editieren"
 
 #: ../inc/img-cropping/html/edit-image-size.php:80
@@ -216,7 +216,7 @@ msgid "Crop"
 msgstr "Ausschneiden"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:9
-msgid "Current theme defined sizes"
+msgid "Image sizes are defined by the current theme"
 msgstr "aktiv Thema bestimmt die Größe"
 
 #: ../inc/img-cropping/html/custom-sizes-table-rows.php:14

@@ -15,7 +15,7 @@ function yoimg_get_edit_image_url( $id, $size ) {
 function yoimg_get_edit_image_anchor( $id, $size = 'thumbnail', $styles = '', $classes = '' ) {
 	add_thickbox();
 	$edit_crops_url = yoimg_get_edit_image_url( $id, $size );
-	return '<a class="yoimg-thickbox yoimg ' . $classes . '" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit cropped formats', YOIMG_DOMAIN ) . '">' . __( 'Edit cropped formats', YOIMG_DOMAIN ) . '</a>';
+	return '<a class="yoimg-thickbox yoimg ' . $classes . '" style="' . $styles . '" href="' . $edit_crops_url . '" title="' . __( 'Edit crop formats', YOIMG_DOMAIN ) . '">' . __( 'Edit crop formats', YOIMG_DOMAIN ) . '</a>';
 }
 
 function yoimg_get_edit_image_anchor_ajax() {
