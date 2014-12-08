@@ -9,7 +9,6 @@ YoImages adds functional enhancements to the Wordpress admin interface:
 
 ##Image cropping tools
 
-
 YoImages' cropping tools let you crop manually each cropping format that your theme defines: this feature gives you full control on how cropped versions of your images will look like.  [todo video]
 
 You can choose to replace the source image for some specific formats [todo video]
@@ -17,7 +16,6 @@ You can choose to replace the source image for some specific formats [todo video
 From the image cropping interface you can change the image quality for each cropped format. [todo video]
 
 ##Image SEO hooks
-
 
 YoImages' SEO hooks automate image metadata (title, alt and filename) population on image upload and on post (or page) saving.  [todo video]
 
@@ -32,10 +30,19 @@ You are free to define metadata values by using fixed texts and the following va
 
 Each image SEO hook can be enabled or disabled individually.  [todo video]
 
+
+
+##Languages supported
+
+Primary: English
+
 Translations: Italian, German
 
-Future Features to implement:
+
+##Future features
+
+Future features to implement:
 - direct search of royalty free images
-- mini built-in image editor (effects, editing, color optimization)
+- simple built-in image editor (effects, editing, color optimization)
 
 
