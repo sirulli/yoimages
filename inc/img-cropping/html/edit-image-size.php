@@ -4,6 +4,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	die ( 'No script kiddies please!' );
 }
 
+$is_immediate_cropping = isset( $_GET['immediatecrop'] ) && $_GET['immediatecrop'] == '1';
 $is_partial_rendering = isset( $_GET['partial'] ) && $_GET['partial'] == '1';
 if ( ! $is_partial_rendering ) {
 ?>
@@ -31,7 +32,7 @@ if ( $has_replacement ) {
 	yoimg_cropper_aspect_ratio = <?php echo $cropped_image_sizes['width']; ?> / <?php echo $cropped_image_sizes['height']; ?>;
 	<?php
 	$crop_x = $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['x'];
-	if ( is_numeric( $crop_x ) && $crop_x >= 0 ) {
+	if ( is_numeric( $crop_x ) && $crop_x >= 0 && ( ! $is_immediate_cropping ) ) {
 	?>
 		yoimg_prev_crop_x = <?php echo $crop_x; ?>;
 		yoimg_prev_crop_y = <?php echo $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['y']; ?>;
@@ -175,7 +176,15 @@ if ( $has_replacement ) {
 	</div>
 	<div id="yoimg-cropper-bckgr" class="media-modal-backdrop"></div>
 </div>
-<?php } ?>
-<script>yoimgInitCropImage();</script>
 <?php
+}
+if ( $is_immediate_cropping ) {
+?>
+	<script>yoimgInitCropImage(true);</script>
+<?php
+} else {
+?>
+	<script>yoimgInitCropImage();</script>
+<?php
+}
 exit();

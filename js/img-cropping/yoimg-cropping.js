@@ -1,5 +1,15 @@
 var yoimgMediaUploader;
 
+function yoimgLoadCropThickbox(href, partial) {
+	jQuery.get(href, function(data) {
+		if (partial) {
+			jQuery('#yoimg-cropper-wrapper .media-modal-content').empty().append(data);
+		} else {
+			jQuery('body').append(data);
+		}
+	});
+}
+
 function yoimgAddEditImageAnchors() {
 	setInterval(function() {
 		if (jQuery('#media-items .edit-attachment').length) {
@@ -38,7 +48,7 @@ function yoimgExtendMediaLightboxTemplate(anchor1, anchor2, anchor3, anchor4) {
 	jQuery('#tmpl-image-details').text(imageDetailsTmpl);
 }
 
-function yoimgInitCropImage() {
+function yoimgInitCropImage(doImmediateCrop) {
 	if (typeof yoimg_cropper_aspect_ratio !== 'undefined') {
 		function adaptCropPreviewWidth() {
 			var width = Math.min(jQuery('#yoimg-cropper-preview-title').width(), yoimg_cropper_min_width);
@@ -64,7 +74,11 @@ function yoimgInitCropImage() {
 			'max-width' : jQuery('#yoimg-cropper-wrapper .attachments').width() + 'px',
 			'max-height' : jQuery('#yoimg-cropper-wrapper .attachments').height() + 'px'
 		});
-		jQuery('#yoimg-cropper').cropper({
+		jQuery('#yoimg-cropper').on('built.cropper', function() {
+			if (doImmediateCrop) {
+				yoimgCropImage();
+			}
+		}).cropper({
 			aspectRatio : yoimg_cropper_aspect_ratio,
 			minWidth : yoimg_cropper_min_width,
 			minHeight : yoimg_cropper_min_height,
@@ -109,8 +123,8 @@ function yoimgInitCropImage() {
 						'replacement' : attachment.id
 					};
 					jQuery.post(ajaxurl, data, function(response) {
-						yoimgCropImage();
-						jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active').click();
+						var currEl = jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active');
+						yoimgLoadCropThickbox(currEl.attr('href') + '&immediatecrop=1', true);
 					});
 
 				});
@@ -125,8 +139,8 @@ function yoimgInitCropImage() {
 				'size' : yoimg_image_size
 			};
 			jQuery.post(ajaxurl, data, function(response) {
-				yoimgCropImage();
-				jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active').click();
+				var currEl = jQuery('#yoimg-cropper-wrapper .yoimg-thickbox-partial.active');
+				yoimgLoadCropThickbox(currEl.attr('href') + '&immediatecrop=1', true);
 			});
 		});
 		setTimeout(adaptCropPreviewWidth, 100);
@@ -197,13 +211,7 @@ jQuery(document).ready(function($) {
 	$(document).on('click', 'a.yoimg-thickbox', function(e) {
 		e.preventDefault();
 		var currEl = $(this);
-		$.get(currEl.attr('href'), function(data) {
-			if (currEl.hasClass('yoimg-thickbox-partial')) {
-				$('#yoimg-cropper-wrapper .media-modal-content').empty().append(data);
-			} else {
-				$('body').append(data);
-			}
-		});
+		yoimgLoadCropThickbox(currEl.attr('href'), currEl.hasClass('yoimg-thickbox-partial'));
 		return false;
 	});
 	$(document).on('click', '#yoimg-cropper-bckgr', function(e) {
