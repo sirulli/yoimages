@@ -4,6 +4,15 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	die ( 'No script kiddies please!' );
 }
 
+$is_partial_rendering = isset( $_GET['partial'] ) && $_GET['partial'] == '1';
+if ( ! $is_partial_rendering ) {
+?>
+	<script>
+		var yoimg_image_id, yoimg_image_size, yoimg_cropper_min_width, yoimg_cropper_min_height, yoimg_cropper_aspect_ratio,yoimg_prev_crop_x, yoimg_prev_crop_y, yoimg_prev_crop_width, yoimg_prev_crop_height;
+	</script>
+<?php
+}
+
 $attachment_metadata = wp_get_attachment_metadata( $yoimg_image_id );
 $cropped_image_sizes = yoimg_get_image_sizes( $yoimg_image_size );
 $replacement = $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['replacement'];
@@ -15,24 +24,31 @@ if ( $has_replacement ) {
 }
 ?>	
 <script>
-	var yoimg_image_id = <?php echo $yoimg_image_id; ?>;
-	var yoimg_image_size = '<?php echo $yoimg_image_size; ?>';
-	var yoimg_cropper_min_width = <?php echo $cropped_image_sizes['width']; ?>;
-	var yoimg_cropper_min_height = <?php echo $cropped_image_sizes['height']; ?>;
-	var yoimg_cropper_aspect_ratio = <?php echo $cropped_image_sizes['width']; ?> / <?php echo $cropped_image_sizes['height']; ?>;
+	yoimg_image_id = <?php echo $yoimg_image_id; ?>;
+	yoimg_image_size = '<?php echo $yoimg_image_size; ?>';
+	yoimg_cropper_min_width = <?php echo $cropped_image_sizes['width']; ?>;
+	yoimg_cropper_min_height = <?php echo $cropped_image_sizes['height']; ?>;
+	yoimg_cropper_aspect_ratio = <?php echo $cropped_image_sizes['width']; ?> / <?php echo $cropped_image_sizes['height']; ?>;
 	<?php
 	$crop_x = $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['x'];
 	if ( is_numeric( $crop_x ) && $crop_x >= 0 ) {
 	?>
-		var yoimg_prev_crop_x = <?php echo $crop_x; ?>;
-		var yoimg_prev_crop_y = <?php echo $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['y']; ?>;
-		var yoimg_prev_crop_width = <?php echo $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['width']; ?>;
-		var yoimg_prev_crop_height = <?php echo $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['height']; ?>;
+		yoimg_prev_crop_x = <?php echo $crop_x; ?>;
+		yoimg_prev_crop_y = <?php echo $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['y']; ?>;
+		yoimg_prev_crop_width = <?php echo $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['width']; ?>;
+		yoimg_prev_crop_height = <?php echo $attachment_metadata['yoimg_attachment_metadata']['crop'][$yoimg_image_size]['height']; ?>;
+	<?php
+	} else {
+	?>
+		yoimg_prev_crop_x = undefined;
+		yoimg_prev_crop_y = undefined;
+		yoimg_prev_crop_width = undefined;
+		yoimg_prev_crop_height = undefined;
 	<?php
 	}
 	?>
 </script>
-<?php if ( ( ! isset( $_GET['partial'] ) ) || $_GET['partial'] != '1' ) { ?>
+<?php if ( ! $is_partial_rendering ) { ?>
 <div id="yoimg-cropper-wrapper">
 	<div class="media-modal wp-core-ui">
 		<a title="<?php _e( 'Close', YOIMG_DOMAIN ); ?>" href="javascript:yoimgCancelCropImage();" class="media-modal-close">
@@ -154,7 +170,7 @@ if ( $has_replacement ) {
 					</div>
 				</div>	
 			</div>
-<?php if ( ( ! isset( $_GET['partial'] ) ) || $_GET['partial'] != '1' ) { ?>
+<?php if ( ! $is_partial_rendering ) { ?>
 		</div>
 	</div>
 	<div id="yoimg-cropper-bckgr" class="media-modal-backdrop"></div>
