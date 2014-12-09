@@ -3,10 +3,10 @@
 /**
  * Plugin Name: YoImages
  * Plugin URI: https://github.com/fagia/wp-responsive-images-enhanced
- * Description: Better image handling capabilities for Wordpress.
+ * Description: Better image handling capabilities for Wordpress. All you need to handle your images in Wordpress in one plugin. No more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading. Images are important for SEO but are never optimized enough. With YoImages you can automatically optimize images for Search Engines. No more alt tag missing or non informative titles or file names. Google can't see the image (yet) but, can read its attributes. YoImages adds functional enhancements to the Wordpress admin interface: image cropping tools and image SEO hooks.
  * Version: 0.0.1
- * Author: Matteo Cajani
- * Author URI: http://fagia.martjanplanet.com
+ * Author: Sirulli
+ * Author URI: https://github.com/fagia/wp-responsive-images-enhanced
  * License: GPL2
  * Text Domain: yoimg
 **/
