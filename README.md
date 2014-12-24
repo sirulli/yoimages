@@ -1,6 +1,7 @@
 #YoImages
 
-Better image handling capabilities for Wordpress. All you need to handle your images in Wordpress in one plugin.
+Better image handling capabilities for Wordpress.
+All you need to handle your images in Wordpress in one plugin.
 
 No more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading.
 
