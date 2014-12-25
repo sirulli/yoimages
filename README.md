@@ -65,3 +65,7 @@ Future features to implement:
 Feel free to report bugs or request new features [here](https://github.com/sirulli/yoimages/issues "").
 
 
+##Credits
+
+Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.github.io/cropper/ "") plugin.
+
