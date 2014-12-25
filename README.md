@@ -52,6 +52,6 @@ Future features to implement:
 - image gallery templates
 
 
-Feel free to report bugs or request new features [here](# "").
+Feel free to report bugs or request new features [here](https://github.com/sirulli/yoimages/issues "").
 
 
