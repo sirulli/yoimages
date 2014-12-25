@@ -2,17 +2,17 @@
 
 /**
  * Plugin Name: YoImages
- * Plugin URI: https://github.com/fagia/wp-responsive-images-enhanced
+ * Plugin URI: http://sirulli.org/yoimages/
  * Description: Better image handling capabilities for Wordpress: image cropping tools and image SEO with automated metadata filling.
  * Version: 0.0.1
  * Author: Sirulli
- * Author URI: https://github.com/fagia/wp-responsive-images-enhanced
+ * Author URI: http://sirulli.org/
  * License: GPL2
  * Text Domain: yoimg
 **/
 
 /**
- * Copyright 2014 Matteo Cajani (email : matteo.cajani@gmail.com)
+ * Copyright 2014-2015 Sirulli (email : team@sirulli.org)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as

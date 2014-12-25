@@ -11,23 +11,23 @@ msgstr ""
 "Last-Translator: Matteo Cajani <matteo.cajani@gmail.com>\n"
 "Language-Team: \n"
 
-#: ../wp-responsive-images-enhanced.php:45
+#: ../yoimages.php:45
 msgid "[title]"
 msgstr "[titolo]"
 
-#: ../wp-responsive-images-enhanced.php:46
+#: ../yoimages.php:46
 msgid "[type]"
 msgstr "[tipofile]"
 
-#: ../wp-responsive-images-enhanced.php:47
+#: ../yoimages.php:47
 msgid "[site_name]"
 msgstr "[nome_sito]"
 
-#: ../wp-responsive-images-enhanced.php:48
+#: ../yoimages.php:48
 msgid "[tags]"
 msgstr "[tags]"
 
-#: ../wp-responsive-images-enhanced.php:49
+#: ../yoimages.php:49
 msgid "[categories]"
 msgstr "[categorie]"
 
