@@ -35,13 +35,12 @@ You are free to define metadata values by using fixed texts and the following va
 - post tags
 - post categories
 
-<a name="seo-custom-hooks" />
+
 ###Adding your own custom hooks
 
 TODO
 
 
-<a name="seo-custom-variables" />
 ###Adding your own custom variables
 
 TODO
