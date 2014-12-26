@@ -11,7 +11,7 @@ YoImages adds functional enhancements to the Wordpress admin interface:
 - image cropping tools
 - image SEO hooks
 
-Watch YoImages [demo video](https://www.youtube.com/watch?v=poAd0iGbBtk "")
+Watch YoImages [demo video](https://www.youtube.com/watch?v=6SAC_QD1CCU "")
 
 
 ##Image cropping tools
