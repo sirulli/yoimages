@@ -26,26 +26,80 @@ From the image cropping interface you can change the image quality for each crop
 
 YoImages' SEO hooks automate image metadata (title, alt and filename) filling on image upload and on post (or page) saving.
 
-Each image SEO hook can be enabled or disabled individually and it works on any image that is child of a post or page such as the featured image and images or galleries added into the post WYSIWG area.
+Each image SEO hook can be enabled or disabled individually and it works on any image that is child of a post or page such as the featured image and images or galleries added into the post WYSIWYG area.
 
 You are free to define metadata values by using fixed texts and the following variables from the post/page that contains an image:
-- post title
-- post type
+- parent post title
+- parent post type
+- parent post tags
+- parent post categories
 - site name
-- post tags
-- post categories
 
 
 ###Adding your own custom hooks
 
-TODO
+YoImages' SEO hooks work on post saving or updating time and updates post's related images metadata.
+The *yoimg_seo_images_to_update* filter allows to add other images to be considered, for example images linked to the post via custom fields.
+
+This filter takes in input the array of the images' ids linked to a post and the post id itself.
+
+The following example shows how YoImages plugin uses this filter to have the featured image metadata updated:
+
+```php
+
+function yoimg_imgseo_add_featured_image( $ids, $post_id ) {
+	$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+	array_push( $ids, $post_thumbnail_id );
+	return $ids;
+}
+add_filter('yoimg_seo_images_to_update', 'yoimg_imgseo_add_featured_image', 10, 2);
+
+```
 
 
 ###Adding your own custom variables
 
-TODO
+To add a new variable you have to hook two filters:
+- *yoimg_seo_expressions*
+- *yoimg_supported_expressions*
 
 
+*yoimg_seo_expressions* is the filter that allows variables substitutions into the string being associated with the image metadata.
+
+This filter makes use of the parent post object and of the attachment image post.
+
+The following example shows how this filter is used for the *\[title\]* variable: 
+
+```php
+
+function example_expression_title( $result, $attachment, $parent ) {
+	if ( strpos( $result, '[title]' ) !== FALSE ) {
+		$result = str_replace( '[title]', $parent->post_title, $result );
+	}
+	return $result;
+}
+add_filter('yoimg_seo_expressions', 'example_expression_title', 10, 3);
+
+```
+
+*yoimg_supported_expressions* is the filter that defines which variables expressions are supported.
+
+This filter takes in input an array of already supported variables and adds new variables to this array.
+
+The following example shows how to add support for the *\[title\]* variable:
+
+```php
+
+function example_supported_expressions( $supported_expressions ) {
+	if ( ! $supported_expressions ) {
+		$supported_expressions = array();
+	}
+	array_push( $supported_expressions, '[title]' );
+	return $supported_expressions;
+}
+add_filter( 'yoimg_supported_expressions', 'example_supported_expressions', 10, 1 );
+
+```
 
 ##Languages supported
 
