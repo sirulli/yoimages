@@ -9,9 +9,11 @@ $sizes = yoimg_get_image_sizes ();
 <h3 class="title"><?php _e( 'Image sizes are defined by the current theme', YOIMG_DOMAIN ); ?></h3>
 <?php
 if ( count($sizes ) > 3 ) {
+	$current_theme = wp_get_theme();
+	$current_theme_name = $current_theme->get( 'Name' );
 ?>
 
-<p><?php _e( 'The sizes listed below are the crop and resize formats defined by ', YOIMG_DOMAIN ); ?> <?php echo get_current_theme(); ?></p>
+<p><?php _e( 'The sizes listed below are the crop and resize formats defined by ', YOIMG_DOMAIN ); ?> <?php echo $current_theme_name; ?></p>
 
 <table class="form-table">
 <tbody>

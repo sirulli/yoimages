@@ -6,7 +6,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 
 function yoimg_get_custom_sizes_table_rows() {
 	if ( current_user_can( 'manage_options' ) ) {
-		include (YOIMG_PATH . 'inc/img-cropping/html/custom-sizes-table-rows.php');
+		include (YOIMG_CROP_PATH . '/html/custom-sizes-table-rows.php');
 	}
 	die();
 }

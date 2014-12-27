@@ -75,7 +75,7 @@ function yoimg_edit_thumbnails_page() {
 	$yoimg_image_id = esc_html( $_GET ['post'] );
 	$yoimg_image_size = esc_html( $_GET ['size'] );
 	if (current_user_can ( 'edit_post', $yoimg_image_id ) ) {
-		include (YOIMG_PATH . 'inc/img-cropping/html/edit-image-size.php');
+		include (YOIMG_CROP_PATH . '/html/edit-image-size.php');
 	} else {
 		die ();
 	}

@@ -12,7 +12,7 @@ function yoimg_default_supported_expressions( $supported_expressions ) {
 }
 add_filter( 'yoimg_supported_expressions', 'yoimg_default_supported_expressions', 10, 1 );
 
-class WprieSettingsPage {
+class YoImagesSettingsPage {
 	
 	private $crop_options;
 	private $seo_options;
@@ -227,4 +227,4 @@ class WprieSettingsPage {
 
 }
 
-new WprieSettingsPage ();
+new YoImagesSettingsPage();

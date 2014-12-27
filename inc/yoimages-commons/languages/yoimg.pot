@@ -35,132 +35,132 @@ msgstr ""
 msgid "[categories]"
 msgstr ""
 
-#: ../inc/utils.php:18
+#: ../inc/yoimages-crop/utils.php:18
 msgid "Edit crop formats"
 msgstr ""
 
-#: ../inc/settings.php:22 ../inc/settings.php:32
+#: ../inc/yoimages-commons/settings.php:22 ../inc/yoimages-commons/settings.php:32
 msgid "YoImages settings"
 msgstr ""
 
-#: ../inc/settings.php:27
+#: ../inc/yoimages-commons/settings.php:27
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: ../inc/settings.php:47
+#: ../inc/yoimages-commons/settings.php:47
 msgid "Crop settings"
 msgstr ""
 
-#: ../inc/settings.php:48
+#: ../inc/yoimages-commons/settings.php:48
 msgid "Enable"
 msgstr ""
 
-#: ../inc/settings.php:49
+#: ../inc/yoimages-commons/settings.php:49
 msgid "Crop qualities"
 msgstr ""
 
-#: ../inc/settings.php:51
+#: ../inc/yoimages-commons/settings.php:51
 msgid "SEO for images"
 msgstr ""
 
-#: ../inc/settings.php:52
+#: ../inc/yoimages-commons/settings.php:52
 msgid "Change image title"
 msgstr ""
 
-#: ../inc/settings.php:53
+#: ../inc/yoimages-commons/settings.php:53
 msgid "Image title expression"
 msgstr ""
 
-#: ../inc/settings.php:54
+#: ../inc/yoimages-commons/settings.php:54
 msgid "Change image alt attribute"
 msgstr ""
 
-#: ../inc/settings.php:55
+#: ../inc/yoimages-commons/settings.php:55
 msgid "Image alt expression"
 msgstr ""
 
-#: ../inc/settings.php:56
+#: ../inc/yoimages-commons/settings.php:56
 msgid "Change image file name"
 msgstr ""
 
-#: ../inc/settings.php:57
+#: ../inc/yoimages-commons/settings.php:57
 msgid "Image file name expression"
 msgstr ""
 
-#: ../inc/settings.php:62
+#: ../inc/yoimages-commons/settings.php:62
 msgid "Enter your cropping settings here below"
 msgstr ""
 
-#: ../inc/settings.php:66
+#: ../inc/yoimages-commons/settings.php:66
 msgid "Enter your images SEO settings here below"
 msgstr ""
 
-#: ../inc/settings.php:69
+#: ../inc/yoimages-commons/settings.php:69
 msgid "Supported expressions:"
 msgstr ""
 
-#: ../inc/settings.php:77
+#: ../inc/yoimages-commons/settings.php:77
 msgid "If checked cropping is active"
 msgstr ""
 
-#: ../inc/settings.php:85
+#: ../inc/yoimages-commons/settings.php:85
 msgid "Comma separated list of crop quality values (100 best to 50 medium)"
 msgstr ""
 
-#: ../inc/settings.php:93
+#: ../inc/yoimages-commons/settings.php:93
 msgid "If checked title will be replaced with the expression here below"
 msgstr ""
 
-#: ../inc/settings.php:101
+#: ../inc/yoimages-commons/settings.php:101
 msgid "expression used to replace the title, accepted values are:"
 msgstr ""
 
-#: ../inc/settings.php:109
+#: ../inc/yoimages-commons/settings.php:109
 msgid "If checked alt will be replaced with the expression here below"
 msgstr ""
 
-#: ../inc/settings.php:117
+#: ../inc/yoimages-commons/settings.php:117
 msgid "expression used to replace the alt, accepted values are:"
 msgstr ""
 
-#: ../inc/settings.php:125
+#: ../inc/yoimages-commons/settings.php:125
 msgid "If checked the filename will be replaced with the expression here below"
 msgstr ""
 
-#: ../inc/settings.php:133
+#: ../inc/yoimages-commons/settings.php:133
 msgid "expression used to replace the filename, accepted values are:"
 msgstr ""
 
-#: ../inc/settings.php:160
+#: ../inc/yoimages-commons/settings.php:160
 msgid "Crop qualities value is not valid, using default:"
 msgstr ""
 
-#: ../inc/settings.php:188
+#: ../inc/yoimages-commons/settings.php:188
 msgid "title expression is not valid, using default:"
 msgstr ""
 
-#: ../inc/settings.php:194
+#: ../inc/yoimages-commons/settings.php:194
 msgid "alt expression is not valid, using default:"
 msgstr ""
 
-#: ../inc/settings.php:200
+#: ../inc/yoimages-commons/settings.php:200
 msgid "filename expression is not valid, using default:"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:38
+#: ../inc/yoimages-crop/html/edit-image-size.php:38
 msgid "Close"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:44
+#: ../inc/yoimages-crop/html/edit-image-size.php:44
 msgid "Edit crop formats from full image"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:80
-#: ../inc/img-cropping/html/edit-image-size.php:84
+#: ../inc/yoimages-crop/html/edit-image-size.php:80
+#: ../inc/yoimages-crop/html/edit-image-size.php:84
 msgid "Current"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:95
+#: ../inc/yoimages-crop/html/edit-image-size.php:95
 #, php-format
 msgid ""
 "This crop is smaller (%1$sx%2$s) than expected (%3$sx%4$s), you may replace "
@@ -168,104 +168,104 @@ msgid ""
 "and then cropping it"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:111
+#: ../inc/yoimages-crop/html/edit-image-size.php:111
 msgid ""
 "Crop cannot be generated because original image is too small, you may "
 "replace the original image for this crop format using the replace button "
 "here below"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:115
+#: ../inc/yoimages-crop/html/edit-image-size.php:115
 msgid "Crop not generated yet, use the crop button here below to generate it"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:122
+#: ../inc/yoimages-crop/html/edit-image-size.php:122
 msgid "Crop preview"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:125
+#: ../inc/yoimages-crop/html/edit-image-size.php:125
 msgid "Replace image source for"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:125
+#: ../inc/yoimages-crop/html/edit-image-size.php:125
 msgid "Replace"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:127
+#: ../inc/yoimages-crop/html/edit-image-size.php:127
 msgid "Restore original image source for"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:127
+#: ../inc/yoimages-crop/html/edit-image-size.php:127
 msgid "Restore"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:138
+#: ../inc/yoimages-crop/html/edit-image-size.php:138
 msgid "Crop quality"
 msgstr ""
 
-#: ../inc/img-cropping/html/edit-image-size.php:155
+#: ../inc/yoimages-crop/html/edit-image-size.php:155
 msgid "Crop"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:9
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:9
 msgid "Image sizes are defined by the current theme"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:14
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:14
 msgid "The sizes listed below are the crop and resize formats defined by "
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:32
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:32
 msgid "Width"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:33
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:33
 msgid "Height"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:35
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:35
 msgid "Max Width"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:36
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:36
 msgid "Max Height"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:42
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:42
 msgid "Type:"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:45
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:45
 msgid "Hard cropped"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:49
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:49
 msgid "Resized"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:66
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:66
 msgid "Hard cropped image"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:66
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:66
 msgid ""
 "this image format contains only a part of the original image, it has fixed "
 "width and height so that the image ratio is fixed too, e.g. thumbnail in "
 "listings are cropped"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:73
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:73
 msgid "Resized image"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:73
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:73
 msgid ""
 "this image format is not cropped but instead it is resized to fit the "
 "maximum available space, either in width or height, therefore this image "
 "ratio is not fixed"
 msgstr ""
 
-#: ../inc/img-cropping/html/custom-sizes-table-rows.php:88
+#: ../inc/yoimages-crop/html/custom-sizes-table-rows.php:88
 msgid ""
 "doesn't define any additional image size using the standard Wordpress "
 "functions (<a href=\"http://codex.wordpress.org/Function_Reference/"
