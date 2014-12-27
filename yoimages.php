@@ -53,18 +53,20 @@ if ( is_admin() ) {
 	define ( 'YOIMG_DEFAULT_IMGSEO_IMAGE_ALT_EXPRESSION', YOIMG_TITLE_EXPRESSION );
 	define ( 'YOIMG_DEFAULT_IMGSEO_IMAGE_FILENAME_EXPRESSION', YOIMG_TITLE_EXPRESSION );
 	
-	$yoimg_settings = get_option( 'yoimg_settings' );
+	$yoimg_crop_settings = get_option( 'yoimg_crop_settings' );
 	
-	define ( 'YOIMG_CROP_ENABLED', $yoimg_settings && isset( $yoimg_settings['cropping_is_active'] ) ? $yoimg_settings['cropping_is_active'] : YOIMG_DEFAULT_CROP_ENABLED );
+	define ( 'YOIMG_CROP_ENABLED', $yoimg_crop_settings && isset( $yoimg_crop_settings['cropping_is_active'] ) ? $yoimg_crop_settings['cropping_is_active'] : YOIMG_DEFAULT_CROP_ENABLED );
 	
-	define ( 'YOIMG_IMGSEO_CHANGE_IMAGE_TITLE', $yoimg_settings && isset( $yoimg_settings['imgseo_change_image_title'] ) ? $yoimg_settings['imgseo_change_image_title'] : YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_TITLE );
-	define ( 'YOIMG_IMGSEO_CHANGE_IMAGE_ALT', $yoimg_settings && isset( $yoimg_settings['imgseo_change_image_alt'] ) ? $yoimg_settings['imgseo_change_image_alt'] : YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_ALT );
-	define ( 'YOIMG_IMGSEO_CHANGE_IMAGE_FILENAME', $yoimg_settings && isset( $yoimg_settings['imgseo_change_image_filename'] ) ? $yoimg_settings['imgseo_change_image_filename'] : YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_FILENAME );
+	$yoimg_seo_settings = get_option( 'yoimg_seo_settings' );
+	
+	define ( 'YOIMG_IMGSEO_CHANGE_IMAGE_TITLE', $yoimg_seo_settings && isset( $yoimg_seo_settings['imgseo_change_image_title'] ) ? $yoimg_seo_settings['imgseo_change_image_title'] : YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_TITLE );
+	define ( 'YOIMG_IMGSEO_CHANGE_IMAGE_ALT', $yoimg_seo_settings && isset( $yoimg_seo_settings['imgseo_change_image_alt'] ) ? $yoimg_seo_settings['imgseo_change_image_alt'] : YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_ALT );
+	define ( 'YOIMG_IMGSEO_CHANGE_IMAGE_FILENAME', $yoimg_seo_settings && isset( $yoimg_seo_settings['imgseo_change_image_filename'] ) ? $yoimg_seo_settings['imgseo_change_image_filename'] : YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_FILENAME );
 	define ( 'YOIMG_IMGSEO_ENABLED', YOIMG_IMGSEO_CHANGE_IMAGE_TITLE || YOIMG_IMGSEO_CHANGE_IMAGE_ALT || YOIMG_IMGSEO_CHANGE_IMAGE_FILENAME );
 	
-	define ( 'YOIMG_IMGSEO_IMAGE_TITLE_EXPRESSION', $yoimg_settings && isset( $yoimg_settings['imgseo_image_title_expression'] ) ? $yoimg_settings['imgseo_image_title_expression'] : YOIMG_DEFAULT_IMGSEO_IMAGE_TITLE_EXPRESSION );
-	define ( 'YOIMG_IMGSEO_IMAGE_ALT_EXPRESSION', $yoimg_settings && isset( $yoimg_settings['imgseo_image_alt_expression'] ) ? $yoimg_settings['imgseo_image_alt_expression'] : YOIMG_DEFAULT_IMGSEO_IMAGE_ALT_EXPRESSION );
-	define ( 'YOIMG_IMGSEO_IMAGE_FILENAME_EXPRESSION', $yoimg_settings && isset( $yoimg_settings['imgseo_image_filename_expression'] ) ? $yoimg_settings['imgseo_image_filename_expression'] : YOIMG_DEFAULT_IMGSEO_IMAGE_FILENAME_EXPRESSION );
+	define ( 'YOIMG_IMGSEO_IMAGE_TITLE_EXPRESSION', $yoimg_seo_settings && isset( $yoimg_seo_settings['imgseo_image_title_expression'] ) ? $yoimg_seo_settings['imgseo_image_title_expression'] : YOIMG_DEFAULT_IMGSEO_IMAGE_TITLE_EXPRESSION );
+	define ( 'YOIMG_IMGSEO_IMAGE_ALT_EXPRESSION', $yoimg_seo_settings && isset( $yoimg_seo_settings['imgseo_image_alt_expression'] ) ? $yoimg_seo_settings['imgseo_image_alt_expression'] : YOIMG_DEFAULT_IMGSEO_IMAGE_ALT_EXPRESSION );
+	define ( 'YOIMG_IMGSEO_IMAGE_FILENAME_EXPRESSION', $yoimg_seo_settings && isset( $yoimg_seo_settings['imgseo_image_filename_expression'] ) ? $yoimg_seo_settings['imgseo_image_filename_expression'] : YOIMG_DEFAULT_IMGSEO_IMAGE_FILENAME_EXPRESSION );
 	
 	define ( 'YOIMG_PATH', dirname ( __FILE__ ) . '/' );
 	define ( 'YOIMG_URL', plugins_url ( basename ( dirname ( __FILE__ ) ) ) . '/' );

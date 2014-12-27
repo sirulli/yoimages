@@ -14,7 +14,8 @@ add_filter( 'yoimg_supported_expressions', 'yoimg_default_supported_expressions'
 
 class WprieSettingsPage {
 	
-	private $options;
+	private $crop_options;
+	private $seo_options;
 	
 	public function __construct() {
 		add_action ( 'admin_menu', array ( $this, 'add_plugin_page_menu_item' ) );
@@ -29,14 +30,26 @@ class WprieSettingsPage {
 		if ( !current_user_can( 'manage_options' ) ) {
 			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 		}
-		$this->options = get_option( 'yoimg_settings' );
+		$this->crop_options = get_option( 'yoimg_crop_settings' );
+		$this->seo_options = get_option( 'yoimg_seo_settings' );
 		?>
 		<div class="wrap" id="yoimg-settings-wrapper">
 			<h2><?php _e( 'YoImages settings', YOIMG_DOMAIN ); ?></h2>
+			<?php
+			if( isset( $_GET[ 'tab' ] ) ) {
+				$active_tab = $_GET[ 'tab' ];
+			} else {
+				$active_tab = 'yoimg-crop-settings';
+			}
+			?>
+			<h2 class="nav-tab-wrapper">
+				<a href="?page=yoimg-settings&tab=yoimg-crop-settings" class="nav-tab <?php echo $active_tab == 'yoimg-crop-settings' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Crop settings', YOIMG_DOMAIN ); ?></a>
+				<a href="?page=yoimg-settings&tab=yoimg-seo-settings" class="nav-tab <?php echo $active_tab == 'yoimg-seo-settings' ? 'nav-tab-active' : ''; ?>"><?php  _e( 'SEO for images', YOIMG_DOMAIN ); ?></a>
+			</h2>
 			<form method="post" action="options.php">
 			<?php
-				settings_fields( 'yoimg_crop_options_group' );   
-				do_settings_sections( 'yoimg-settings' );
+				settings_fields( $active_tab . '-group' );
+				do_settings_sections( $active_tab );
 				submit_button(); 
 			?>
 			</form>
@@ -45,19 +58,20 @@ class WprieSettingsPage {
 	}
 
 	public function init_admin_page() {
-		register_setting( 'yoimg_crop_options_group', 'yoimg_settings', array( $this, 'sanitize' ) );
+		register_setting( 'yoimg-crop-settings-group', 'yoimg_crop_settings', array( $this, 'sanitize_crop' ) );
+		register_setting( 'yoimg-seo-settings-group', 'yoimg_seo_settings', array( $this, 'sanitize_seo' ) );
 		
-		add_settings_section( 'yoimg_crop_options_section', __( 'Crop settings', YOIMG_DOMAIN ), array( $this, 'print_crop_options_section_info' ), 'yoimg-settings' );
-		add_settings_field( 'cropping_is_active', __( 'Enable', YOIMG_DOMAIN ), array( $this, 'cropping_is_active_callback' ), 'yoimg-settings', 'yoimg_crop_options_section' );
-		add_settings_field( 'crop_qualities', __( 'Crop qualities', YOIMG_DOMAIN), array( $this, 'crop_qualities_callback' ), 'yoimg-settings', 'yoimg_crop_options_section' );
+		add_settings_section( 'yoimg_crop_options_section', __( 'Crop settings', YOIMG_DOMAIN ), array( $this, 'print_crop_options_section_info' ), 'yoimg-crop-settings' );
+		add_settings_field( 'cropping_is_active', __( 'Enable', YOIMG_DOMAIN ), array( $this, 'cropping_is_active_callback' ), 'yoimg-crop-settings', 'yoimg_crop_options_section' );
+		add_settings_field( 'crop_qualities', __( 'Crop qualities', YOIMG_DOMAIN), array( $this, 'crop_qualities_callback' ), 'yoimg-crop-settings', 'yoimg_crop_options_section' );
 		
-		add_settings_section( 'yoimg_imgseo_options_section', __( 'SEO for images', YOIMG_DOMAIN ), array( $this, 'print_imgseo_options_section_info' ), 'yoimg-settings' );
-		add_settings_field( 'imgseo_change_image_title', __( 'Change image title', YOIMG_DOMAIN ), array( $this, 'imgseo_change_image_title_callback' ), 'yoimg-settings', 'yoimg_imgseo_options_section' );
-		add_settings_field( 'imgseo_image_title_expression', __( 'Image title expression', YOIMG_DOMAIN), array( $this, 'imgseo_image_title_expression_callback' ), 'yoimg-settings', 'yoimg_imgseo_options_section' );
-		add_settings_field( 'imgseo_change_image_alt', __( 'Change image alt attribute', YOIMG_DOMAIN ), array( $this, 'imgseo_change_image_alt_callback' ), 'yoimg-settings', 'yoimg_imgseo_options_section' );
-		add_settings_field( 'imgseo_image_alt_expression', __( 'Image alt expression', YOIMG_DOMAIN), array( $this, 'imgseo_image_alt_expression_callback' ), 'yoimg-settings', 'yoimg_imgseo_options_section' );
-		add_settings_field( 'imgseo_change_image_filename', __( 'Change image file name', YOIMG_DOMAIN ), array( $this, 'imgseo_change_image_filename_callback' ), 'yoimg-settings', 'yoimg_imgseo_options_section' );
-		add_settings_field( 'imgseo_image_filename_expression', __( 'Image file name expression', YOIMG_DOMAIN), array( $this, 'imgseo_image_filename_expression_callback' ), 'yoimg-settings', 'yoimg_imgseo_options_section' );
+		add_settings_section( 'yoimg_imgseo_options_section', __( 'SEO for images', YOIMG_DOMAIN ), array( $this, 'print_imgseo_options_section_info' ), 'yoimg-seo-settings' );
+		add_settings_field( 'imgseo_change_image_title', __( 'Change image title', YOIMG_DOMAIN ), array( $this, 'imgseo_change_image_title_callback' ), 'yoimg-seo-settings', 'yoimg_imgseo_options_section' );
+		add_settings_field( 'imgseo_image_title_expression', __( 'Image title expression', YOIMG_DOMAIN), array( $this, 'imgseo_image_title_expression_callback' ), 'yoimg-seo-settings', 'yoimg_imgseo_options_section' );
+		add_settings_field( 'imgseo_change_image_alt', __( 'Change image alt attribute', YOIMG_DOMAIN ), array( $this, 'imgseo_change_image_alt_callback' ), 'yoimg-seo-settings', 'yoimg_imgseo_options_section' );
+		add_settings_field( 'imgseo_image_alt_expression', __( 'Image alt expression', YOIMG_DOMAIN), array( $this, 'imgseo_image_alt_expression_callback' ), 'yoimg-seo-settings', 'yoimg_imgseo_options_section' );
+		add_settings_field( 'imgseo_change_image_filename', __( 'Change image file name', YOIMG_DOMAIN ), array( $this, 'imgseo_change_image_filename_callback' ), 'yoimg-seo-settings', 'yoimg_imgseo_options_section' );
+		add_settings_field( 'imgseo_image_filename_expression', __( 'Image file name expression', YOIMG_DOMAIN), array( $this, 'imgseo_image_filename_expression_callback' ), 'yoimg-seo-settings', 'yoimg_imgseo_options_section' );
 		
 	}
 	
@@ -76,69 +90,69 @@ class WprieSettingsPage {
 	
 	public function cropping_is_active_callback() {
 		printf(
-			'<input type="checkbox" id="cropping_is_active" name="yoimg_settings[cropping_is_active]" value="TRUE" %s />
+			'<input type="checkbox" id="cropping_is_active" name="yoimg_crop_settings[cropping_is_active]" value="TRUE" %s />
 			<p class="description">' . __( 'If checked cropping is active', YOIMG_DOMAIN ) . '</p>',
-			$this->options['cropping_is_active'] ? 'checked="checked"' : ( YOIMG_DEFAULT_CROP_ENABLED && ! isset( $this->options['cropping_is_active'] ) ? 'checked="checked"' : '' )
+			$this->crop_options['cropping_is_active'] ? 'checked="checked"' : ( YOIMG_DEFAULT_CROP_ENABLED && ! isset( $this->crop_options['cropping_is_active'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
 	public function crop_qualities_callback() {
 		printf(
-			'<input type="text" id="crop_qualities" name="yoimg_settings[crop_qualities]" value="%s" class="cropping_is_active-dep" />
+			'<input type="text" id="crop_qualities" name="yoimg_crop_settings[crop_qualities]" value="%s" class="cropping_is_active-dep" />
 			<p class="description">' . __( 'Comma separated list of crop quality values (100 best to 50 medium)', YOIMG_DOMAIN ) . '</p>',
-			! empty( $this->options['crop_qualities'] ) ? esc_attr( implode( ',', $this->options['crop_qualities'] ) ) : implode( ',', unserialize( YOIMG_DEFAULT_CROP_QUALITIES ) )
+			! empty( $this->crop_options['crop_qualities'] ) ? esc_attr( implode( ',', $this->crop_options['crop_qualities'] ) ) : implode( ',', unserialize( YOIMG_DEFAULT_CROP_QUALITIES ) )
 		);
 	}
 
 	public function imgseo_change_image_title_callback() {
 		printf(
-			'<input type="checkbox" id="imgseo_change_image_title" name="yoimg_settings[imgseo_change_image_title]" value="TRUE" %s />
+			'<input type="checkbox" id="imgseo_change_image_title" name="yoimg_seo_settings[imgseo_change_image_title]" value="TRUE" %s />
 			<p class="description">' . __( 'If checked title will be replaced with the expression here below', YOIMG_DOMAIN ) . '</p>',
-			$this->options['imgseo_change_image_title'] ? 'checked="checked"' : ( YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_TITLE && ! isset( $this->options['imgseo_change_image_title'] ) ? 'checked="checked"' : '' )
+			$this->seo_options['imgseo_change_image_title'] ? 'checked="checked"' : ( YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_TITLE && ! isset( $this->seo_options['imgseo_change_image_title'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
 	public function imgseo_image_title_expression_callback() {
 		printf(
-		'<input type="text" id="imgseo_image_title_expression" name="yoimg_settings[imgseo_image_title_expression]" value="%s" class="imgseo_change_image_title-dep" />
+		'<input type="text" id="imgseo_image_title_expression" name="yoimg_seo_settings[imgseo_image_title_expression]" value="%s" class="imgseo_change_image_title-dep" />
 			<p class="description">' . __( 'expression used to replace the title, accepted values are:', YOIMG_DOMAIN ) . ' ' . implode( ', ', apply_filters( 'yoimg_supported_expressions', $supported_expressions ) ) . '</p>',
-				! empty( $this->options['imgseo_image_title_expression'] ) ? esc_attr( $this->options['imgseo_image_title_expression'] ) : YOIMG_IMGSEO_IMAGE_TITLE_EXPRESSION
+				! empty( $this->seo_options['imgseo_image_title_expression'] ) ? esc_attr( $this->seo_options['imgseo_image_title_expression'] ) : YOIMG_IMGSEO_IMAGE_TITLE_EXPRESSION
 		);
 	}
 
 	public function imgseo_change_image_alt_callback() {
 		printf(
-			'<input type="checkbox" id="imgseo_change_image_alt" name="yoimg_settings[imgseo_change_image_alt]" value="TRUE" %s />
+			'<input type="checkbox" id="imgseo_change_image_alt" name="yoimg_seo_settings[imgseo_change_image_alt]" value="TRUE" %s />
 			<p class="description">' . __( 'If checked alt will be replaced with the expression here below', YOIMG_DOMAIN ) . '</p>',
-			$this->options['imgseo_change_image_alt'] ? 'checked="checked"' : ( YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_ALT && ! isset( $this->options['imgseo_change_image_alt'] ) ? 'checked="checked"' : '' )
+			$this->seo_options['imgseo_change_image_alt'] ? 'checked="checked"' : ( YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_ALT && ! isset( $this->seo_options['imgseo_change_image_alt'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
 	public function imgseo_image_alt_expression_callback() {
 		printf(
-		'<input type="text" id="imgseo_image_alt_expression" name="yoimg_settings[imgseo_image_alt_expression]" value="%s" class="imgseo_change_image_alt-dep" />
+		'<input type="text" id="imgseo_image_alt_expression" name="yoimg_seo_settings[imgseo_image_alt_expression]" value="%s" class="imgseo_change_image_alt-dep" />
 			<p class="description">' . __( 'expression used to replace the alt, accepted values are:', YOIMG_DOMAIN ) . ' ' . implode( ', ', apply_filters( 'yoimg_supported_expressions', $supported_expressions ) ) . '</p>',
-				! empty( $this->options['imgseo_image_alt_expression'] ) ? esc_attr( $this->options['imgseo_image_alt_expression'] ) : YOIMG_IMGSEO_IMAGE_ALT_EXPRESSION
+				! empty( $this->seo_options['imgseo_image_alt_expression'] ) ? esc_attr( $this->seo_options['imgseo_image_alt_expression'] ) : YOIMG_IMGSEO_IMAGE_ALT_EXPRESSION
 		);
 	}
 
 	public function imgseo_change_image_filename_callback() {
 		printf(
-			'<input type="checkbox" id="imgseo_change_image_filename" name="yoimg_settings[imgseo_change_image_filename]" value="TRUE" %s />
+			'<input type="checkbox" id="imgseo_change_image_filename" name="yoimg_seo_settings[imgseo_change_image_filename]" value="TRUE" %s />
 			<p class="description">' . __( 'If checked the filename will be replaced with the expression here below', YOIMG_DOMAIN ) . '</p>',
-			$this->options['imgseo_change_image_filename'] ? 'checked="checked"' : ( YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_FILENAME && ! isset( $this->options['imgseo_change_image_filename'] ) ? 'checked="checked"' : '' )
+			$this->seo_options['imgseo_change_image_filename'] ? 'checked="checked"' : ( YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_FILENAME && ! isset( $this->seo_options['imgseo_change_image_filename'] ) ? 'checked="checked"' : '' )
 		);
 	}
 
 	public function imgseo_image_filename_expression_callback() {
 		printf(
-		'<input type="text" id="imgseo_image_filename_expression" name="yoimg_settings[imgseo_image_filename_expression]" value="%s" class="imgseo_change_image_filename-dep" />
+		'<input type="text" id="imgseo_image_filename_expression" name="yoimg_seo_settings[imgseo_image_filename_expression]" value="%s" class="imgseo_change_image_filename-dep" />
 			<p class="description">' . __( 'expression used to replace the filename, accepted values are:', YOIMG_DOMAIN ) . ' ' . implode( ', ', apply_filters( 'yoimg_supported_expressions', $supported_expressions ) ) . '</p>',
-				! empty( $this->options['imgseo_image_filename_expression'] ) ? esc_attr( $this->options['imgseo_image_filename_expression'] ) : YOIMG_IMGSEO_IMAGE_FILENAME_EXPRESSION
+				! empty( $this->seo_options['imgseo_image_filename_expression'] ) ? esc_attr( $this->seo_options['imgseo_image_filename_expression'] ) : YOIMG_IMGSEO_IMAGE_FILENAME_EXPRESSION
 		);
 	}
 
-	public function sanitize( $input ) {
+	public function sanitize_crop( $input ) {
 		$new_input = array();
 		if( $input['cropping_is_active'] === 'TRUE' || $input['cropping_is_active'] === TRUE ) {
 			$new_input['cropping_is_active'] = TRUE;
@@ -170,6 +184,11 @@ class WprieSettingsPage {
 		} else {
 			$new_input['crop_qualities'] = unserialize( YOIMG_DEFAULT_CROP_QUALITIES );
 		}
+		return $new_input;
+	}
+
+	public function sanitize_seo( $input ) {
+		$new_input = array();
 		if( $input['imgseo_change_image_title'] === 'TRUE' || $input['imgseo_change_image_title'] === TRUE ) {
 			$new_input['imgseo_change_image_title'] = TRUE;
 		} else {
@@ -205,7 +224,7 @@ class WprieSettingsPage {
 		}
 		return $new_input;
 	}
-	
+
 }
 
 new WprieSettingsPage ();
