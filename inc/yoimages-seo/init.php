@@ -6,6 +6,7 @@ if (! defined ( 'ABSPATH' )) {
 if (is_admin ()) {
 	
 	define ( 'YOIMG_SEO_PATH', dirname ( __FILE__ ) );
+	yoimg_register_module ( YOIMG_SEO_PATH, TRUE );
 	
 	define ( 'YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_TITLE', TRUE );
 	define ( 'YOIMG_DEFAULT_IMGSEO_CHANGE_IMAGE_ALT', TRUE );

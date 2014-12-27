@@ -6,6 +6,7 @@ if (! defined ( 'ABSPATH' )) {
 if (is_admin ()) {
 	
 	define ( 'YOIMG_CROP_PATH', dirname ( __FILE__ ) );
+	yoimg_register_module ( YOIMG_CROP_PATH, TRUE );
 	
 	define ( 'YOIMG_DEFAULT_CROP_ENABLED', TRUE );
 	define ( 'YOIMG_DEFAULT_CROP_QUALITIES', serialize ( array (

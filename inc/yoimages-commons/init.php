@@ -8,7 +8,15 @@ if (is_admin ()) {
 	define ( 'YOIMG_COMMONS_PATH', dirname ( __FILE__ ) );
 	define ( 'YOIMG_COMMONS_URL', plugins_url ( plugin_basename ( YOIMG_COMMONS_PATH ) ) );
 	
+	global $yoimg_plugins_url;
+	$yoimg_plugins_url = array (
+		'yoimages-crop' => 'http://TODO/yoimages-crop',
+		'yoimages-seo' => 'http://TODO/yoimages-seo'
+	);
+	
 	require_once (YOIMG_COMMONS_PATH . '/utils.php');
+	
+	yoimg_register_module ( YOIMG_COMMONS_PATH );
 	
 	define ( 'YOIMG_DOMAIN', 'yoimg' );
 	load_plugin_textdomain ( YOIMG_DOMAIN, FALSE, plugin_basename ( YOIMG_COMMONS_PATH . '/languages/' ) );
