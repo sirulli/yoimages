@@ -3,15 +3,6 @@ if (! defined ( 'ABSPATH' )) {
 	die ( 'No script kiddies please!' );
 }
 
-function yoimg_default_supported_expressions( $supported_expressions ) {
-	if ( ! $supported_expressions ) {
-		$supported_expressions = array();
-	}
-	array_push( $supported_expressions, YOIMG_TITLE_EXPRESSION, YOIMG_POST_TYPE_EXPRESSION, YOIMG_SITE_NAME_EXPRESSION, YOIMG_TAGS_EXPRESSION, YOIMG_CATEGORIES_EXPRESSION );
-	return $supported_expressions;
-}
-add_filter( 'yoimg_supported_expressions', 'yoimg_default_supported_expressions', 10, 1 );
-
 class YoImagesSettingsPage {
 	
 	private $crop_options;
