@@ -32,6 +32,6 @@ if (! defined ( 'ABSPATH' )) {
 }
 
 define ( 'YOIMG_PATH', dirname ( __FILE__ ) );
-require_once (YOIMG_PATH . '/inc/yoimages-commons/init.php');
-require_once (YOIMG_PATH . '/inc/yoimages-crop/init.php');
-require_once (YOIMG_PATH . '/inc/yoimages-seo/init.php');
+require_once (YOIMG_PATH . '/vendor/sirulli/yoimages-commons/inc/init.php');
+require_once (YOIMG_PATH . '/vendor/sirulli/yoimages-crop/inc/init.php');
+require_once (YOIMG_PATH . '/vendor/sirulli/yoimages-seo/inc/init.php');

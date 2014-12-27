@@ -1,3 +1,22 @@
 {
-    "name" : "sirulli/yoimages"
+    "name" : "sirulli/yoimages",
+    "repositories" : [
+        {
+            "type" : "vcs",
+            "url" : "https://github.com/sirulli/yoimages-commons"
+        },
+        {
+            "type" : "vcs",
+            "url" : "https://github.com/sirulli/yoimages-crop"
+        },
+        {
+            "type" : "vcs",
+            "url" : "https://github.com/sirulli/yoimages-seo"
+        }
+    ],
+    "require" : {
+        "sirulli/yoimages-commons" : "master-dev",
+        "sirulli/yoimages-crop" : "master-dev",
+        "sirulli/yoimages-seo" : "master-dev"
+    }
 }
