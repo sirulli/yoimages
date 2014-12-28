@@ -104,6 +104,14 @@ add_filter( 'yoimg_supported_expressions', 'example_supported_expressions', 10, 
 ##Install YoImages from sources
 
 YoImages is a modular Wordpress plugin built with [Composer](https://getcomposer.org/ "").
+
+YoImages includes the following modules:
+
+* [YoImages Commons] (https://github.com/sirulli/yoimages-commons "")
+* [YoImages Crop] (https://github.com/sirulli/yoimages-crop "")
+* [YoImages SEO] (https://github.com/sirulli/yoimages-seo "")
+
+
 To install it from sources go to your Wordpress plugin directory via terminal and there:
 
 ```sh
