@@ -4,7 +4,7 @@ Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,7 @@ Feel free to report bugs or request new features [here](https://github.com/sirul
 = Credits =
 
 Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.github.io/cropper/) plugin.
+Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/) for the Dutch translations of the plugin.
 
 = Source code =
 
@@ -92,3 +93,6 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 = 0.0.1 =
 initial version
 
+= 0.0.2 =
+* Dutch translations, thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/)
+* Bugfix: SEO expressions replacement in any languange (not only in the language currently enabled)
