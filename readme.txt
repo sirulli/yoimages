@@ -47,7 +47,7 @@ You are free to define metadata values by using fixed texts and the following va
 = Languages supported =
 
 * Primary: English
-* Translations: Italian, German
+* Translations: Italian, German, Dutch
 
 
 = Future features =

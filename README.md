@@ -138,7 +138,7 @@ php composer.phar update
 
 Primary: English
 
-Translations: Italian, German
+Translations: Italian, German, Dutch
 
 
 ##Future features
