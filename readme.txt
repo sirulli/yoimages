@@ -49,6 +49,8 @@ You are free to define metadata values by using fixed texts and the following va
 * Primary: English
 * Translations: Italian, German, Dutch
 
+Translations are managed with [poeditor.com](https://poeditor.com/projects/view?id=25799 "").
+
 
 = Future features =
 

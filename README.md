@@ -140,6 +140,7 @@ Primary: English
 
 Translations: Italian, German, Dutch
 
+Translations are managed with [poeditor.com](https://poeditor.com/projects/view?id=25799 "").
 
 ##Future features
 
