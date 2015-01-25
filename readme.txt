@@ -92,9 +92,13 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 
 == Changelog ==
 
-= 0.0.1 =
-initial version
+= 0.0.3 =
+* Support for retina cropping: integration with the [WP Retina 2x plugin](https://wordpress.org/plugins/wp-retina-2x/)
+* Bugfix: avoid undefined index error notice
 
 = 0.0.2 =
 * Dutch translations, thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/)
 * Bugfix: SEO expressions replacement in any languange (not only in the language currently enabled)
+
+= 0.0.1 =
+* initial version
