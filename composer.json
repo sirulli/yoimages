@@ -15,8 +15,8 @@
         }
     ],
     "require" : {
-        "sirulli/yoimages-commons" : "master-dev",
-        "sirulli/yoimages-crop" : "master-dev",
+        "sirulli/yoimages-commons" : "dev-retina_cropping",
+        "sirulli/yoimages-crop" : "dev-retina_cropping",
         "sirulli/yoimages-seo" : "master-dev"
     }
 }
