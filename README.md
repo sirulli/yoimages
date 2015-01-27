@@ -22,6 +22,8 @@ You can choose to replace the source image for some specific formats.
 
 From the image cropping interface you can change the image quality for each cropped format.
 
+YoImages cropping is retina friendly: if you are using a retina plugin that uses the standard @2x as file naming convention when creating retina images from source (e.g. [WP Retina 2x](https://wordpress.org/plugins/wp-retina-2x/ "")) you can enable the retina friendly cropping option in YoImages' settings page and the manual crops will be created in retina format too.
+
 ##Image SEO hooks
 
 YoImages' SEO hooks automate image metadata (title, alt and filename) filling on image upload and on post (or page) saving.
@@ -159,5 +161,6 @@ Feel free to report bugs or request new features [here](https://github.com/sirul
 ##Credits
 
 Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.github.io/cropper/ "") plugin.
+
 Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/ "") for the Dutch translations of the plugin.
 
