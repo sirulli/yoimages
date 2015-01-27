@@ -72,7 +72,6 @@ Feel free to report bugs or request new features [here](https://github.com/sirul
 = Credits =
 
 Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.github.io/cropper/) plugin.
-
 Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/) for the Dutch translations of the plugin.
 
 
