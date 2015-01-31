@@ -99,7 +99,7 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 
 = 0.0.4 =
 * Added SEO expressions related to the post author metadata: username, first name and last name
-* Minor UX fixes
+* Minor fixes on UX and on default translations
 
 = 0.0.3 =
 * Support for retina cropping: integration with the [WP Retina 2x plugin](https://wordpress.org/plugins/wp-retina-2x/)
