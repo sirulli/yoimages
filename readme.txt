@@ -4,7 +4,7 @@ Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 0.0.3
+Stable tag: 0.0.4
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,9 @@ You are free to define metadata values by using fixed texts and the following va
 * parent post type
 * parent post tags
 * parent post categories
+* parent post author username
+* parent post author first name
+* parent post author last name
 * site name
 
 
@@ -93,6 +96,10 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 4. custom metadata values even on gallery creation
 
 == Changelog ==
+
+= 0.0.4 =
+* Added SEO expressions related to the post author metadata: username, first name and last name
+* Minor UX fixes
 
 = 0.0.3 =
 * Support for retina cropping: integration with the [WP Retina 2x plugin](https://wordpress.org/plugins/wp-retina-2x/)

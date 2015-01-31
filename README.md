@@ -35,6 +35,9 @@ You are free to define metadata values by using fixed texts and the following va
 - parent post type
 - parent post tags
 - parent post categories
+- parent post author username
+- parent post author first name
+- parent post author last name
 - site name
 
 
