@@ -143,7 +143,7 @@ php composer.phar update
 
 Primary: English
 
-Translations: Italian, German, Dutch
+Translations: Italian, German, Dutch, French
 
 Translations are managed with [poeditor.com](https://poeditor.com/projects/view?id=25799 "").
 
@@ -167,3 +167,4 @@ Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.githu
 
 Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/ "") for the Dutch translations of the plugin.
 
+Thanks to Maxime Lafontaine for the French translations of the plugin.
