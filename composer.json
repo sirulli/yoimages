@@ -12,11 +12,16 @@
         {
             "type" : "vcs",
             "url" : "https://github.com/sirulli/yoimages-seo"
+        },
+        {
+            "type" : "vcs",
+            "url" : "https://github.com/sirulli/yoimages-search"
         }
     ],
     "require" : {
         "sirulli/yoimages-commons" : "dev-search",
         "sirulli/yoimages-crop" : "dev-search",
-        "sirulli/yoimages-seo" : "dev-search"
+        "sirulli/yoimages-seo" : "dev-search",
+        "sirulli/yoimages-search" : "dev-search"
     }
 }
