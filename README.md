@@ -167,4 +167,4 @@ Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.githu
 
 Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/ "") for the Dutch translations of the plugin.
 
-Thanks to Maxime Lafontaine for the French translations of the plugin.
+Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/ "") for the French translations of the plugin.
