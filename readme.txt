@@ -100,7 +100,7 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 
 = 0.0.5 =
 * French translations, thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/)
-* Tested up to: 4.1.1 
+* Tested up to Wordpress 4.1.1 
 
 = 0.0.4 =
 * Added SEO expressions related to the post author metadata: username, first name and last name
