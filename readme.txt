@@ -4,7 +4,7 @@ Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.0.5
+Stable tag: 0.0.6
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
