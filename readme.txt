@@ -98,6 +98,9 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 
 == Changelog ==
 
+= 0.0.6 =
+* Bugfix: avoiding undefined index notice while saving settings and avoiding "crop retina is smaller" warning when retina crop isn't enabled
+
 = 0.0.5 =
 * French translations, thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/)
 * Tested up to Wordpress 4.1.1 
