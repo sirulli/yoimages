@@ -4,7 +4,7 @@ Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.0.5
+Stable tag: 0.0.6
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,9 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 4. custom metadata values even on gallery creation
 
 == Changelog ==
+
+= 0.0.6 =
+* Bugfix: avoiding undefined index notice while saving settings and avoiding "crop retina is smaller" warning when retina crop isn't enabled
 
 = 0.0.5 =
 * French translations, thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/)
