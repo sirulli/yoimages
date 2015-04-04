@@ -4,7 +4,7 @@
  * Plugin Name: YoImages
  * Plugin URI: http://sirulli.org/yoimages/
  * Description: Better image handling capabilities for Wordpress: image cropping tools and image SEO with automated metadata filling.
- * Version: 0.0.6
+ * Version: 0.0.7
  * Author: Sirulli
  * Author URI: http://sirulli.org/
  * License: GPL2
