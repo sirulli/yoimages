@@ -4,7 +4,7 @@ Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 0.0.6
+Stable tag: 0.0.7
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,7 @@ Feel free to report bugs or request new features [here](https://github.com/sirul
 Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.github.io/cropper/) plugin.
 Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/) for the Dutch translations of the plugin.
 Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/) for the French translations of the plugin.
+Thanks to [Thomas Meyer](https://github.com/tmconnect/) for code contributions and fixes to the German translations.
 
 
 = Source code =
@@ -97,6 +98,10 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 4. custom metadata values even on gallery creation
 
 == Changelog ==
+
+= 0.0.7 =
+* Showing translated image size names, thanks to [Thomas Meyer](https://github.com/tmconnect/)
+* Corrections to the German translations, thanks to [Thomas Meyer](https://github.com/tmconnect/)
 
 = 0.0.6 =
 * Bugfix: avoiding undefined index notice while saving settings and avoiding "crop retina is smaller" warning when retina crop isn't enabled
