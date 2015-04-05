@@ -35,3 +35,4 @@ define ( 'YOIMG_PATH', dirname ( __FILE__ ) );
 require_once (YOIMG_PATH . '/vendor/sirulli/yoimages-commons/inc/init.php');
 yoimg_register_module( 'yoimages-crop', YOIMG_PATH, true );
 yoimg_register_module( 'yoimages-seo', YOIMG_PATH, true );
+yoimg_register_module( 'yoimages-search', YOIMG_PATH, true );
