@@ -22,6 +22,6 @@
         "sirulli/yoimages-commons" : "dev-search",
         "sirulli/yoimages-crop" : "dev-search",
         "sirulli/yoimages-seo" : "dev-search",
-        "sirulli/yoimages-search" : "dev-search"
+        "sirulli/yoimages-search" : "master-dev"
     }
 }
