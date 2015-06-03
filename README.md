@@ -3,15 +3,10 @@
 Better image handling capabilities for Wordpress.
 All you need to handle your images in Wordpress in one plugin.
 
-No more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading. Create croppings in retina format too.
-
-Images are important for SEO but are never optimized enough. With YoImages you can automatically optimize images for Search Engines. No more alt tag missing or non informative titles or file names. Google can't see the image (yet) but, can read its attributes. 
-
-YoImages adds functional enhancements to the Wordpress admin interface:
-- image cropping tools
-- image SEO hooks
-
-Watch YoImages [demo video](https://www.youtube.com/watch?v=6SAC_QD1CCU "")
+YoImages adds the following functional enhancements to the Wordpress admin interface:
+- image cropping tools: [demo video](https://www.youtube.com/watch?v=0EdQu6xM2B0 ""). No more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading. Create croppings in retina format too.
+- image SEO hooks: [demo video](https://www.youtube.com/watch?v=ZMv4Pqp4HQA ""). Images are important for SEO but are never optimized enough. With YoImages you can automatically optimize images for Search Engines. No more alt tag missing or non informative titles or file names. Google can't see the image (yet) but, can read its attributes.
+- free stock photos search: [demo video](https://www.youtube.com/watch?v=4oO0FP3DWd8 ""). Search and upload royalty free photos from the web directly into the Wordpress Admin interface.
 
 
 ##Image cropping tools
@@ -106,6 +101,14 @@ add_filter( 'yoimg_supported_expressions', 'example_supported_expressions', 10, 
 
 ```
 
+
+##Free stock photos search
+
+YoImages' free stock photos search feature lets you perform a free term search in splashbase.co database directly from the Wordpress admin interface. The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
+
+Photos from Splashbase.co are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
+
+
 ##Install YoImages from sources
 
 YoImages is a modular Wordpress plugin built with [Composer](https://getcomposer.org/ "").
@@ -115,6 +118,7 @@ YoImages includes the following modules:
 * [YoImages Commons] (https://github.com/sirulli/yoimages-commons "")
 * [YoImages Crop] (https://github.com/sirulli/yoimages-crop "")
 * [YoImages SEO] (https://github.com/sirulli/yoimages-seo "")
+* [YoImages Search] (https://github.com/sirulli/yoimages-search "")
 
 
 To install it from sources go to your Wordpress plugin directory via terminal and there:
@@ -150,7 +154,6 @@ Translations are managed with [poeditor.com](https://poeditor.com/projects/view?
 ##Future features
 
 Future features to implement:
-- direct search of royalty free images
 - simple built-in image editor (effects, editing, color optimization)
 - image gallery templates
 
@@ -170,3 +173,5 @@ Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/ "") for the Dutch 
 Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/ "") for the French translations of the plugin.
 
 Thanks to [Thomas Meyer](https://github.com/tmconnect/ "") for code contributions and fixes to the German translations.
+
+Thanks to [Robert Vermeulen](https://github.com/robert388 "") for adding better support for metadata and making YoImages compatible with Regenerate Thumbnails plugin.
