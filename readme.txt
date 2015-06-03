@@ -24,7 +24,7 @@ YoImages adds functional enhancements to the Wordpress admin interface:
 
 = Image cropping tools =
 
-[youtube https://www.youtube.com/watch?v=0EdQu6xM2B0]
+[youtube https://www.youtube.com/watch?v=nGkn7A8gA6M]
 
 YoImages' cropping tools let you crop manually each cropping format that your theme defines: this feature gives you full control on how cropped versions of your images will look like.
 You can choose to replace the source image for some specific formats.
@@ -55,7 +55,7 @@ You are free to define metadata values by using fixed texts and the following va
 
 = Free stock photos search =
 
-[youtube https://www.youtube.com/watch?v=4oO0FP3DWd8]
+[youtube https://www.youtube.com/watch?v=QH9uzQ2hE_c]
 
 YoImages' free stock photos search feature lets you perform a free term search in [splashbase.co database](http://www.splashbase.co/) directly from the Wordpress admin interface. The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
 Photos from Splashbase.co are hi-res and free to use, but we recommend checking copyright details for each photo you choose.

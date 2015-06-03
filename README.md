@@ -4,9 +4,9 @@ Better image handling capabilities for Wordpress.
 All you need to handle your images in Wordpress in one plugin.
 
 YoImages adds the following functional enhancements to the Wordpress admin interface:
-- image cropping tools: [demo video](https://www.youtube.com/watch?v=0EdQu6xM2B0 ""). No more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading. Create croppings in retina format too.
+- image cropping tools: [demo video](https://www.youtube.com/watch?v=nGkn7A8gA6M ""). No more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading. Create croppings in retina format too.
 - image SEO hooks: [demo video](https://www.youtube.com/watch?v=ZMv4Pqp4HQA ""). Images are important for SEO but are never optimized enough. With YoImages you can automatically optimize images for Search Engines. No more alt tag missing or non informative titles or file names. Google can't see the image (yet) but, can read its attributes.
-- free stock photos search: [demo video](https://www.youtube.com/watch?v=4oO0FP3DWd8 ""). Search and upload royalty free photos from the web directly into the Wordpress Admin interface.
+- free stock photos search: [demo video](https://www.youtube.com/watch?v=QH9uzQ2hE_c ""). Search and upload royalty free photos from the web directly into the Wordpress Admin interface.
 
 
 ##Image cropping tools
