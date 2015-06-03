@@ -36,7 +36,7 @@ You are free to define metadata values by using fixed texts and the following va
 - site name
 
 
-###Adding your own custom hooks
+####Adding your own custom hooks
 
 YoImages' SEO hooks work on post saving or updating time and updates post's related images metadata.
 The *yoimg_seo_images_to_update* filter allows to add other images to be considered, for example images linked to the post via custom fields.
@@ -57,7 +57,7 @@ add_filter('yoimg_seo_images_to_update', 'yoimg_imgseo_add_featured_image', 10, 
 ```
 
 
-###Adding your own custom variables
+####Adding your own custom variables
 
 To add a new variable you have to hook two filters:
 - *yoimg_seo_expressions*
@@ -104,7 +104,7 @@ add_filter( 'yoimg_supported_expressions', 'example_supported_expressions', 10, 
 
 ##Free stock photos search
 
-YoImages' free stock photos search feature lets you perform a free term search in splashbase.co database directly from the Wordpress admin interface. The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
+YoImages' free stock photos search feature lets you perform a free term search in [splashbase.co database](http://www.splashbase.co/ "") directly from the Wordpress admin interface. The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
 
 Photos from Splashbase.co are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
 
