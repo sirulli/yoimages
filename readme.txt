@@ -2,9 +2,9 @@
 Contributors: ferrbea, fagia
 Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
-Requires at least: 4.0
-Tested up to: 4.1.1
-Stable tag: 0.0.7
+Requires at least: 3.9
+Tested up to: 4.2.2
+Stable tag: 0.1.0
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,12 +18,13 @@ YoImages adds functional enhancements to the Wordpress admin interface:
 
 * *Image cropping tools:* no more images cropped wrong, you can choose now what to display and even replace the entire image for a specific crop size if the orginal image doesn't fit. Crop at a lower quality to speed up page loading. Create croppings in retina format too.
 * *Image SEO hooks:* images are important for SEO but are never optimized enough. With YoImages you can automatically optimize images for Search Engines. No more alt tag missing or non informative titles or file names. Google can't see the image (yet) but, can read its attributes.
-
-[youtube https://www.youtube.com/watch?v=6SAC_QD1CCU]
+* *Free stock photos search:* Search and upload royalty free photos from the web directly into the Wordpress Admin interface.
 
 
 
 = Image cropping tools =
+
+[youtube https://www.youtube.com/watch?v=0EdQu6xM2B0]
 
 YoImages' cropping tools let you crop manually each cropping format that your theme defines: this feature gives you full control on how cropped versions of your images will look like.
 You can choose to replace the source image for some specific formats.
@@ -31,6 +32,8 @@ From the image cropping interface you can change the image quality for each crop
 YoImages cropping is retina friendly: if you are using a retina plugin that uses the standard @2x as file naming convention when creating retina images from source (e.g. [WP Retina 2x](https://wordpress.org/plugins/wp-retina-2x/ "")) you can enable the retina friendly cropping option in YoImages' settings page and the manual crops will be created in retina format too.
 
 = Image SEO hooks =
+
+[youtube https://www.youtube.com/watch?v=ZMv4Pqp4HQA]
 
 YoImages' SEO hooks automate image metadata (title, alt and filename) filling on image upload and on post (or page) saving.
 Each image SEO hook can be enabled or disabled individually and it works on any image that is child of a post or page such as the featured image and images or galleries added into the post WYSIWYG area.
@@ -48,6 +51,17 @@ You are free to define metadata values by using fixed texts and the following va
 
 *Note:* you can add your own [custom hooks](https://github.com/sirulli/yoimages#adding-your-own-custom-hooks) and your own [custom variables](https://github.com/sirulli/yoimages#adding-your-own-custom-variables).
 
+
+
+= Free stock photos search =
+
+[youtube https://www.youtube.com/watch?v=4oO0FP3DWd8]
+
+YoImages' free stock photos search feature lets you perform a free term search in [splashbase.co database](http://www.splashbase.co/) directly from the Wordpress admin interface. The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
+Photos from Splashbase.co are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
+
+
+
 = Languages supported =
 
 * Primary: English
@@ -60,7 +74,6 @@ Translations are managed with [poeditor.com](https://poeditor.com/projects/view?
 
 Future features to implement:
 
-* direct search of royalty free images
 * simple built-in image editor (effects, editing, color optimization)
 * image gallery templates
 * ...
@@ -78,6 +91,7 @@ Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.githu
 Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/) for the Dutch translations of the plugin.
 Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/) for the French translations of the plugin.
 Thanks to [Thomas Meyer](https://github.com/tmconnect/) for code contributions and fixes to the German translations.
+Thanks to [Robert Vermeulen](https://github.com/robert388) for adding better support for metadata, support for WP-CLI commands and making YoImages compatible with Regenerate Thumbnails plugin.
 
 
 = Source code =
@@ -96,8 +110,17 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 2. choose crop quality
 3. custom metadata value on post
 4. custom metadata values even on gallery creation
+5. free stock photos search
 
 == Changelog ==
+
+= 0.1.0 =
+* Added new feature: free stock photos search
+* Tested up to Wordpress 4.2.2 
+* Better support for custom metadata handling, thanks to [Robert Vermeulen](https://github.com/robert388)
+* Compatiblity with Regenerate Thumbnails plugin, thanks to [Robert Vermeulen](https://github.com/robert388)
+* Support for WP-CLI commands, thanks to [Robert Vermeulen](https://github.com/robert388)
+* Bugfixes
 
 = 0.0.7 =
 * Showing translated image size names, thanks to [Thomas Meyer](https://github.com/tmconnect/)
