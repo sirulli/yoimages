@@ -175,3 +175,5 @@ Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/ "") for the Frenc
 Thanks to [Thomas Meyer](https://github.com/tmconnect/ "") for code contributions and fixes to the German translations.
 
 Thanks to [Robert Vermeulen](https://github.com/robert388 "") for adding better support for metadata, support for WP-CLI commands and making YoImages compatible with Regenerate Thumbnails plugin.
+
+Thanks to [Elliot Coad](https://github.com/ecoad "") for adding the firing of an action after cropping.

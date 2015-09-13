@@ -3,8 +3,8 @@ Contributors: ferrbea, fagia
 Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
-Tested up to: 4.2.2
-Stable tag: 0.1.0
+Tested up to: 4.3
+Stable tag: 0.1.1
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,7 @@ Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/) for the Dutch tra
 Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/) for the French translations of the plugin.
 Thanks to [Thomas Meyer](https://github.com/tmconnect/) for code contributions and fixes to the German translations.
 Thanks to [Robert Vermeulen](https://github.com/robert388) for adding better support for metadata, support for WP-CLI commands and making YoImages compatible with Regenerate Thumbnails plugin.
+Thanks to [Elliot Coad](https://github.com/ecoad) for adding the firing of an action after cropping.
 
 
 = Source code =
@@ -113,6 +114,12 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 5. free stock photos search
 
 == Changelog ==
+
+= 0.1.1 =
+* Translations updated
+* Firing an action after cropping, thanks to [Elliot Coad](https://github.com/ecoad)
+* Fixed issue https://wordpress.org/support/topic/yoimages-media-editor-issues-with-a-lot-of-custom-image-sizes 
+* Tested up to Wordpress 4.3
 
 = 0.1.0 =
 * Added new feature: free stock photos search
