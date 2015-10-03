@@ -3,7 +3,7 @@ Contributors: ferrbea, fagia
 Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
-Tested up to: 4.3
+Tested up to: 4.3.1
 Stable tag: 0.1.1
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
