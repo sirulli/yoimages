@@ -119,7 +119,7 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 * Translations updated
 * Firing an action after cropping, thanks to [Elliot Coad](https://github.com/ecoad)
 * Fixed issue https://wordpress.org/support/topic/yoimages-media-editor-issues-with-a-lot-of-custom-image-sizes 
-* Tested up to Wordpress 4.3
+* Tested up to Wordpress 4.3.1
 
 = 0.1.0 =
 * Added new feature: free stock photos search
