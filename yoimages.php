@@ -36,22 +36,3 @@ require_once (YOIMG_PATH . '/vendor/sirulli/yoimages-commons/inc/init.php');
 yoimg_register_module( 'yoimages-crop', YOIMG_PATH, true );
 yoimg_register_module( 'yoimages-seo', YOIMG_PATH, true );
 yoimg_register_module( 'yoimages-search', YOIMG_PATH, true );
-
-global $wp_version;
-
-if ( version_compare( $wp_version, '2.8alpha', '>' ) )
-	add_filter( 'plugin_row_meta', 'filter_yoimg_meta', 10, 2 ); // only 2.8 and higher
-
-add_filter( 'plugin_action_links', 'filter_yoimg_meta', 10, 2 );
-
-function filter_yoimg_meta( $links, $file ) {
-	/* create link */
-	if ( $file == plugin_basename( __FILE__ ) ) {
-		array_unshift(
-			$links,
-			'<a href="options-general.php?page=yoimg-settings">'. __( 'Settings' ) .'</a>' // "Settings" is phrase from global WP's files.
-		);
-	}
-
-	return $links;
-}
