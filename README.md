@@ -107,6 +107,7 @@ add_filter( 'yoimg_supported_expressions', 'example_supported_expressions', 10, 
 YoImages' free stock photos search feature lets you perform a free term search directly from the Wordpress admin interface in the following databases:
 - [splashbase.co](http://www.splashbase.co/ "")
 - [unsplash.com](https://unsplash.com/ "")
+
 The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
 
 Photos from splashbase.co and unsplash.com are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
