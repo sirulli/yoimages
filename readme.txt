@@ -3,8 +3,8 @@ Contributors: ferrbea, fagia
 Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
-Tested up to: 4.3.1
-Stable tag: 0.1.1
+Tested up to: 4.4
+Stable tag: 0.1.2
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,15 +57,21 @@ You are free to define metadata values by using fixed texts and the following va
 
 [youtube https://www.youtube.com/watch?v=QH9uzQ2hE_c]
 
-YoImages' free stock photos search feature lets you perform a free term search in [splashbase.co database](http://www.splashbase.co/) directly from the Wordpress admin interface. The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
-Photos from Splashbase.co are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
+YoImages' free stock photos search feature lets you perform a free term search directly from the Wordpress admin interface in the following databases:
+* [splashbase.co](http://www.splashbase.co/)
+* [unsplash.com](https://unsplash.com/)
+The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
+Photos from splashbase.co and unsplash.com are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
+
+
+*Note:* you can also add other [search providers](https://github.com/sirulli/yoimages#adding-new-free-stock-photos-search-providers).
 
 
 
 = Languages supported =
 
 * Primary: English
-* Translations: Italian, German, Dutch, French
+* Translations: Italian, German, Dutch, French, Polish
 
 Translations are managed with [poeditor.com](https://poeditor.com/projects/view?id=25799 "").
 
@@ -93,6 +99,7 @@ Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/) for the French t
 Thanks to [Thomas Meyer](https://github.com/tmconnect/) for code contributions and fixes to the German translations.
 Thanks to [Robert Vermeulen](https://github.com/robert388) for adding better support for metadata, support for WP-CLI commands and making YoImages compatible with Regenerate Thumbnails plugin.
 Thanks to [Elliot Coad](https://github.com/ecoad) for adding the firing of an action after cropping.
+Thanks to [odie2](https://github.com/odie2/) for code contributions and for the Polish translations of the plugin.
 
 
 = Source code =
@@ -114,6 +121,12 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 5. free stock photos search
 
 == Changelog ==
+
+= 0.1.2 =
+* New search provider: [Unsplash](https://unsplash.com/)
+* Adding support for new [search providers](https://github.com/sirulli/yoimages#adding-new-free-stock-photos-search-providers)
+* Polish translations, thanks to [odie2](https://github.com/odie2/)
+* Tested up to Wordpress 4.4
 
 = 0.1.1 =
 * Translations updated

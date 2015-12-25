@@ -104,9 +104,33 @@ add_filter( 'yoimg_supported_expressions', 'example_supported_expressions', 10, 
 
 ##Free stock photos search
 
-YoImages' free stock photos search feature lets you perform a free term search in [splashbase.co database](http://www.splashbase.co/ "") directly from the Wordpress admin interface. The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
+YoImages' free stock photos search feature lets you perform a free term search directly from the Wordpress admin interface in the following databases:
+- [splashbase.co](http://www.splashbase.co/ "")
+- [unsplash.com](https://unsplash.com/ "")
+The photos you select are uploaded into your Wordpress site and optimized with YoImages' crop and SEO tools.
 
-Photos from Splashbase.co are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
+Photos from splashbase.co and unsplash.com are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
+
+
+####Adding new free stock photos search providers
+
+Implement and register a javascript client for the free stock photos search provider you want to add.
+To do that, you can use this reference implementation: [yoimg-search-splashbase.js](https://github.com/sirulli/yoimages-search/blob/master/inc/js/providers/yoimg-search-splashbase.js "")
+
+Then add your provider's javascript client implementation via the "yoimg_search_providers" filter: 
+
+```php
+function my_search_provider( $search_providers ) {
+       array_push( $search_providers, array(
+			'js' => MY_PLUGIN_URL . '/my-provider-client.js',
+			'url' => 'http://my.provider.url/',
+			'name' => 'MyProviderName'
+	   ) );
+       return $search_providers;
+}
+add_filter( 'yoimg_search_providers', 'my_search_provider' );
+```
+
 
 
 ##Install YoImages from sources
@@ -147,7 +171,7 @@ php composer.phar update
 
 Primary: English
 
-Translations: Italian, German, Dutch, French
+Translations: Italian, German, Dutch, French, Polish
 
 Translations are managed with [poeditor.com](https://poeditor.com/projects/view?id=25799 "").
 
@@ -177,3 +201,5 @@ Thanks to [Thomas Meyer](https://github.com/tmconnect/ "") for code contribution
 Thanks to [Robert Vermeulen](https://github.com/robert388 "") for adding better support for metadata, support for WP-CLI commands and making YoImages compatible with Regenerate Thumbnails plugin.
 
 Thanks to [Elliot Coad](https://github.com/ecoad "") for adding the firing of an action after cropping.
+
+Thanks to [odie2](https://github.com/odie2/ "") for code contributions and for the Polish translations of the plugin.
