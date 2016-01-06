@@ -116,7 +116,7 @@ Photos from splashbase.co and unsplash.com are hi-res and free to use, but we re
 ####Adding new free stock photos search providers
 
 Implement and register a javascript client for the free stock photos search provider you want to add.
-To do that, you can use this reference implementation: [yoimg-search-splashbase.js](https://github.com/sirulli/yoimages-search/blob/master/inc/js/providers/yoimg-search-splashbase.js "")
+To do that, you can use these implementations as reference: [providers](https://github.com/sirulli/yoimages-search/blob/master/inc/js/providers "")
 
 Then add your provider's javascript client implementation via the "yoimg_search_providers" filter: 
 
