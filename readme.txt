@@ -128,6 +128,7 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 * Adding support for new [search providers](https://github.com/sirulli/yoimages#adding-new-free-stock-photos-search-providers)
 * Polish translations, thanks to [odie2](https://github.com/odie2/)
 * Tested up to Wordpress 4.4
+* Bugfixes
 
 = 0.1.1 =
 * Translations updated
