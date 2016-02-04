@@ -4,7 +4,7 @@ Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
 Tested up to: 4.4
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,9 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 5. free stock photos search
 
 == Changelog ==
+
+= 0.1.3 =
+* Bugfixes, thanks to [odie2](https://github.com/odie2/)
 
 = 0.1.2 =
 * New search provider: [Unsplash](https://unsplash.com/)
