@@ -19,9 +19,9 @@
         }
     ],
     "require" : {
-        "sirulli/yoimages-commons" : "master-dev",
-        "sirulli/yoimages-crop" : "master-dev",
-        "sirulli/yoimages-seo" : "master-dev",
-        "sirulli/yoimages-search" : "master-dev"
+        "sirulli/yoimages-commons" : "dev-splitting_settings_code_into_modules",
+        "sirulli/yoimages-crop" : "dev-splitting_settings_code_into_modules",
+        "sirulli/yoimages-seo" : "dev-splitting_settings_code_into_modules",
+        "sirulli/yoimages-search" : "dev-splitting_settings_code_into_modules"
     }
 }
