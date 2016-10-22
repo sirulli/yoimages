@@ -140,10 +140,10 @@ YoImages is a modular Wordpress plugin built with [Composer](https://getcomposer
 
 YoImages includes the following modules:
 
-* [YoImages Commons] (https://github.com/sirulli/yoimages-commons "")
-* [YoImages Crop] (https://github.com/sirulli/yoimages-crop "")
-* [YoImages SEO] (https://github.com/sirulli/yoimages-seo "")
-* [YoImages Search] (https://github.com/sirulli/yoimages-search "")
+* [YoImages Commons](https://github.com/sirulli/yoimages-commons "")
+* [YoImages Crop](https://github.com/sirulli/yoimages-crop "")
+* [YoImages SEO](https://github.com/sirulli/yoimages-seo "")
+* [YoImages Search](https://github.com/sirulli/yoimages-search "")
 
 
 To install it from sources go to your Wordpress plugin directory via terminal and there:
@@ -193,7 +193,7 @@ Feel free to report bugs or request new features [here](https://github.com/sirul
 
 Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.github.io/cropper/ "") plugin.
 
-Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/ "") for the Dutch translations of the plugin.
+Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/ "") for the Dutch translations of the plugin and for suggesting and designing the "user-friendly names" feature for crop formats.
 
 Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/ "") for the French translations of the plugin.
 

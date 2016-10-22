@@ -3,8 +3,8 @@ Contributors: ferrbea, fagia
 Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
-Tested up to: 4.4
-Stable tag: 0.1.3
+Tested up to: 4.6.1
+Stable tag: 0.1.4
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,11 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 5. free stock photos search
 
 == Changelog ==
+
+= 0.1.4 =
+* New feature: "user-friendly names" for crop formats, thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/) for suggesting and designing it
+* Tested up to Wordpress 4.6.1
+* Bugfixes
 
 = 0.1.3 =
 * Bugfixes, thanks to [odie2](https://github.com/odie2/)
