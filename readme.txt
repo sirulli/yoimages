@@ -3,7 +3,7 @@ Contributors: ferrbea, fagia
 Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
-Tested up to: 4.7
+Tested up to: 4.7.1
 Stable tag: 0.1.5
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -95,7 +95,7 @@ Feel free to report bugs or request new features [here](https://github.com/sirul
 = Credits =
 
 Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.github.io/cropper/) plugin.
-Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/) for the Dutch translations of the plugin.
+Thanks to [wp-fred](https://profiles.wordpress.org/wp-fred-1/) for the Dutch translations of the plugin and for suggesting and designing the "user-friendly names" feature for crop formats.
 Thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/) for the French translations of the plugin.
 Thanks to [Thomas Meyer](https://github.com/tmconnect/) for code contributions and fixes to the German translations.
 Thanks to [Robert Vermeulen](https://github.com/robert388) for adding better support for metadata, support for WP-CLI commands and making YoImages compatible with Regenerate Thumbnails plugin.
@@ -124,7 +124,7 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 == Changelog ==
 
 = 0.1.5 =
-* Tested up to Wordpress 4.7
+* Tested up to Wordpress 4.7.1
 * Bugfixes
 
 = 0.1.4 =
