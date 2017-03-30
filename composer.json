@@ -19,9 +19,9 @@
         }
     ],
     "require" : {
-        "sirulli/yoimages-commons" : "master-dev",
+        "sirulli/yoimages-commons" : "dev-master",
         "sirulli/yoimages-crop" : "dev-cachebusting-filename-option",
-        "sirulli/yoimages-seo" : "master-dev",
-        "sirulli/yoimages-search" : "master-dev"
+        "sirulli/yoimages-seo" : "dev-master",
+        "sirulli/yoimages-search" : "dev-master"
     }
 }
