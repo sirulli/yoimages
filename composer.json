@@ -1,22 +1,39 @@
 {
     "name" : "shortlist-digital/yoimages",
     "repositories" : [
-        {
-            "type" : "vcs",
-            "url" : "https://github.com/sirulli/yoimages-commons"
-        },
-        {
-            "type" : "vcs",
-            "url" : "https://github.com/shortlist-digital/yoimages-crop"
-        },
-        {
-            "type" : "vcs",
-            "url" : "https://github.com/sirulli/yoimages-seo"
-        },
-        {
-            "type" : "vcs",
-            "url" : "https://github.com/sirulli/yoimages-search"
+         		{
+      "type": "package",
+      "package": {
+        "name": "sirulli/yoimages-commons",
+        "version": "dev-master",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/sirulli/yoimages-commons/archive/master.zip"
         }
+      }
+    },
+         		{
+      "type": "package",
+      "package": {
+        "name": "sirulli/yoimages-seo",
+        "version": "dev-master",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/sirulli/yoimages-seo/archive/master.zip"
+        }
+      }
+    },
+       {
+      "type": "package",
+      "package": {
+        "name": "sirulli/yoimages-search",
+        "version": "dev-master",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/sirulli/yoimages-search/archive/master.zip"
+        }
+      }
+    }
     ],
     "require" : {
         "sirulli/yoimages-commons" : "dev-master",
