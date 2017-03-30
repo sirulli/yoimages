@@ -7,7 +7,7 @@
         },
         {
             "type" : "vcs",
-            "url" : "https://github.com/sirulli/yoimages-crop"
+            "url" : "https://github.com/shortlist-digital/yoimages-crop"
         },
         {
             "type" : "vcs",
@@ -20,7 +20,7 @@
     ],
     "require" : {
         "sirulli/yoimages-commons" : "master-dev",
-        "sirulli/yoimages-crop" : "master-dev",
+        "sirulli/yoimages-crop" : "dev-cachebusting-filename-option",
         "sirulli/yoimages-seo" : "master-dev",
         "sirulli/yoimages-search" : "master-dev"
     }
