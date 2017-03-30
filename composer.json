@@ -20,7 +20,7 @@
     ],
     "require" : {
         "sirulli/yoimages-commons" : "dev-master",
-        "sirulli/yoimages-crop" : "dev-cachebusting-filename-option",
+        "shortlist-digital/yoimages-crop" : "dev-cachebusting-filename-option",
         "sirulli/yoimages-seo" : "dev-master",
         "sirulli/yoimages-search" : "dev-master"
     }
