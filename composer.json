@@ -5,7 +5,7 @@
       "type": "package",
       "package": {
         "name": "sirulli/yoimages-commons",
-        "version": "dev-master",
+        "version": "1.0.0",
         "dist": {
           "type": "zip",
           "url": "https://github.com/sirulli/yoimages-commons/archive/master.zip"
@@ -16,7 +16,7 @@
       "type": "package",
       "package": {
         "name": "sirulli/yoimages-seo",
-        "version": "dev-master",
+        "version": "1.0.0",
         "dist": {
           "type": "zip",
           "url": "https://github.com/sirulli/yoimages-seo/archive/master.zip"
@@ -27,7 +27,7 @@
       "type": "package",
       "package": {
         "name": "sirulli/yoimages-search",
-        "version": "dev-master",
+        "version": "1.0.0",
         "dist": {
           "type": "zip",
           "url": "https://github.com/sirulli/yoimages-search/archive/master.zip"
@@ -36,9 +36,9 @@
     }
     ],
     "require" : {
-        "sirulli/yoimages-commons" : "dev-master",
+        "sirulli/yoimages-commons" : "1.0.0",
         "shortlist-digital/yoimages-crop" : "dev-cachebusting-filename-option",
-        "sirulli/yoimages-seo" : "dev-master",
-        "sirulli/yoimages-search" : "dev-master"
+        "sirulli/yoimages-seo" : "1.0.0",
+        "sirulli/yoimages-search" : "1.0.0"
     }
 }
