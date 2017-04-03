@@ -4,7 +4,7 @@ Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
 Tested up to: 4.7.1
-Stable tag: 0.1.5
+Stable tag: 0.1.6
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,13 +115,16 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 
 == Screenshots ==
 
-1. custom crop 
+1. custom crop
 2. choose crop quality
 3. custom metadata value on post
 4. custom metadata values even on gallery creation
 5. free stock photos search
 
 == Changelog ==
+
+= 0.1.6 =
+* New feature: Cache-bust newly cropped images by adding a timestamp into the file name when the option is checked in the settings
 
 = 0.1.5 =
 * Tested up to Wordpress 4.7.1
@@ -145,12 +148,12 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 = 0.1.1 =
 * Translations updated
 * Firing an action after cropping, thanks to [Elliot Coad](https://github.com/ecoad)
-* Fixed issue https://wordpress.org/support/topic/yoimages-media-editor-issues-with-a-lot-of-custom-image-sizes 
+* Fixed issue https://wordpress.org/support/topic/yoimages-media-editor-issues-with-a-lot-of-custom-image-sizes
 * Tested up to Wordpress 4.3.1
 
 = 0.1.0 =
 * Added new feature: free stock photos search
-* Tested up to Wordpress 4.2.2 
+* Tested up to Wordpress 4.2.2
 * Better support for custom metadata handling, thanks to [Robert Vermeulen](https://github.com/robert388)
 * Compatiblity with Regenerate Thumbnails plugin, thanks to [Robert Vermeulen](https://github.com/robert388)
 * Support for WP-CLI commands, thanks to [Robert Vermeulen](https://github.com/robert388)
@@ -165,7 +168,7 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 
 = 0.0.5 =
 * French translations, thanks to [Maxime Lafontaine](http://www.maximelafontaine.net/)
-* Tested up to Wordpress 4.1.1 
+* Tested up to Wordpress 4.1.1
 
 = 0.0.4 =
 * Added SEO expressions related to the post author metadata: username, first name and last name
