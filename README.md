@@ -176,7 +176,7 @@ Translations: Italian, German, Dutch, French, Polish
 
 Translations are managed with [poeditor.com](https://poeditor.com/projects/view?id=25799 "").
 
-##Future features
+## Future features
 
 Future features to implement:
 - simple built-in image editor (effects, editing, color optimization)
