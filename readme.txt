@@ -3,7 +3,7 @@ Contributors: ferrbea, fagia
 Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
-Tested up to: 4.7.1
+Tested up to: 4.7.5
 Stable tag: 0.1.6
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -101,7 +101,7 @@ Thanks to [Thomas Meyer](https://github.com/tmconnect/) for code contributions a
 Thanks to [Robert Vermeulen](https://github.com/robert388) for adding better support for metadata, support for WP-CLI commands and making YoImages compatible with Regenerate Thumbnails plugin.
 Thanks to [Elliot Coad](https://github.com/ecoad) for adding the firing of an action after cropping.
 Thanks to [odie2](https://github.com/odie2/) for code contributions and for the Polish translations of the plugin.
-
+Thanks to [Ben Bowler](https://github.com/benbowler) for his code contributions.
 
 = Source code =
 
@@ -124,7 +124,8 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 == Changelog ==
 
 = 0.1.6 =
-* New feature: Cache-bust newly cropped images by adding a timestamp into the file name when the option is checked in the settings
+* New feature: Cache-bust newly cropped images so that they are updated in external caches and CDNs, thanks to [Ben Bowler](https://github.com/benbowler)
+* Tested up to Wordpress 4.7.5
 
 = 0.1.5 =
 * Tested up to Wordpress 4.7.1

@@ -204,3 +204,5 @@ Thanks to [Robert Vermeulen](https://github.com/robert388 "") for adding better 
 Thanks to [Elliot Coad](https://github.com/ecoad "") for adding the firing of an action after cropping.
 
 Thanks to [odie2](https://github.com/odie2/ "") for code contributions and for the Polish translations of the plugin.
+
+Thanks to [Ben Bowler](https://github.com/benbowler "") for his code contributions.
