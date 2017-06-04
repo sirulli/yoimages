@@ -1,4 +1,4 @@
-#YoImages
+# YoImages
 
 Better image handling capabilities for Wordpress.
 All you need to handle your images in Wordpress in one plugin.
@@ -9,7 +9,7 @@ YoImages adds the following functional enhancements to the Wordpress admin inter
 - free stock photos search: [demo video](https://www.youtube.com/watch?v=QH9uzQ2hE_c ""). Search and upload royalty free photos from the web directly into the Wordpress Admin interface.
 
 
-##Image cropping tools
+## Image cropping tools
 
 YoImages' cropping tools let you crop manually each cropping format that your theme defines: this feature gives you full control on how cropped versions of your images will look like.
 
@@ -19,7 +19,7 @@ From the image cropping interface you can change the image quality for each crop
 
 YoImages cropping is retina friendly: if you are using a retina plugin that uses the standard @2x as file naming convention when creating retina images from source (e.g. [WP Retina 2x](https://wordpress.org/plugins/wp-retina-2x/ "")) you can enable the retina friendly cropping option in YoImages' settings page and the manual crops will be created in retina format too.
 
-##Image SEO hooks
+## Image SEO hooks
 
 YoImages' SEO hooks automate image metadata (title, alt and filename) filling on image upload and on post (or page) saving.
 
@@ -36,7 +36,7 @@ You are free to define metadata values by using fixed texts and the following va
 - site name
 
 
-####Adding your own custom hooks
+#### Adding your own custom hooks
 
 YoImages' SEO hooks work on post saving or updating time and updates post's related images metadata.
 The *yoimg_seo_images_to_update* filter allows to add other images to be considered, for example images linked to the post via custom fields.
@@ -57,7 +57,7 @@ add_filter('yoimg_seo_images_to_update', 'yoimg_imgseo_add_featured_image', 10, 
 ```
 
 
-####Adding your own custom variables
+#### Adding your own custom variables
 
 To add a new variable you have to hook two filters:
 - *yoimg_seo_expressions*
@@ -102,7 +102,7 @@ add_filter( 'yoimg_supported_expressions', 'example_supported_expressions', 10, 
 ```
 
 
-##Free stock photos search
+## Free stock photos search
 
 YoImages' free stock photos search feature lets you perform a free term search directly from the Wordpress admin interface in the following databases:
 - [splashbase.co](http://www.splashbase.co/ "")
@@ -113,7 +113,7 @@ The photos you select are uploaded into your Wordpress site and optimized with Y
 Photos from splashbase.co and unsplash.com are hi-res and free to use, but we recommend checking copyright details for each photo you choose.
 
 
-####Adding new free stock photos search providers
+#### Adding new free stock photos search providers
 
 Implement and register a javascript client for the free stock photos search provider you want to add.
 To do that, you can use these implementations as reference: [providers](https://github.com/sirulli/yoimages-search/blob/master/inc/js/providers "")
@@ -134,7 +134,7 @@ add_filter( 'yoimg_search_providers', 'my_search_provider' );
 
 
 
-##Install YoImages from sources
+## Install YoImages from sources
 
 YoImages is a modular Wordpress plugin built with [Composer](https://getcomposer.org/ "").
 
@@ -168,7 +168,7 @@ php composer.phar update
 
 ```
 
-##Languages supported
+## Languages supported
 
 Primary: English
 
@@ -185,11 +185,11 @@ Future features to implement:
 
 Feel free to report bugs or request new features [here](https://github.com/sirulli/yoimages/issues "").
 
-##How to contribute
+## How to contribute
 
 [http://sirulli.org/yoimages/#contribute](http://sirulli.org/yoimages/#contribute "")
 
-##Credits
+## Credits
 
 Thanks to Fengyuan Chen for his [jQuery Image Cropper](http://fengyuanchen.github.io/cropper/ "") plugin.
 
