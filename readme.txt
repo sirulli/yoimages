@@ -3,8 +3,8 @@ Contributors: ferrbea, fagia
 Donate link: sirulli.org/yoimages
 Tags: images, image, SEO, enhancement, crop, tool
 Requires at least: 3.9
-Tested up to: 4.7.5
-Stable tag: 0.1.6
+Tested up to: 4.8
+Stable tag: 0.1.7
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,10 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 5. free stock photos search
 
 == Changelog ==
+
+= 0.1.7 =
+* Bugfixes
+* Tested up to Wordpress 4.8
 
 = 0.1.6 =
 * New feature: Cache-bust newly cropped images so that they are updated in external caches and CDNs, thanks to [Ben Bowler](https://github.com/benbowler)
