@@ -124,6 +124,7 @@ YoImages source code is hosted on [GitHub](https://github.com/sirulli/yoimages).
 == Changelog ==
 
 = 0.1.8 =
+* Added search images to the "Add Media" popup
 * Bugfixes
 
 = 0.1.7 =
